@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.nav`
   width: 100%;
-  height: ${(props) => (props.extendNavbar ? "100vh" : "80px")};
+  height: ${(props) => (props.extendNavbar ? "100vh" : "115px")};
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  position: fixed;
+  top: 0;
 
-  @media (min-width: 700px) {
-    height: 80px;
+  @media (max-width: 768px) {
+    height: 100vh;
+    overflow: hidden;
   }
 `;
 
@@ -21,8 +23,8 @@ export const LeftContainer = styled.div`
   align-items: center;
   padding-left: 5%;
 
-  @media (max-width: 700px) {
-    flex: 90%;
+  @media (max-width: 768px) {
+    flex: 100%;
   }
 `;
 
@@ -38,6 +40,7 @@ export const NavbarInnerContainer = styled.div`
   width: 100%;
   height: 80px;
   display: flex;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 `;
 
 export const NavbarLinkContainer = styled.div`
@@ -73,7 +76,7 @@ export const NavbarLink = styled(Link)`
     transform: scaleX(1);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -103,7 +106,7 @@ export const NavBarTitle = styled.h4`
   align-items: center;
   font-weight: 400;
 
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     font-size: 20px;
   }
 `;
@@ -114,10 +117,10 @@ export const OpenLinksButton = styled.button`
   background: none;
   border: none;
   color: #000;
-  font-size: 45px;
+  font-size: 30px;
   cursor: pointer;
 
-  @media (min-width: 700px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;
@@ -125,6 +128,6 @@ export const OpenLinksButton = styled.button`
 export const NavbarExtendedContainer = styled.div`
   width: 100%;
   text-align: center;
-  transform: translateX(${prop => prop.show ? 0 : '100%'});
-  transition: transform .6s ease;
+  transform: translateX(${(prop) => (prop.show ? 0 : "100%")});
+  transition: transform 400ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 `;

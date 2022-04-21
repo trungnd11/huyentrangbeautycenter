@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   NavbarContainer,
   LeftContainer,
@@ -11,7 +11,7 @@ import {
   NavBarTitle,
   OpenLinksButton,
   NavbarLinkExtended,
-} from "../stylesComponents/NavBar.style";
+} from "../stylesComponents/navBar.style";
 import LogoImg from "../assets/images/logo/logo.png";
 
 function Navbar() {
@@ -41,11 +41,11 @@ function Navbar() {
         </RightContainer>
       </NavbarInnerContainer>
       <NavbarExtendedContainer show={extendNavbar}>
-          <NavbarLinkExtended to="/"> Trang chủ</NavbarLinkExtended>
-          <NavbarLinkExtended to="/products"> Dịch vụ</NavbarLinkExtended>
-          <NavbarLinkExtended to="/contact"> Liên hệ</NavbarLinkExtended>
-          <NavbarLinkExtended to="/about"> Giới thiệu</NavbarLinkExtended>
-      </NavbarExtendedContainer>
+            <NavbarLinkExtended to="/"> Trang chủ</NavbarLinkExtended>
+            <NavbarLinkExtended to="/products"> Dịch vụ</NavbarLinkExtended>
+            <NavbarLinkExtended to="/contact"> Liên hệ</NavbarLinkExtended>
+            <NavbarLinkExtended to="/about"> Giới thiệu</NavbarLinkExtended>
+        </NavbarExtendedContainer>
     </NavbarContainer>
   );
 }
