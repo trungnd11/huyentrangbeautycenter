@@ -1,5 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { keyframes } from "styled-components";
+
+const rotateLogo = keyframes`
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+`;
 
 export const NavbarContainer = styled.nav`
   width: 100%;
@@ -7,12 +17,10 @@ export const NavbarContainer = styled.nav`
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 0;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     height: 100vh;
-    overflow: hidden;
   }
 `;
 
@@ -96,6 +104,8 @@ export const Logo = styled.img`
   margin: 10px;
   max-width: 70px;
   height: auto;
+  cursor: pointer;
+  animation: ${rotateLogo} 6s linear infinite;
 `;
 
 export const NavBarTitle = styled.h4`
@@ -105,14 +115,15 @@ export const NavBarTitle = styled.h4`
   font-family: Great Vibes;
   align-items: center;
   font-weight: 400;
-
+  cursor: pointer;
+  font-size: 35px;
   @media (max-width: 768px) {
-    font-size: 20px;
+    font-size: 22px;
   }
 `;
 
 export const OpenLinksButton = styled.button`
-  width: 70px;
+  width: 50px;
   height: 50px;
   background: none;
   border: none;
