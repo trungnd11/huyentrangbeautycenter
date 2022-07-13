@@ -1,0 +1,14 @@
+.nav-bar {
+  height: 4rem;
+
+  .list-menu {
+    width: 50%;
+    ul {
+      padding-left: 0;
+      .item {
+        list-style-type: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
