@@ -1,13 +1,64 @@
+
 .nav-bar {
   height: 4rem;
+  background: $white;
+  z-index: 5;
+  .logo {
+    flex-basis: 40%;
+    .logo-wapper {
+      width: 10%;
+      border-radius: 50%;
+      img {
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+      }
+    }
+
+    h3 {
+      font-family: 'Great Vibes', cursive;
+      font-weight: 700;
+      margin-bottom: 0;
+      color: $main-color;
+    }
+  }
 
   .list-menu {
-    width: 50%;
     ul {
       padding-left: 0;
+      margin-bottom: 0;
       .item {
-        list-style-type: none;
         cursor: pointer;
+        color: $black;
+        display: inline-block;
+        position: relative;
+        @include Transitions(.6s);
+
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: $main-color;
+          visibility: hidden;
+          transform: scaleX(0);
+          @include Transitions(.6s);
+          height: .05rem;
+          bottom: -10px;
+          opacity: 1;
+          left: 0;
+          width: 100%;
+        }
+
+        &:hover {
+          color: $main-color;
+          &::before {
+            visibility: visible;
+            transform: scaleX(1);
+          }
+        }
+
+        li {
+          list-style-type: none;
+        }
       }
     }
   }
