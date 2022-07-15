@@ -1,0 +1,34 @@
+.counter-customers {
+  background-image: url(https://technext.github.io/energen/images/bg_3.jpg);
+  background-position: 50%;
+  padding: 3rem 0;
+  position: relative;
+  z-index: 0;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $main-color;
+    opacity: 0;
+  }
+
+  .text {
+    padding: 2rem;
+    strong {
+      font-weight: 500;
+      font-size: 2.5rem;
+      color: $main-color;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 1rem;
+      color: $main-color;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+  }
+}

@@ -17,7 +17,7 @@ export default function Carousels() {
           <img src="" alt="" />
         </div> */}
         <div className="title text-center">
-          <h2>SPA &amp; BEAUTY CENTER</h2>
+          <h2>Huyen Trang Spa &amp; beauty center</h2>
         </div>
         <div className="description">
           <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam in, quibusdam est eius perferendis ipsum, similique exercitationem fuga error nostrum beatae deleniti consequatur recusandae impedit quas, illo autem. Esse, eaque?</p>

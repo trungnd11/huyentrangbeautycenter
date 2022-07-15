@@ -2,7 +2,7 @@ const img = [
   {
     id: 1,
     path: "https://technext.github.io/energen/images/offer-deal-1.jpg",
-    title: "Book Your Treatment",
+    title: "Book Treatment",
     description:
       "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
   },

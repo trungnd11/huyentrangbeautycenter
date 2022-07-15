@@ -54,6 +54,12 @@
     padding: 1.5rem;
     border-radius: .8rem;
     @include Transitions(.6s);
+
+    .title {
+      font-family: 'Great Vibes', cursive;
+      color: $main-color;
+      text-transform: capitalize;
+    }
     
     &:hover {
       background: $white;

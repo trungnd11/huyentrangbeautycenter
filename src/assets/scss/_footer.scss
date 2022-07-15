@@ -1,0 +1,57 @@
+
+.footer {
+  margin-top: 4rem;
+  background-color: $gray;
+  padding: 2.5rem 1rem;
+  line-height: 2;
+
+  h3 {
+    color: $main-color;
+    font-size: 1.5rem;
+  }
+
+  .social {
+    i {
+      margin: 0 .5rem;
+      font-size: 1.2rem;
+      color: $main-color;
+      @include Transitions(1s);
+      &:hover {
+        transform: rotateY(360deg);
+      }
+    }
+  }
+
+  .address {
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .sevices {
+    ul {
+      padding-left: 0;
+      list-style: none;
+
+      a {
+        color: $black;
+      }
+    }
+  }
+
+  .location {
+    .map {
+      border-radius: .8rem;
+      overflow: hidden;
+    }
+  }
+
+  .copy-right {
+    .title {
+      color: $main-color;
+      font-size: 1.2rem;
+      font-family: 'Great Vibes', cursive;
+    }
+  }
+
+}
