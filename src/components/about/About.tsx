@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="about">
       <div className="container">
-        <div className="row justify-content-end">
+        <div className="row justify-content-start">
           <div className="col-md-6">
             <div className="content-about">
               <div className="heading-section ">
