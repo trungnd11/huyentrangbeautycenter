@@ -4,8 +4,8 @@ import { authRouter } from "./allRouter"
 export default function Router() {
   return (
     <Routes>
-      {authRouter.map(router => (
-        <Route path={router.path} element={<router.component />}></Route>
+      {authRouter.map((router, index) => (
+        <Route key={index} path={router.path} element={<router.component />}></Route>
       ))}
     </Routes>
   ); 

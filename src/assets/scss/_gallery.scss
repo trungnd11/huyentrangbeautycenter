@@ -27,8 +27,33 @@
 
   .zoomImg {
     position: fixed;
-    background: $black;
     width: 100vw;
     height: 100vh;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      position: absolute;
+      color: $white;
+      right: 2rem;
+      top: 5rem;
+      font-size: 2.5rem;
+      cursor: pointer;
+      @include Transitions(.6s);
+
+      &:hover {
+        color: $red;
+      }
+    }
+
+    img {
+      width: 70%;
+      height: 70%;
+      object-fit: cover;
+      @include Transitions(1s);
+    }
   }
 }
