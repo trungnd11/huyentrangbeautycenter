@@ -3,11 +3,11 @@ import Blog from "../../components/blog/Blog";
 import Carousel from "../../components/carousel/Carousels";
 import CounterCustomers from "../../components/counter-customers/CounterCustomers";
 import Customers from "../../components/customer/Customers";
-import Footer from "../../components/footer/Footer";
 import Gallery from "../../components/gallery/Gallery";
 import Services from "../../components/service/Services";
 
 export default function Home() {
+
   return (
     <div className="home-page">
       <Carousel />
@@ -17,7 +17,6 @@ export default function Home() {
       <CounterCustomers />
       <Blog />
       <Gallery />
-      <Footer />
     </div>
   )
 }

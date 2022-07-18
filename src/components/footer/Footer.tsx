@@ -4,15 +4,17 @@
 export default function Footer() {
   return (
     <div className="footer">
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 col-md-6 col-lg-4">
             <div className="company">
               <h3>Huyen Trang Center</h3>
-              <p>
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts.
-              </p>
+              <div className="address">
+                <p>203 Fake St, San Francisco, California, USA</p>
+                <p>203 Fake St, San Francisco, California, USA</p>
+                <p> 0392 3929 210</p>
+                <p> 0392 3929 210</p>
+              </div>
               <div className="social">
                 <a href="#">
                   <i className="fa-brands fa-facebook"></i>
@@ -26,15 +28,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="address">
-              <h3>Địa chỉ</h3>
-              <p>203 Fake St. Mountain View, San Francisco, California, USA</p>
-              <p> 0392 3929 210</p>
-              <p>info@yourdomain.com</p>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 col-md-6 col-lg-4">
             <div className="sevices">
               <h3>Dịch vụ</h3>
               <ul>
@@ -53,7 +47,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 col-md-6 col-lg-4">
             <div className="location">
               <h3>Vị trí</h3>
               <div className="map">
@@ -72,7 +66,10 @@ export default function Footer() {
             <p className="mb-0 mt-2 text-center copy-right">
               Copyright ©
               <script>document.write(new Date().getFullYear());</script>2022 All
-              rights by <a href="#" className="title">Huyen Trang Beauty Center</a>
+              rights by{" "}
+              <a href="#" className="title">
+                Huyen Trang Beauty Center
+              </a>
             </p>
           </div>
         </div>

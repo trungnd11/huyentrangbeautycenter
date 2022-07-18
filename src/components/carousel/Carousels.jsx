@@ -2,9 +2,9 @@ import { Carousel } from "3d-react-carousal";
 import banner1 from "../../static/imgs/banner/banner-1.jpg";
 let slides = [
   <img src={banner1} alt="1" />,
-  <img src="https://picsum.photos/800/501/?random" alt="2" />,
+  <img src={banner1} alt="2" />,
   <img src={banner1} alt="3" />,
-  <img src="https://picsum.photos/800/504/?random" alt="4" />,
+  <img src={banner1} alt="4" />,
 ];
 
 export default function Carousels() {

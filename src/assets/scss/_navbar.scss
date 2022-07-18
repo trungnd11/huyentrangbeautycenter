@@ -63,6 +63,10 @@
           list-style-type: none;
         }
       }
+
+      .active {
+        color: $main-color;
+      }
     }
   }
 }
