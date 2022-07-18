@@ -50,10 +50,30 @@
     }
 
     img {
-      width: 70%;
+      width: 50%;
       height: 70%;
       object-fit: cover;
       @include Transitions(1s);
     }
   }
+
+  .btn-prev,.btn-nexts {
+      position: absolute;
+      color: $white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 5;
+      @include Transitions(1s);
+      &:hover {
+        color: $main-color;
+      }
+    }
+
+    .btn-prev {
+      left: 3rem;
+    }
+
+    .btn-nexts {
+      right: 3rem;
+    }
 }

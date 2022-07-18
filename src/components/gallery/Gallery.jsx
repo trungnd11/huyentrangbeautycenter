@@ -34,13 +34,30 @@ export default function Gallery() {
   });
   let slides = [
     <img src={banner1} alt="1"  onClick={() => handleClick(banner1)} />,
-    <img src={banner1} alt="2" onClick={() => handleClick({banner1})} />,
+    <img src={banner1} alt="2" onClick={() => handleClick(banner1)} />,
     <img src={banner1} alt="3" onClick={() => handleClick(banner1)} />,
-    <img src={banner1} alt="4" onClick={() => handleClick({banner1})} />,
+    <img src={banner1} alt="4" onClick={() => handleClick(banner1)} />,
   ];
 
   const handleClick = (src) => {
     setZoomImg({ show: true, src });
+  }
+
+  const onBtnPrevImg = (srcImg) => {
+    console.log(srcImg);
+    slides.forEach((element, index) => {
+      if (element.props.src === srcImg) {
+        index !== 0 && setZoomImg({ show: true, src: slides[index - 1].props.src })
+      }
+    });
+  }
+
+  const onBtnNextImg = (srcImg) => {
+    slides.forEach((element, index) => {
+      if (element.props.src === srcImg) {
+        index < slides.length && setZoomImg({ show: true, src: slides[index + 1].props.src })
+      }
+    });
   }
 
   const ShowZoomImg = ({ src }) => {
@@ -50,13 +67,15 @@ export default function Gallery() {
           <i class="fa-solid fa-xmark" title='Đóng' onClick={() => setZoomImg({show: false, src: ""})} />
           <img src={src} alt="1" />
         </div>
+        <i className="fa-solid fa-angle-left btn-prev" onClick={() => onBtnPrevImg(src)} />
+        <i className="fa-solid fa-angle-right btn-nexts" onClick={() => onBtnNextImg(src)} />
       </ZoomDiv>
     );
   }
 
   return (
     <div className="gallery">
-      { zoomImg.show && <ShowZoomImg src={zoomImg.src} /> }
+      { zoomImg.show && <ShowZoomImg src={zoomImg.src} index /> }
       <div className="container">
         <div className="title">
           <h3 className="text text-center">

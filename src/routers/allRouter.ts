@@ -11,33 +11,35 @@ interface TypeRouter {
   component: FC,
 }
 
+export const url = "/huyentrangbeautycenter";
+
 export const authRouter: TypeRouter[] = [
   {
-    path: "/",
+    path: `${url}/`,
     component: Home,
   },
   {
-    path: "/home",
+    path: `${url}/home`,
     component: Home,
   },
   {
-    path: "/about",
+    path: `${url}/about`,
     component: AboutPage,
   },
   {
-    path: "/services",
+    path: `${url}/services`,
     component: ServicePage,
   },
   {
-    path: "/expert",
+    path: `${url}/expert`,
     component: ExpertPage,
   },
   {
-    path: "/blog",
+    path: `${url}/blog`,
     component: BlogPage,
   },
   {
-    path: "/contact",
+    path: `${url}/contact`,
     component: ContactPage,
   },
 ];
