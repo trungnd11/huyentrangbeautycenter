@@ -1,6 +1,8 @@
 import { Carousel } from "3d-react-carousal";
+import { NavLink } from "react-router-dom";
 import banner1 from "../../static/imgs/banner/banner-1.jpg";
 import { ButtonMain } from "../button/Button";
+import { url } from ".././../routers/allRouter"
 let slides = [
   <img src={banner1} alt="1" />,
   <img src={banner1} alt="2" />,
@@ -24,8 +26,12 @@ export default function Carousels() {
           <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam in, quibusdam est eius perferendis ipsum, similique exercitationem fuga error nostrum beatae deleniti consequatur recusandae impedit quas, illo autem. Esse, eaque?</p>
         </div>
         <div className="button text-center">
-          <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
-          <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
+          <NavLink to={`${url}/services`}>
+            <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
+          </NavLink>
+          <NavLink to={`${url}/contact`}>
+            <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
+          </NavLink>
         </div>
       </div>
     </div>
