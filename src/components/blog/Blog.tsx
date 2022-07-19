@@ -1,3 +1,4 @@
+import BlogItem from "./BlogItem"
 
 export default function Blog() {
   return (
@@ -8,78 +9,30 @@ export default function Blog() {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-4">
-            <div className="content">
-              <div className="img">
-                <img
-                  src="https://technext.github.io/energen/images/image_1.jpg"
-                  alt="1"
-                />
-              </div>
-              <div className="date-update d-flex align-items-center">
-                <h2 className="date">25</h2>
-                <div className="year d-flex flex-column">
-                  <span>2022</span>
-                  <span>Tháng 1</span>
-                </div>
-              </div>
-              <div className="description">
-                <h4 className="title">Is wellness the new luxury</h4>
-                <p className="contents">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-4">
-            <div className="content">
-              <div className="img">
-                <img
-                  src="https://technext.github.io/energen/images/image_2.jpg"
-                  alt="1"
-                />
-              </div>
-              <div className="date-update d-flex align-items-center">
-                <h2 className="date">25</h2>
-                <div className="year d-flex flex-column">
-                  <span>2022</span>
-                  <span>Tháng 1</span>
-                </div>
-              </div>
-              <div className="description">
-                <h4 className="title">Is wellness the new luxury</h4>
-                <p className="contents">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-4">
-            <div className="content">
-              <div className="img">
-                <img
-                  src="https://technext.github.io/energen/images/image_3.jpg"
-                  alt="1"
-                />
-              </div>
-              <div className="date-update d-flex align-items-center">
-                <h2 className="date">25</h2>
-                <div className="year d-flex flex-column">
-                  <span>2022</span>
-                  <span>Tháng 1</span>
-                </div>
-              </div>
-              <div className="description">
-                <h4 className="title">Is wellness the new luxury</h4>
-                <p className="contents">
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
-                </p>
-              </div>
-            </div>
-          </div>
+          <BlogItem
+            img="https://technext.github.io/energen/images/image_1.jpg"
+            date="25"
+            month="Tháng 1"
+            year="2022"
+            title="Is wellness the new luxury"
+            content=" A small river named Duden flows by their place and supplies it with the necessary regelialia."
+          />
+          <BlogItem
+            img="https://technext.github.io/energen/images/image_2.jpg"
+            date="25"
+            month="Tháng 1"
+            year="2022"
+            title="Is wellness the new luxury"
+            content=" A small river named Duden flows by their place and supplies it with the necessary regelialia."
+          />
+          <BlogItem
+            img="https://technext.github.io/energen/images/image_3.jpg"
+            date="25"
+            month="Tháng 1"
+            year="2022"
+            title="Is wellness the new luxury"
+            content=" A small river named Duden flows by their place and supplies it with the necessary regelialia."
+          />
         </div>
       </div>
     </div>

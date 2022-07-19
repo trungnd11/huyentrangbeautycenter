@@ -1,0 +1,46 @@
+.contact-page {
+  .form {
+
+    .contact {
+      padding: 2rem;
+      background-color: $gray;
+      border-radius: .8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid $main-color;
+      .title {
+        margin-top: 1rem;
+        color: $main-color;
+        margin-bottom: 2rem;
+      }
+
+      .phone-number a, .email a, .website a {
+        color: $main-color;
+      }
+    }
+    .form-control {
+      border: none !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+      height: 3rem !important;
+      border-radius: 0px !important;
+      
+      &:focus{
+        outline: none !important;
+        border-color: $main-color !important;
+        box-shadow: none;
+      }
+    }
+
+    select:required:invalid {
+      color: gray !important;
+    }
+    option[value=""][disabled] {
+      display: none !important;
+    }
+
+    textarea.form-control {
+      height: 7rem !important;
+    }
+  }
+}

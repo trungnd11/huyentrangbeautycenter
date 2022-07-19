@@ -1,5 +1,6 @@
 import { Carousel } from "3d-react-carousal";
 import banner1 from "../../static/imgs/banner/banner-1.jpg";
+import { ButtonMain } from "../button/Button";
 let slides = [
   <img src={banner1} alt="1" />,
   <img src={banner1} alt="2" />,
@@ -23,8 +24,8 @@ export default function Carousels() {
           <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam in, quibusdam est eius perferendis ipsum, similique exercitationem fuga error nostrum beatae deleniti consequatur recusandae impedit quas, illo autem. Esse, eaque?</p>
         </div>
         <div className="button text-center">
-          <button className="btn btn-primary">Dịch vụ</button>
-          <button className="btn btn-success ms-2">Liên hệ</button>
+          <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
+          <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
         </div>
       </div>
     </div>

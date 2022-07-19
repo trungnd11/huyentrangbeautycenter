@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import logo from "../../static/imgs/logos/logo.png";
 import { NavLink } from "react-router-dom";
 import MenuItem from "./MenuItem";
+import { url } from "../../routers/allRouter";
 
 export default function NavBar() {
   return (
@@ -14,7 +15,7 @@ export default function NavBar() {
               <div className="logo-wapper d-flex justify-content-center align-items-center">
                 <img src={logo} alt="" />
               </div>
-              <NavLink to="/">
+              <NavLink to={`${url}/`}>
                 <h3>Huyen Trang Beauty Center</h3>
               </NavLink>
             </div>

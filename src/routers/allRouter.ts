@@ -5,6 +5,7 @@ import ServicePage from "../pages/service/ServicePage";
 import ExpertPage from "../pages/expert/ExpertPage";
 import BlogPage from "../pages/blog/BlogPage";
 import ContactPage from "../pages/contact/ContactPage";
+import GalleryPage from "../pages/gallery/GalleryPage";
 
 interface TypeRouter {
   path: string,
@@ -41,5 +42,9 @@ export const authRouter: TypeRouter[] = [
   {
     path: `${url}/contact`,
     component: ContactPage,
+  },
+  {
+    path: `${url}/photos`,
+    component: GalleryPage,
   },
 ];

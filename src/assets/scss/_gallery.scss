@@ -53,8 +53,21 @@
       width: 50%;
       height: 70%;
       object-fit: cover;
+      border-radius: .8rem;
       @include Transitions(1s);
     }
+  }
+
+  .showImgAnimate {
+    position: fixed;
+    background: #0000008b;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .btn-prev,.btn-nexts {
@@ -63,9 +76,16 @@
       font-size: 2.5rem;
       cursor: pointer;
       z-index: 5;
+      display: flex;
+      width: 3rem;
+      height: 3rem;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
       @include Transitions(1s);
       &:hover {
-        color: $main-color;
+        color: $black;
+        background-color: $main-color;
       }
     }
 
@@ -75,5 +95,9 @@
 
     .btn-nexts {
       right: 3rem;
+    }
+
+    .disable {
+      visibility: hidden;
     }
 }

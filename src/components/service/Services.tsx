@@ -1,3 +1,5 @@
+import { ButtonMain } from "../button/Button";
+
 const img = [
   {
     id: 1,
@@ -63,10 +65,7 @@ export default function Services() {
                 <div className="description">
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                  <button className="btn btn-success">
-                    Đặt lịch
-                    <i className="fa-solid fa-angles-right ms-2" />
-                  </button>
+                  <ButtonMain title="Đặt lịch" backgroundColor="success"/>
                 </div>
               </div>
             </div>
