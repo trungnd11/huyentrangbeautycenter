@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { url } from "../../routers/allRouter";
 
 export default function HeaderPage(prop: { backgroud: string, title: string, link: string, prePage: string, currentPage: string }) {
   const { backgroud, title, link, prePage, currentPage } = prop;
@@ -13,7 +14,7 @@ export default function HeaderPage(prop: { backgroud: string, title: string, lin
             <div className="header">
               <h1 className="title">{title}</h1>
               <p className="breadcrumbs">
-                <NavLink title="Trang chủ" to={link}>
+                <NavLink title="Trang chủ" to={`${url}${link}`}>
                   {prePage}
                 </NavLink>
                 <span className="mx-2">/</span>
