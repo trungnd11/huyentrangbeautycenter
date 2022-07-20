@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
+import { url } from "../../routers/allRouter";
 
 const img = [
   {
@@ -52,6 +54,12 @@ const listServices = [
 ];
 
 export default function Services() {
+  const detailPage = useNavigate();
+
+  const handleClickDetailService = (): void => {
+    detailPage(`${url}/service-details`);
+  }
+
   return (
     <div className="services">
       <div className="container">
@@ -65,7 +73,7 @@ export default function Services() {
                 <div className="description">
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                  <ButtonMain title="Đặt lịch" backgroundColor="success"/>
+                  <ButtonMain title="Chi tiết" backgroundColor="success" click={handleClickDetailService}/>
                 </div>
               </div>
             </div>

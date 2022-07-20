@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import PhotoAlbum from "react-photo-album";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import photos from "./photo";
 
 export default function GalleryPage() {
+
   return (
     <div className="photos-page">
       <HeaderPage

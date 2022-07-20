@@ -1,6 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import ItemAbout from "./ItemAbout";
 
 export default function About() {
+
   return (
     <div className="about">
       <div className="container">
@@ -11,39 +12,27 @@ export default function About() {
                 <h2 className="mb-4">Benefits of Doing Spa &amp; Massage</h2>
               </div>
               <p className="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic ipsa amet quidem. Ab quos officia beatae dignissimos fugiat blanditiis omnis ratione! Sed voluptates officiis sapiente odit quo temporibus nemo exercitationem?
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic
+                ipsa amet quidem. Ab quos officia beatae dignissimos fugiat
+                blanditiis omnis ratione! Sed voluptates officiis sapiente odit
+                quo temporibus nemo exercitationem?
               </p>
               <ul className="mt-5 lists-item">
-                <li className="item">
-                  <a href="#">
-                    <i className="fa-solid fa-circle-check" />
-                    Spa &amp; Massage boosts brain power
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <i className="fa-solid fa-circle-check" />
-                    Spa &amp; Massage helps you to breathe better
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <i className="fa-solid fa-circle-check" />
-                    Spa &amp; Massage improves your strength
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <i className="fa-solid fa-circle-check" />
-                    Spa &amp; Massage helps you to focus
-                  </a>
-                </li>
-                <li className="item">
-                  <a href="#">
-                    <i className="fa-solid fa-circle-check" />
-                    Spa &amp; Massage helps give meaning to your day
-                  </a>
-                </li>
+                <ItemAbout linkTo="#">
+                  Spa &amp; Massage boosts brain power
+                </ItemAbout>
+                <ItemAbout linkTo="#">
+                  Spa &amp; Massage helps you to breathe better
+                </ItemAbout>
+                <ItemAbout linkTo="#">
+                  Spa &amp; Massage improves your strength
+                </ItemAbout>
+                <ItemAbout linkTo="#">
+                  Spa &amp; Massage helps you to focus
+                </ItemAbout>
+                <ItemAbout linkTo="#">
+                  Spa &amp; Massage helps give meaning to your day
+                </ItemAbout>
               </ul>
             </div>
           </div>

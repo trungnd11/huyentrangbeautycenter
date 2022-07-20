@@ -7,9 +7,12 @@ export const ButtonAnimate = (prop: { title: string }) => {
   );
 };
 
-export const ButtonMain = (prop: { title: string; backgroundColor?: string, className?: string }) => {
+export const ButtonMain = (prop: { title: string; backgroundColor?: string, className?: string, click?: any }) => {
   return (
-    <button className={`btn-main ${prop.backgroundColor} ${prop.className}`}>
+    <button
+      onClick={prop.click && prop.click}
+      className={`btn-main ${prop.backgroundColor} ${prop.className}`}
+    >
       {prop.title}
     </button>
   );

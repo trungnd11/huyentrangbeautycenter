@@ -1,0 +1,78 @@
+.services-page {
+  .container-service {
+    margin-top: 4rem;
+
+    .title {
+      color: $main-color;
+      font-size: 2.5rem;
+    }
+
+    .item-service {
+      .img {
+        overflow: hidden;
+        border: 1px solid $main-color;
+        border-radius: 0.8rem;
+
+        &:hover {
+          img {
+            transform: scale(1.2);
+          }
+        }
+        img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          @include Transitions(0.6s);
+        }
+      }
+    }
+  }
+}
+
+.service-detail-page {
+  .container-detail-service {
+    margin-top: 4rem;
+    .title {
+      h3 {
+        color: $main-color;
+        font-size: 2.5rem;
+      }
+    }
+
+    .content {
+      line-height: 1.8;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.orther-service {
+  margin-top: 4rem;
+  .orther-service-title {
+    font-size: 2.5rem;
+    color: $main-color;
+  }
+  .item-service {
+    margin: 0 .8rem;
+    .title-text {
+      font-size: 1.5rem !important;
+    }
+    .img {
+      overflow: hidden;
+      border: 1px solid $main-color;
+      border-radius: .8rem;
+
+      img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .alice-carousel__prev-btn, .alice-carousel__next-btn {
+    display: none;
+  }
+}

@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/iframe-has-title */
 
+import { Link } from "react-router-dom";
+import { url } from "../../routers/allRouter";
+
 export default function Footer() {
   return (
     <div className="footer">
@@ -10,8 +13,8 @@ export default function Footer() {
             <div className="company">
               <h3>Huyen Trang Center</h3>
               <div className="address">
-                <p>203 Fake St, San Francisco, California, USA</p>
-                <p>203 Fake St, San Francisco, California, USA</p>
+                <p>Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên</p>
+                <p>Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên</p>
                 <p> 0392 3929 210</p>
                 <p> 0392 3929 210</p>
               </div>
@@ -67,9 +70,9 @@ export default function Footer() {
               Copyright ©
               <script>document.write(new Date().getFullYear());</script>2022 All
               rights by{" "}
-              <a href="#" className="title">
+              <Link to={`${url}`} className="title">
                 Huyen Trang Beauty Center
-              </a>
+              </Link>
             </p>
           </div>
         </div>

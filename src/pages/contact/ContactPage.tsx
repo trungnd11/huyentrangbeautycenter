@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/iframe-has-title */
+import { useEffect } from "react";
 import { ButtonMain } from "../../components/button/Button";
 import HeaderPage from "../../components/header-page/HeaderPage";
 
 export default function ContactPage() {
+
   return (
     <div className="contact-page">
       <HeaderPage
@@ -18,7 +20,7 @@ export default function ContactPage() {
         <div className="form">
           <div className="container my-5 ">
             <div className="row d-flex justify-content-between">
-              <div className="col-12 col-md-6 col-lg-4">
+              <div className="col-12 col-md-6 col-lg-5">
                 <div className="contact">
                   <h3 className="title">Thông tin liên hệ</h3>
                   <p className="address">
@@ -41,7 +43,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-              <div className="col-12 colmd-6 col-lg-7">
+              <div className="col-12 colmd-6 col-lg-6">
                 <form action="">
                   <div className="row">
                     <div className="col-6">

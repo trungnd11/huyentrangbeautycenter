@@ -1,12 +1,23 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { url } from "../../routers/allRouter";
 
-export default function HeaderPage(prop: { backgroud: string, title: string, link: string, prePage: string, currentPage: string }) {
-  const { backgroud, title, link, prePage, currentPage } = prop;
+export default function HeaderPage(prop: { backgroud: string, title: string, link: string, prePage: string, currentPage: string, currentPageLink?: string, thirdPage?: string }) {
+  const { backgroud, title, link, prePage, currentPage, currentPageLink, thirdPage } = prop;
+  const [bgPosition, setBgPosition] = useState<number>(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setBgPosition(window.scrollY);
+    });
+  }, []);
   return (
     <div
       className="header-page"
-      style={{ backgroundImage: `url(${backgroud})` }}
+      style={{
+        backgroundImage: `url(${backgroud})`,
+        backgroundPosition: `50% ${bgPosition}px`,
+      }}
     >
       <div className="container text-center h-100">
         <div className="row h-100">
@@ -17,8 +28,23 @@ export default function HeaderPage(prop: { backgroud: string, title: string, lin
                 <NavLink title="Trang chủ" to={`${url}${link}`}>
                   {prePage}
                 </NavLink>
-                <span className="mx-2">/</span>
-                <span>{currentPage}</span>
+                {!thirdPage ? (
+                  <>
+                    <span className="mx-2">/</span>
+                    <span>{currentPage}</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="mx-2">/</span>
+                    <NavLink to={`${url}${currentPageLink}`}>{currentPage}</NavLink>
+                  </>
+                )}
+                {thirdPage && (
+                  <>
+                    <span className="mx-2">/</span>
+                    <span>{thirdPage}</span>
+                  </>
+                )}
               </p>
             </div>
           </div>

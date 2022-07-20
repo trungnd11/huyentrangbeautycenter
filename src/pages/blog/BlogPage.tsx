@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import BlogItem from "../../components/blog/BlogItem";
 import HeaderPage from "../../components/header-page/HeaderPage";
 
 export default function BlogPage() {
+
   return (
     <div className="blog-page">
       <HeaderPage
