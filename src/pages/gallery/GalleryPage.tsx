@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import PhotoAlbum from "react-photo-album";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import photos from "./photo";

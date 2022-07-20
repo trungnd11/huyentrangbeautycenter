@@ -21,8 +21,8 @@ export default function HeaderPage(prop: { backgroud: string, title: string, lin
     >
       <div className="container text-center h-100">
         <div className="row h-100">
-          <div className="col-12 h-100">
-            <div className="header">
+          <div className="col-12 h-100 header">
+            <div className="header-text">
               <h1 className="title">{title}</h1>
               <p className="breadcrumbs">
                 <NavLink title="Trang chủ" to={`${url}${link}`}>
@@ -36,7 +36,9 @@ export default function HeaderPage(prop: { backgroud: string, title: string, lin
                 ) : (
                   <>
                     <span className="mx-2">/</span>
-                    <NavLink to={`${url}${currentPageLink}`}>{currentPage}</NavLink>
+                    <NavLink to={`${url}${currentPageLink}`}>
+                      {currentPage}
+                    </NavLink>
                   </>
                 )}
                 {thirdPage && (

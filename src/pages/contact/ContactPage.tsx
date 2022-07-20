@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/iframe-has-title */
-import { useEffect } from "react";
 import { ButtonMain } from "../../components/button/Button";
 import HeaderPage from "../../components/header-page/HeaderPage";
 

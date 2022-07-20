@@ -8,9 +8,12 @@ import { useLocation } from "react-router-dom";
 
 function App() {
   const location = useLocation();
+  const { key } = location;
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+    window.scrollTo({
+      top: 0,
+    });
+  }, [key]);
   return (
     <div className="App">
       <NavBar />
