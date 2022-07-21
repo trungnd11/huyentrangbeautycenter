@@ -24,7 +24,7 @@ const ZoomDiv = styled.div`
   width: 100vw;
   height: 100vh;
   top: 0;
-  z-index: 3;
+  z-index: 6;
   display: flex;
   justify-content: center;
   align-items: center;

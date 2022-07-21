@@ -85,7 +85,7 @@ export default function ContactPage() {
                   </div>
                   <div className="row mt-3">
                     <div className="col-12">
-                      <ButtonMain title="Gửi lời nhắn" />
+                      <ButtonMain title="Gửi lời nhắn" type="button"  />
                     </div>
                   </div>
                 </form>

@@ -1,8 +1,17 @@
+import { useRef, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import HeaderPage from "../../components/header-page/HeaderPage";
+import ZoomPhotos from "../../components/zoom-photos/ZoomPhotos";
 import photos from "./photo";
 
 export default function GalleryPage() {
+  const [zoomImg, setZoomImg] = useState<string>();
+  const openZoomPhoto: any = useRef();
+  
+  const handleZoomPhoto = (src: string) => {
+    openZoomPhoto.current.setOpen(true);
+    setZoomImg(src);
+  }
 
   return (
     <div className="photos-page">
@@ -13,15 +22,18 @@ export default function GalleryPage() {
         prePage="Trang chủ"
         currentPage="Bộ sưu tập"
       />
-      <div className="gallery-photos">
-        <div className="header">
-          <h3 className="text-center">Hình ảnh khách hàng sử dụng dịch vụ</h3>
+      <ZoomPhotos ref={openZoomPhoto} photo={zoomImg} />
+      <div className="container">
+        <div className="gallery-photos">
+          <div className="header">
+            <h3 className="text-center">Hình ảnh khách hàng sử dụng dịch vụ</h3>
+          </div>
+          <PhotoAlbum
+            photos={photos}
+            layout="columns"
+            onClick={(imgz, e) => handleZoomPhoto(e.src)}
+          />
         </div>
-        <PhotoAlbum
-          photos={photos}
-          layout="columns"
-          onClick={(imgz, e) => console.log(e.src)}
-        />
       </div>
     </div>
   );
