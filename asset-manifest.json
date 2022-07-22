@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/huyentrangbeautycenter/static/css/main.702f1c37.css",
-    "main.js": "/huyentrangbeautycenter/static/js/main.d97932e0.js",
+    "main.css": "/huyentrangbeautycenter/static/css/main.c49fe912.css",
+    "main.js": "/huyentrangbeautycenter/static/js/main.cf062c35.js",
     "static/js/787.42f25958.chunk.js": "/huyentrangbeautycenter/static/js/787.42f25958.chunk.js",
     "static/media/logo.png": "/huyentrangbeautycenter/static/media/logo.2d373562835f0d655119.png",
+    "static/media/spa.jpg": "/huyentrangbeautycenter/static/media/spa.035f0e3ecf549c4c2f65.jpg",
     "static/media/banner-1.jpg": "/huyentrangbeautycenter/static/media/banner-1.d50debfd9f634a46135e.jpg",
+    "static/media/banner-4.jpg": "/huyentrangbeautycenter/static/media/banner-4.21a8743ec6f5833fbf96.jpg",
+    "static/media/banner-2.jpg": "/huyentrangbeautycenter/static/media/banner-2.55b7d6d2742bd3cc0efa.jpg",
+    "static/media/banner-5.jpg": "/huyentrangbeautycenter/static/media/banner-5.9381f332da5665df7c00.jpg",
+    "static/media/avatar-1.jpg": "/huyentrangbeautycenter/static/media/avatar-1.dea27d8f15425b950cab.jpg",
+    "static/media/banner-6.jpg": "/huyentrangbeautycenter/static/media/banner-6.0e590cca7e42c9826653.jpg",
+    "static/media/banner-3.jpg": "/huyentrangbeautycenter/static/media/banner-3.fca53ff8e41939c87dd6.jpg",
     "index.html": "/huyentrangbeautycenter/index.html",
-    "main.702f1c37.css.map": "/huyentrangbeautycenter/static/css/main.702f1c37.css.map",
-    "main.d97932e0.js.map": "/huyentrangbeautycenter/static/js/main.d97932e0.js.map",
+    "main.c49fe912.css.map": "/huyentrangbeautycenter/static/css/main.c49fe912.css.map",
+    "main.cf062c35.js.map": "/huyentrangbeautycenter/static/js/main.cf062c35.js.map",
     "787.42f25958.chunk.js.map": "/huyentrangbeautycenter/static/js/787.42f25958.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.702f1c37.css",
-    "static/js/main.d97932e0.js"
+    "static/css/main.c49fe912.css",
+    "static/js/main.cf062c35.js"
   ]
 }
