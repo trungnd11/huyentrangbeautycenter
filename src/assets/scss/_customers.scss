@@ -5,6 +5,10 @@
       font-size: 3rem;
       color: $main-color;
       margin-bottom: 2rem;
+
+      @include Responsive(XS) {
+        font-size: 2.5rem;
+      }
     }
   }
 

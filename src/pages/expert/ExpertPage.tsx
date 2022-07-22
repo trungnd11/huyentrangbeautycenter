@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ItemExpert from "./ItemExpert";
+import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
 
 export default function ExpertPage() {
   
@@ -22,37 +22,37 @@ export default function ExpertPage() {
         </div>
         <div className="row">
           <ItemExpert
-            avatar="https://technext.github.io/energen/images/trainer-1.jpg"
+            avatar={avatar1}
             name="Elizabeth Nelson"
             position="OWNER / HEAD COACH"
             description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
           />
           <ItemExpert
-            avatar="https://technext.github.io/energen/images/trainer-2.jpg"
+            avatar={avatar1}
             name="Scarlett Torres"
             position="OWNER / HEAD COACH"
             description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
           />
           <ItemExpert
-            avatar="https://technext.github.io/energen/images/trainer-3.jpg"
+            avatar={avatar1}
             name="Victoria Wright"
             position="OWNER / HEAD COACH"
             description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
           />
           <ItemExpert
-            avatar="https://technext.github.io/energen/images/trainer-1.jpg"
+            avatar={avatar1}
             name="Elizabeth Nelson"
             position="OWNER / HEAD COACH"
             description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
           />
           <ItemExpert
-            avatar="https://technext.github.io/energen/images/trainer-2.jpg"
+            avatar={avatar1}
             name="Scarlett Torres"
             position="OWNER / HEAD COACH"
             description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
           />
           <ItemExpert
-            avatar="https://technext.github.io/energen/images/trainer-3.jpg"
+            avatar={avatar1}
             name="Victoria Wright"
             position="OWNER / HEAD COACH"
             description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"

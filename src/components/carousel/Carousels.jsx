@@ -1,13 +1,19 @@
 import { Carousel } from "3d-react-carousal";
 import { NavLink } from "react-router-dom";
-import banner1 from "../../static/imgs/banner/banner-1.jpg";
 import { ButtonMain } from "../button/Button";
-import { url } from ".././../routers/allRouter"
+import { url } from ".././../routers/allRouter";
+import banner1 from "../../static/imgs/banner/banner-1.jpg";
+import banner2 from "../../static/imgs/banner/banner-2.jpg";
+import banner4 from "../../static/imgs/banner/banner-4.jpg";
+import banner5 from "../../static/imgs/banner/banner-5.jpg";
+import banner6 from "../../static/imgs/banner/banner-6.jpg";
+
 let slides = [
-  <img src={banner1} alt="1" />,
-  <img src={banner1} alt="2" />,
-  <img src={banner1} alt="3" />,
-  <img src={banner1} alt="4" />,
+  <img src={banner1} alt="banner-1" />,
+  <img src={banner2} alt="banner-2" />,
+  <img src={banner4} alt="banner-4" />,
+  <img src={banner5} alt="banner-5" />,
+  <img src={banner6} alt="banner-6" />,
 ];
 
 export default function Carousels() {

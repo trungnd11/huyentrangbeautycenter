@@ -4,6 +4,7 @@ import Router from "./routers/Router";
 import Footer from "./components/footer/Footer";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import NavbarMobile from "./components/navbar-mobile/NavbarMobile";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <NavbarMobile />
       <Router />
       <Footer />
     </div>

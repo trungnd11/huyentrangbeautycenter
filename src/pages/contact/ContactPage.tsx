@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import { ButtonMain } from "../../components/button/Button";
 import HeaderPage from "../../components/header-page/HeaderPage";
+import spa from "../../static/imgs/spa/spa.jpg";
 
 export default function ContactPage() {
 
@@ -45,14 +46,14 @@ export default function ContactPage() {
               <div className="col-12 colmd-6 col-lg-6">
                 <form action="">
                   <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-md-6 mt-3">
                       <input
                         className="form-control"
                         type="text"
                         placeholder="Tên bạn..."
                       />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-md-6 mt-3">
                       <input
                         className="form-control"
                         type="text"
@@ -93,13 +94,18 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-        <div className="map" style={{ height: "40vh", width: "100%" }}>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.2722761759937!2d105.8680948153891!3d21.418540379732168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31351f8792c838f1%3A0x9a18999d400b1b0d!2sHuy%E1%BB%81n%20Trang%20brows!5e0!3m2!1svi!2s!4v1657861317521!5m2!1svi!2s"
-            width="100%"
-            height="100%"
-            loading="lazy"
-          />
+        <div className="map">
+          <div className="container-fluid h-100">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.2722761759937!2d105.8680948153891!3d21.418540379732168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31351f8792c838f1%3A0x9a18999d400b1b0d!2sHuy%E1%BB%81n%20Trang%20brows!5e0!3m2!1svi!2s!4v1657861317521!5m2!1svi!2s"
+              width="100%"
+              height="100%"
+              loading="lazy"
+            />
+            <div className="spa-image">
+              <img src={spa} alt="huyentrangspa" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { url } from "../../routers/allRouter";
 export default function NavBar() {
   return (
     <div className="container-fluid p-0">
-      <div className="nav-bar">
+      <div className="nav-bar d-none d-lg-block">
         <div className="container h-100">
           <div className="nav-bar-title d-flex justify-content-between align-items-center h-100">
             <div className="logo d-flex align-items-center">

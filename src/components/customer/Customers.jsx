@@ -1,67 +1,29 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
+import CustomerItem from './CustomerItem';
 
 let slides = [
-  <div className="content">
-    <div className="icon">
-      <i className="fa-solid fa-quote-left"></i>
-    </div>
-    <div className="comment">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed alias suscipit culpa enim nisi fugit sequi perferendis, facilis fuga accusantium! Quia placeat incidunt culpa quos similique veritatis rerum numquam nobis.</p>
-    </div>
-    <div className="avatar">
-      <img src="https://technext.github.io/energen/images/person_4.jpg" alt="" />
-      <div className="customer-detail">
-        <h5>Lance Roger</h5>
-        <span>Customer</span>
-      </div>
-    </div>
-  </div>,
-  <div className="content">
-    <div className="icon">
-      <i className="fa-solid fa-quote-left"></i>
-    </div>
-    <div className="comment">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed alias suscipit culpa enim nisi fugit sequi perferendis, facilis fuga accusantium! Quia placeat incidunt culpa quos similique veritatis rerum numquam nobis.</p>
-    </div>
-    <div className="avatar">
-      <img src="https://technext.github.io/energen/images/person_3.jpg" alt="" />
-      <div className="customer-detail">
-        <h5>Lance Roger</h5>
-        <span>Customer</span>
-      </div>
-    </div>
-  </div>,
-  <div className="content">
-    <div className="icon">
-      <i className="fa-solid fa-quote-left"></i>
-    </div>
-    <div className="comment">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed alias suscipit culpa enim nisi fugit sequi perferendis, facilis fuga accusantium! Quia placeat incidunt culpa quos similique veritatis rerum numquam nobis.</p>
-    </div>
-    <div className="avatar">
-      <img src="https://technext.github.io/energen/images/person_1.jpg" alt="" />
-      <div className="customer-detail">
-        <h5>Lance Roger</h5>
-        <span>Customer</span>
-      </div>
-    </div>
-  </div>,
-  <div className="content">
-    <div className="icon">
-      <i className="fa-solid fa-quote-left"></i>
-    </div>
-    <div className="comment">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed alias suscipit culpa enim nisi fugit sequi perferendis, facilis fuga accusantium! Quia placeat incidunt culpa quos similique veritatis rerum numquam nobis.</p>
-    </div>
-    <div className="avatar">
-      <img src="https://technext.github.io/energen/images/person_2.jpg" alt="" />
-      <div className="customer-detail">
-        <h5>Lance Roger</h5>
-        <span>Customer</span>
-      </div>
-    </div>
-  </div>,
+  <CustomerItem comments='Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit excepturi corrupti consectetur! Distinctio magnam veniam, molestiae necessitatib!'
+    avatar={avatar1}
+    name="Lancer Rogen"
+    user='Khách hàng'
+  />,
+  <CustomerItem comments='Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit excepturi corrupti consectetur! Distinctio magnam veniam, molestiae necessitatib!'
+    avatar={avatar1}
+    name="Lancer Rogen"
+    user='Khách hàng'
+  />,
+  <CustomerItem comments='Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit excepturi corrupti consectetur! Distinctio magnam veniam, molestiae necessitatib!'
+    avatar={avatar1}
+    name="Lancer Rogen"
+    user='Khách hàng'
+  />,
+  <CustomerItem comments='Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit excepturi corrupti consectetur! Distinctio magnam veniam, molestiae necessitatib!'
+    avatar={avatar1}
+    name="Lancer Rogen"
+    user='Khách hàng'
+  />,
 ];
 
 const responsive = {

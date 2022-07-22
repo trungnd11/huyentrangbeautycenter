@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import BlogItem from "../../components/blog/BlogItem";
 import HeaderPage from "../../components/header-page/HeaderPage";
 
@@ -15,6 +14,11 @@ export default function BlogPage() {
       />
       <div className="content blog">
         <div className="container">
+          <div className="row">
+            <div className="title text-center">
+              <h3>Cập nhật tin tức làm đẹp</h3>
+            </div>
+          </div>
           <div className="row">
             <BlogItem
               img="https://technext.github.io/energen/images/image_1.jpg"

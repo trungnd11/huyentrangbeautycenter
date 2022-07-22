@@ -6,6 +6,10 @@
       font-size: 3rem;
       color: #d9bf77;
       margin-bottom: 2rem;
+
+      @include Responsive(XS) {
+        font-size: 2.5rem;
+      }
     }
   }
 }

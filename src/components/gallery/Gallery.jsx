@@ -5,9 +5,14 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { zoomIn } from 'react-animations';
-import banner1 from "../../static/imgs/banner/banner-1.jpg";
 import { ButtonAnimate } from '../button/Button';
 import { url } from "../../routers/allRouter";
+import banner1 from "../../static/imgs/banner/banner-1.jpg";
+import banner2 from "../../static/imgs/banner/banner-2.jpg";
+import banner3 from "../../static/imgs/banner/banner-3.jpg";
+import banner4 from "../../static/imgs/banner/banner-4.jpg";
+import banner5 from "../../static/imgs/banner/banner-5.jpg";
+import banner6 from "../../static/imgs/banner/banner-6.jpg";
 
 const responsive = {
   0: { items: 1 },
@@ -39,9 +44,11 @@ export default function Gallery() {
   const [imgShow, setImgShow] = useState();
   let slides = [
     <img src={banner1} alt="1"  onClick={() => handleClick(banner1)} />,
-    <img src={`https://technext.github.io/energen/images/offer-deal-3.jpg`} alt="2" onClick={() => handleClick(`https://technext.github.io/energen/images/offer-deal-3.jpg`)} />,
-    <img src={`https://technext.github.io/energen/images/offer-deal-2.jpg`} alt="3" onClick={() => handleClick(`https://technext.github.io/energen/images/offer-deal-2.jpg`)} />,
-    <img src={`https://technext.github.io/energen/images/offer-deal-1.jpg`} alt="4" onClick={() => handleClick(`https://technext.github.io/energen/images/offer-deal-1.jpg`)} />,
+    <img src={banner2} alt="2" onClick={() => handleClick(banner2)} />,
+    <img src={banner3} alt="3" onClick={() => handleClick(banner3)} />,
+    <img src={banner4} alt="4" onClick={() => handleClick(banner4)} />,
+    <img src={banner5} alt="4" onClick={() => handleClick(banner4)} />,
+    <img src={banner6} alt="4" onClick={() => handleClick(banner4)} />,
   ];
 
   const handleClick = (src) => {

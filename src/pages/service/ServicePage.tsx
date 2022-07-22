@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ItemService from "./ItemService";
+import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
 
 export default function ServicePage() {
   
@@ -22,47 +22,47 @@ export default function ServicePage() {
         </div>
         <div className="row">
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />
           <ItemService
-            img="https://technext.github.io/energen/images/offer-deal-1.jpg"
+            img={avatar1}
             title="Book Your Treatment"
             content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
           />

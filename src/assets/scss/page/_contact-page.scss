@@ -1,6 +1,5 @@
 .contact-page {
   .form {
-
     .contact {
       padding: 2rem;
       background-color: $gray;
@@ -9,6 +8,10 @@
       flex-direction: column;
       justify-content: center;
       border: 1px solid $main-color;
+
+      @include Responsive(XS) {
+        margin-bottom: 2rem;
+      }
       .title {
         margin-top: 1rem;
         color: $main-color;
@@ -41,6 +44,46 @@
 
     textarea.form-control {
       height: 7rem !important;
+    }
+  }
+
+  .map {
+    position: relative;
+    height: 40vh;
+    width: 100%;
+
+    @include Responsive(XS) {
+      height: 30vh;
+    }
+
+    .spa-image {
+      position: absolute;
+      top: 50%;
+      right: 4rem;
+      width: 25%;
+      height: 80%;
+      transform: translateY(-50%);
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+      overflow: hidden;
+      border: 3px solid $main-color;
+
+      @include Responsive(XS) {
+        width: 40%;
+        right: .75rem;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.2);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        @include Transitions(.6s)
+      }
     }
   }
 }

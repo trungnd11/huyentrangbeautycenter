@@ -17,7 +17,7 @@ export default function BlogDetailPage() {
       />
 
       <div className="container container-detail-blog">
-        <div className="row">
+        <div className="row layout-page">
           <div className="col-12 col-md-4">
             <div className="recent-blog">
               <div className="title">

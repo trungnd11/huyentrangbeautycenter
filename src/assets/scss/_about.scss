@@ -7,6 +7,12 @@
   padding: 10rem 0;
   position: relative;
 
+  @include Responsive(XS) {
+    background-position: 85%;
+    padding: 2rem 0;
+    margin-top: 3rem;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -19,15 +25,23 @@
   .content-about {
     padding: 1rem;
     background: #000000b3;
-    border-radius: .8rem;
-    border: .5px solid $main-color;
+    border-radius: 0.8rem;
+    border: 0.5px solid $main-color;
     position: relative;
     z-index: 1;
+
+    @include Responsive(XS) {
+      background-color: #00000082;
+    }
 
     .heading-section {
       h2 {
         color: $main-color;
         font-size: 3rem;
+
+        @include Responsive(XS) {
+          font-size: 1.5rem;
+        }
       }
     }
 
@@ -40,15 +54,19 @@
     .lists-item {
       list-style: none;
       padding-left: 0;
+
+      @include Responsive(XS) {
+        margin-top: 1rem !important;
+      }
       .item {
         line-height: 2;
-        
+
         a {
           color: $main-color;
         }
 
         i {
-          margin-right: .8rem;
+          margin-right: 0.8rem;
         }
       }
     }

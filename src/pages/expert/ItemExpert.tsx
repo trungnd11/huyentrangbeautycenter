@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import { Link } from "react-router-dom";
 
 export default function ItemExpert(prop: { avatar: string, name: string, position?: String, description?: string ,fbLink?: string, instaLink?: string, messLink?: string }) {

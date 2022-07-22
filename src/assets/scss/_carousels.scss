@@ -1,13 +1,25 @@
 .carousel {
   margin-top: 4rem;
-    .react-3d-carousel {
+
+  @include Responsive(XS) {
+    overflow: hidden;
+  }
+  .react-3d-carousel {
     height: 70vh !important;
+
+    @include Responsive(XS) {
+      height: 30vh !important;
+    }
 
     .slider-container {
       height: 100% !important;
 
       .slider-content {
         height: 100% !important;
+
+        @include Responsive(XS) {
+          width: 100%;
+        }
 
         .slider-single {
           height: 100% !important;
@@ -20,17 +32,14 @@
             }
           }
 
-          .slider-left {
-            right: 115%;
-          }
-
+          .slider-left,
           .slider-right {
-            left: 115%;
+            display: none;
           }
 
           .slider-single-content {
             height: 100% !important;
-            border-radius: .8rem;
+            border-radius: 0.8rem;
             overflow: hidden;
 
             img {
@@ -52,15 +61,19 @@
     background: #00000067;
     color: $white;
     padding: 1.5rem;
-    border-radius: .8rem;
-    @include Transitions(.6s);
+    border-radius: 0.8rem;
+    @include Transitions(0.6s);
+
+    @include Responsive(XS) {
+      display: none;
+    }
 
     .title {
-      font-family: 'Great Vibes', cursive;
+      font-family: "Great Vibes", cursive;
       color: $main-color;
       text-transform: capitalize;
     }
-    
+
     &:hover {
       background: $white;
       color: $black;

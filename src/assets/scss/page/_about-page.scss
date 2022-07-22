@@ -43,7 +43,8 @@
 
        img {
         width: 100%;
-        aspect-ratio : 1 / .7;
+        height: 100%;
+        aspect-ratio : 1 / 1;
         object-fit: cover;
         @include Transitions(.6s);
        }
@@ -51,9 +52,16 @@
 
     .title {
       color: $main-color;
-      font-size: 2.5rem;
       margin-bottom: 2rem;
       display: inline-block;
+
+      h3 {
+        font-size: 3rem;
+
+        @include Responsive(XS) {
+          font-size: 2.5rem;
+        }
+      }
     }
 
     .description {

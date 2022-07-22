@@ -1,25 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
 import { url } from "../../routers/allRouter";
+import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
 
 const img = [
   {
     id: 1,
-    path: "https://technext.github.io/energen/images/offer-deal-1.jpg",
+    path: avatar1,
     title: "Book Treatment",
     description:
       "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
   },
   {
     id: 2,
-    path: "https://technext.github.io/energen/images/offer-deal-2.jpg",
+    path: avatar1,
     title: "Special Offer & Deal",
     description:
       "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
   },
   {
     id: 3,
-    path: "https://technext.github.io/energen/images/offer-deal-3.jpg",
+    path: avatar1,
     title: "Great Gift Packages",
     description:
       "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",

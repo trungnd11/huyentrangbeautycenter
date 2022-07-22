@@ -4,6 +4,10 @@
   height: 60vh;
   position: relative;
 
+  @include Responsive(XS) {
+    height: 30vh;
+  }
+
   &::after {
     content: "";
     width: 100%;
@@ -33,6 +37,10 @@
         color: $main-color;
         font-family: 'Great Vibes', cursive;
         text-transform: capitalize;
+
+        @include Responsive(XS) {
+          font-size: 3rem;
+        }
       }
   
       .breadcrumbs {

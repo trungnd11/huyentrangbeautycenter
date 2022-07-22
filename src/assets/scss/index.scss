@@ -34,8 +34,10 @@ body::-webkit-scrollbar-thumb {
   border-radius: 12px;
 }
 
+@import "responsive";
 @import "variables";
 @import "navbar";
+@import "navbar-mobile";
 @import "carousels";
 @import "about";
 @import "services";
@@ -45,7 +47,7 @@ body::-webkit-scrollbar-thumb {
 @import "gallery";
 @import "footer";
 @import "button";
-@import "./responsive";
+@import "zoom-photos";
 @import "./page/about-page";
 @import "./page/header-page";
 @import "./page/gallery-page";
@@ -53,4 +55,3 @@ body::-webkit-scrollbar-thumb {
 @import "./page/expert-page";
 @import "./page/blog-page";
 @import "./page/service-page";
-@import "./zoom-photos";

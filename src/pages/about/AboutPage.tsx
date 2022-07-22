@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import HeaderPage from "../../components/header-page/HeaderPage";
-import avatar from "../../static/imgs/banner/banner-1.jpg"
+import avatar from "../../static/imgs/avatar/avatar-1.jpg";
 
 export default function AboutPage() {
   
@@ -34,7 +33,22 @@ export default function AboutPage() {
                 herself on the way.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque eligendi veritatis quam modi tempora quasi quas tenetur, harum, alias eos asperiores quae ab architecto vero ipsam magni. Possimus, illum excepturi.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+                eligendi veritatis quam modi tempora quasi quas tenetur, harum,
+                alias eos asperiores quae ab architecto vero ipsam magni.
+                Possimus, illum excepturi.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+                eligendi veritatis quam modi tempora quasi quas tenetur, harum,
+                alias eos asperiores quae ab architecto vero ipsam magni.
+                Possimus, illum excepturi.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+                eligendi veritatis quam modi tempora quasi quas tenetur, harum,
+                alias eos asperiores quae ab architecto vero ipsam magni.
+                Possimus, illum excepturi.
               </p>
             </div>
           </div>

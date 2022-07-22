@@ -14,19 +14,18 @@ export default function ItemService(prop: {img: string, title: string, content?:
     <div className="col-12 col-md-6 col-lg-4 mt-3">
       <div className="item-service">
         <div className="img">
-          <img
-            src={img}
-            alt="1"
-          />
+          <img src={img} alt="1" />
         </div>
-        <div className="title">
-          <h3>{ title }</h3>
-        </div>
-        <div className="content">
-          <p>{ content }</p>
-        </div>
-        <div className="button">
-          <ButtonMain title="Chi tiết" click={handleClickDetailService} />
+        <div className="description p-2">
+          <div className="title">
+            <h3>{title}</h3>
+          </div>
+          <div className="content">
+            <p>{content}</p>
+          </div>
+          <div className="button">
+            <ButtonMain title="Chi tiết" click={handleClickDetailService} />
+          </div>
         </div>
       </div>
     </div>

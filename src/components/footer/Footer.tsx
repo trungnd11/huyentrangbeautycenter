@@ -9,7 +9,7 @@ export default function Footer() {
     <div className="footer">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-4">
+          <div className="col-12 col-md-6 col-lg-4 footer-layout">
             <div className="company">
               <h3>Huyen Trang Center</h3>
               <div className="address">
@@ -31,7 +31,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-6 col-lg-4">
+          <div className="col-12 col-md-6 col-lg-4 footer-layout">
             <div className="sevices">
               <h3>Dịch vụ</h3>
               <ul>
@@ -50,7 +50,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col-12 col-md-6 col-lg-4">
+          <div className="col-12 col-md-6 col-lg-4 footer-layout">
             <div className="location">
               <h3>Vị trí</h3>
               <div className="map">
