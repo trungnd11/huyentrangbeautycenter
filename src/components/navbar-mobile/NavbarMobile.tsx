@@ -1,21 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../static/imgs/logos/logo.png";
 import MenuItem from "../navbar/MenuItem";
+import { url } from "../../routers/allRouter";
+
 export default function NavbarMobile() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-
+  const navigateHome = useNavigate();
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   }
 
+  const HandleNavigateHome = () => {
+    navigateHome(`${url}/home`);
+  }
   return (
     <>
       <div className={`navbar-mobile ${showMenu && "navbar-mobile-active"}`}>
-        <div className="logo">
+        <div className="logo" onClick={HandleNavigateHome}>
           <img src={logo} alt="logo" />
         </div>
         <div className="trademark">
-          <h5>Huyen Trang Beauty Center</h5>
+          <h5 onClick={HandleNavigateHome}>Huyen Trang Beauty Center</h5>
         </div>
         <div className="menu" onClick={handleShowMenu}>
           {!showMenu ? (

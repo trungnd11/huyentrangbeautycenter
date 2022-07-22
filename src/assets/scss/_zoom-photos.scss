@@ -26,5 +26,9 @@
     height: 80vh;
     object-fit: cover;
     border-radius: .8rem;
+
+    @include Responsive(XS) {
+      height: auto;
+    }
   }
 }
