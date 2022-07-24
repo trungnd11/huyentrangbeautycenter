@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/huyentrangbeautycenter/static/css/main.dbb81281.css",
-    "main.js": "/huyentrangbeautycenter/static/js/main.d28d313b.js",
+    "main.css": "/huyentrangbeautycenter/static/css/main.e2103bc4.css",
+    "main.js": "/huyentrangbeautycenter/static/js/main.671f17ab.js",
     "static/js/787.42f25958.chunk.js": "/huyentrangbeautycenter/static/js/787.42f25958.chunk.js",
     "static/media/logo.png": "/huyentrangbeautycenter/static/media/logo.2d373562835f0d655119.png",
     "static/media/banner-1.jpg": "/huyentrangbeautycenter/static/media/banner-1.d50debfd9f634a46135e.jpg",
@@ -13,12 +13,12 @@
     "static/media/banner-6.jpg": "/huyentrangbeautycenter/static/media/banner-6.0e590cca7e42c9826653.jpg",
     "static/media/banner-3.jpg": "/huyentrangbeautycenter/static/media/banner-3.fca53ff8e41939c87dd6.jpg",
     "index.html": "/huyentrangbeautycenter/index.html",
-    "main.dbb81281.css.map": "/huyentrangbeautycenter/static/css/main.dbb81281.css.map",
-    "main.d28d313b.js.map": "/huyentrangbeautycenter/static/js/main.d28d313b.js.map",
+    "main.e2103bc4.css.map": "/huyentrangbeautycenter/static/css/main.e2103bc4.css.map",
+    "main.671f17ab.js.map": "/huyentrangbeautycenter/static/js/main.671f17ab.js.map",
     "787.42f25958.chunk.js.map": "/huyentrangbeautycenter/static/js/787.42f25958.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dbb81281.css",
-    "static/js/main.d28d313b.js"
+    "static/css/main.e2103bc4.css",
+    "static/js/main.671f17ab.js"
   ]
 }
