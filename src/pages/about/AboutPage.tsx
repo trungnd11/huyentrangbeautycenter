@@ -15,12 +15,12 @@ export default function AboutPage() {
 
       <div className="container container-about">
         <div className="row">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-lg-6">
             <div className="avatar">
               <img src={avatar} alt="avatar" />
             </div>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-lg-6">
             <div className="title">
               <h3>Benefits of Doing Spa &amp; Massage</h3>
             </div>

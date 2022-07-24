@@ -17,6 +17,15 @@
 
   .logo {
     flex-basis: 10%;
+
+    @include Responsive(SM) {
+      flex-basis: 7%;
+    }
+
+    @include Responsive(MD) {
+      flex-basis: 5%;
+    }
+
     img {
       width: 100%;
     }

@@ -26,7 +26,10 @@ export default function ContactPage() {
                   <p className="address">
                     <b>Địa chỉ:</b>
                     <span className="ms-2">
-                      Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
+                      CS1: Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
+                    </span><br />
+                    <span className="ms-5 ps-3">
+                      CS2: Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
                     </span>
                   </p>
                   <p className="phone-number">
@@ -46,14 +49,14 @@ export default function ContactPage() {
               <div className="col-12 colmd-6 col-lg-6">
                 <form action="">
                   <div className="row">
-                    <div className="col-12 col-md-6 mt-3">
+                    <div className="col-12 col-md-6">
                       <input
                         className="form-control"
                         type="text"
                         placeholder="Tên bạn..."
                       />
                     </div>
-                    <div className="col-12 col-md-6 mt-3">
+                    <div className="col-12 col-md-6">
                       <input
                         className="form-control"
                         type="text"

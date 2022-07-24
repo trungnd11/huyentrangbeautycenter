@@ -50,7 +50,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="col-12 col-md-6 col-lg-4 footer-layout">
+          <div className="col-12 col-md-12 col-lg-4 footer-layout">
             <div className="location">
               <h3>Vị trí</h3>
               <div className="map">
