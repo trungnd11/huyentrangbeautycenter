@@ -15,6 +15,7 @@ function App() {
       top: 0,
     });
   }, [key]);
+
   return (
     <div className="App">
       <NavBar />
