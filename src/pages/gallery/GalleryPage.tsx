@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PhotoAlbum from "react-photo-album";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ZoomPhotos from "../../components/zoom-photos/ZoomPhotos";
@@ -12,6 +12,10 @@ export default function GalleryPage() {
     openZoomPhoto.current.setOpen(true);
     setZoomImg(src);
   }
+
+  useEffect(() => {
+    document.title = "Huyen Trang - Bộ sưu tập";
+  }, []);
 
   return (
     <div className="photos-page">

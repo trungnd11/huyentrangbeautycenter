@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import avatar from "../../static/imgs/avatar/avatar-1.jpg";
 
 export default function AboutPage() {
-  
+  useEffect(() => {
+    document.title = "Huyen Trang - Giới thiệu";
+  }, []);
+
   return (
     <div className="about-page">
       <HeaderPage

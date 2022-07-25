@@ -1,10 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/iframe-has-title */
+import React, { useEffect, useState } from "react";
+import { getAddress } from "../../api/address";
 import { ButtonMain } from "../../components/button/Button";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import spa from "../../static/imgs/spa/spa.jpg";
 
+interface Address {
+  _id: string,
+  apartmentNumber: string,
+  commune: string,
+  district: string,
+  conscious: string,
+  createdAt: string,
+  updatedAt: string,
+}
+
 export default function ContactPage() {
+
+  const [address, setaddress] = useState<Address[]>();
+   const fetchAddress = async () => {
+     const addressList = await getAddress();
+     setaddress(addressList.data);
+   };
+  useEffect(() => {
+    document.title = "Huyen Trang - Liên hệ";
+    fetchAddress();
+  }, []);
 
   return (
     <div className="contact-page">
@@ -25,13 +47,17 @@ export default function ContactPage() {
                   <h3 className="title">Thông tin liên hệ</h3>
                   <p className="address">
                     <b>Địa chỉ:</b>
-                    <span className="ms-2">
-                      CS1: Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
-                    </span>
-                    <br />
-                    <span className="ms-5 ps-3">
-                      CS2: Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
-                    </span>
+                    {address &&
+                      address.map((item, index) => (
+                        <React.Fragment key={item._id}>
+                          <span
+                            className={`${index === 0 ? "ms-2" : "ms-5 ps-3"}`}
+                          >
+                            {` ${item?.apartmentNumber}, ${item?.commune}, ${item?.district}, ${item?.conscious} `}
+                          </span>
+                          <br />
+                        </React.Fragment>
+                      ))}
                   </p>
                   <p className="phone-number">
                     <b>Số điện thoại:</b>

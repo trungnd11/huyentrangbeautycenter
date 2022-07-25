@@ -55,13 +55,13 @@ export default function Messenger() {
           gradientTransform="matrix(1 0 0 -1 0 50)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#1292ff" />
-          <stop offset=".079" stop-color="#2982ff" />
-          <stop offset=".23" stop-color="#4e69ff" />
-          <stop offset=".351" stop-color="#6559ff" />
-          <stop offset=".428" stop-color="#6d53ff" />
-          <stop offset=".754" stop-color="#df47aa" />
-          <stop offset=".946" stop-color="#ff6257" />
+          <stop offset="0" stopColor="#1292ff" />
+          <stop offset=".079" stopColor="#2982ff" />
+          <stop offset=".23" stopColor="#4e69ff" />
+          <stop offset=".351" stopColor="#6559ff" />
+          <stop offset=".428" stopColor="#6d53ff" />
+          <stop offset=".754" stopColor="#df47aa" />
+          <stop offset=".946" stopColor="#ff6257" />
         </radialGradient>
         <path
           fill="url(#8O3wK6b5ASW2Wn6hRCB5xa)"

@@ -1,9 +1,13 @@
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ItemExpert from "./ItemExpert";
 import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
+import { useEffect } from "react";
 
 export default function ExpertPage() {
-  
+  useEffect(() => {
+    document.title = "Huyen Trang - Chuyên gia";
+  }, []);
+
   return (
     <div className="expert-page">
       <HeaderPage
