@@ -32,9 +32,17 @@
       }
     }
   
-    .address {
+    .address, .phone {
       p {
         margin-bottom: 0;
+      }
+
+      i {
+        font-size: .5rem;
+      }
+      i.phone {
+        font-size: 1rem;
+        margin-right: .5rem;
       }
     }
   }

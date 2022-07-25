@@ -1,10 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/iframe-has-title */
 
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { url } from "../../routers/allRouter";
+import { fetAddress } from "../../store/address/address";
+import { getAddressStore } from "../../store/address/addressSelector";
+import { fetPhone } from "../../store/phoneNumber/phoneNumber";
+import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
 
 export default function Footer() {
+  const dispatch = useDispatch<any>();
+  const addressStore = useSelector(getAddressStore);
+  const phoneNumberStore = useSelector(getPhoneStore);
+  const { address, loading } = addressStore;
+
+  useEffect(() => {
+    dispatch(fetAddress());
+    dispatch(fetPhone());
+  }, [dispatch]);
+
   return (
     <div className="footer">
       <div className="container">
@@ -13,10 +29,26 @@ export default function Footer() {
             <div className="company">
               <h3>Huyen Trang Center</h3>
               <div className="address">
-                <p>Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên</p>
-                <p>Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên</p>
-                <p> 0392 3929 210</p>
-                <p> 0392 3929 210</p>
+                {!loading &&
+                  address.map((item, index) => (
+                    <React.Fragment key={item._id}>
+                      <p className={`${index === 0 && "mb-0 mt-2"}`}>
+                        <i className="fa-solid fa-circle-dot"></i>
+                        {` ${item?.apartmentNumber}, ${item?.commune}, ${item?.district}, ${item?.conscious} `}
+                      </p>
+                    </React.Fragment>
+                  ))}
+              </div>
+              <div className="phone">
+                {!phoneNumberStore.loading &&
+                  phoneNumberStore.phoneNumber.map((item) => (
+                    <a href="">
+                      <p>
+                        <i className="fa-solid fa-phone-flip phone"></i>0
+                        {`${item.phoneNumber}`}
+                      </p>
+                    </a>
+                  ))}
               </div>
               <div className="social">
                 <a href="#">
