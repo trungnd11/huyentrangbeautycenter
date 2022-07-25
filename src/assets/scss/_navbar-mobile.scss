@@ -23,7 +23,7 @@
     }
 
     @include Responsive(MD) {
-      flex-basis: 5%;
+      flex-basis: 6%;
     }
 
     img {
@@ -37,6 +37,10 @@
       margin-bottom: 0;
       font-size: 1.5rem;
       font-weight: 700;
+
+      @include Responsive(MD) {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -64,6 +68,13 @@
   @include Transitions(0.6s);
   transform: translateY(-110%);
   opacity: 0;
+
+  @include Responsive(MD) {
+    width: 35vh;
+    height: 100vh;
+    right: 0;
+    transform: translateX(110%);
+  }
 
   .menu-wapper {
     list-style: none;
@@ -101,6 +112,7 @@
   height: 100vh;
   background-color: $transparentGray;
   display: none;
+  top: 0;
 }
 
 .overlay-navbar-active {

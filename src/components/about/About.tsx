@@ -6,7 +6,7 @@ export default function About() {
     <div className="about">
       <div className="container">
         <div className="row justify-content-start">
-          <div className="col-md-6">
+          <div className="col-md-8 col-lg-6">
             <div className="content-about">
               <div className="heading-section ">
                 <h2 className="mb-4">Benefits of Doing Spa &amp; Massage</h2>

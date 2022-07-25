@@ -8,6 +8,10 @@
     height: 30vh;
   }
 
+  @include Responsive(MD) {
+    height: 35vh;
+  }
+
   &::after {
     content: "";
     width: 100%;

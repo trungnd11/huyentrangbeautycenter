@@ -20,33 +20,40 @@ export default function ContactPage() {
         <div className="form">
           <div className="container my-5 ">
             <div className="row d-flex justify-content-between">
-              <div className="col-12 col-md-6 col-lg-5">
+              <div className="col-12 col-md-12 col-lg-5">
                 <div className="contact">
                   <h3 className="title">Thông tin liên hệ</h3>
                   <p className="address">
                     <b>Địa chỉ:</b>
                     <span className="ms-2">
                       CS1: Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
-                    </span><br />
+                    </span>
+                    <br />
                     <span className="ms-5 ps-3">
                       CS2: Số 656, tổ dân phố 2, Phổ Yên, Thái Nguyên
                     </span>
                   </p>
                   <p className="phone-number">
                     <b>Số điện thoại:</b>
-                    <a href="#" className="ms-2">+ 1235 2355 98</a>
+                    <a href="#" className="ms-2">
+                      + 1235 2355 98
+                    </a>
                   </p>
                   <p className="email">
                     <b>Email:</b>
-                    <a href="#" className="ms-2">info@yoursite.com</a>
+                    <a href="#" className="ms-2">
+                      info@yoursite.com
+                    </a>
                   </p>
                   <p className="website">
                     <b>Website:</b>
-                    <a href="#" className="ms-2">yoursite.com</a>
+                    <a href="#" className="ms-2">
+                      yoursite.com
+                    </a>
                   </p>
                 </div>
               </div>
-              <div className="col-12 colmd-6 col-lg-6">
+              <div className="col-12 col-md-12 col-lg-6">
                 <form action="">
                   <div className="row">
                     <div className="col-12 col-md-6">
@@ -89,7 +96,7 @@ export default function ContactPage() {
                   </div>
                   <div className="row mt-3">
                     <div className="col-12">
-                      <ButtonMain title="Gửi lời nhắn" type="button"  />
+                      <ButtonMain title="Gửi lời nhắn" type="button" />
                     </div>
                   </div>
                 </form>

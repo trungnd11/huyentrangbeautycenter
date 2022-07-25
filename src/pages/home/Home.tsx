@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import About from "../../components/about/About";
 import Blog from "../../components/blog/Blog";
 import Carousel from "../../components/carousel/Carousels";
@@ -19,5 +18,5 @@ export default function Home() {
       <Blog />
       <Gallery />
     </div>
-  )
+  );
 }

@@ -11,10 +11,10 @@ $XL: 1200px;
    @media only screen and (max-width: $XS) { @content; } 
   }
   @else if $canvas == SM {
-   @media only screen and (min-width: $SM) { @content; } 
+   @media only screen and (min-width: $XS) and (max-width: $MD) { @content; } 
   } 
   @else if $canvas == MD {
-   @media only screen and (min-width: $MD) { @content; } 
+   @media only screen and (min-width: $MD) and (max-width: $LG) { @content; } 
   }
   @else if $canvas == LG {
    @media only screen and (min-width: $LG) { @content; } 

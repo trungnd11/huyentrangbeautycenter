@@ -12,6 +12,10 @@
       @include Responsive(XS) {
         margin-bottom: 2rem;
       }
+
+      @include Responsive(MD) {
+        margin-bottom: 2rem;
+      }
       .title {
         margin-top: 1rem;
         color: $main-color;
