@@ -2,30 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
 import { url } from "../../routers/allRouter";
 import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
+import { useEffect, useState } from "react";
+import { getServiceLimit } from "../../api/services";
 
-const img = [
-  {
-    id: 1,
-    path: avatar1,
-    title: "Book Treatment",
-    description:
-      "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-  },
-  {
-    id: 2,
-    path: avatar1,
-    title: "Special Offer & Deal",
-    description:
-      "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-  },
-  {
-    id: 3,
-    path: avatar1,
-    title: "Great Gift Packages",
-    description:
-      "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-  },
-];
+interface ServiceType {
+  _id: string
+  name: string;
+  image: string;
+  description: string;
+}
 
 const listServices = [
   {
@@ -56,29 +41,48 @@ const listServices = [
 
 export default function Services() {
   const detailPage = useNavigate();
+  const [service, setService] = useState<ServiceType[]>();
 
   const handleClickDetailService = (): void => {
     detailPage(`${url}/service-details`);
   }
 
+  const fetServiceLimit = async () => {
+    try {
+      const services = await getServiceLimit(3);
+      setService(services.data);
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(() => {
+    fetServiceLimit();
+  }, [])
+
   return (
     <div className="services">
       <div className="container">
         <div className="row">
-          {img.map((item) => (
-            <div className="col-12 col-md-6 col-lg-4" key={item.id}>
-              <div className="service">
-                <div className="image">
-                  <img src={item.path} alt="" />
-                </div>
-                <div className="description">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <ButtonMain title="Chi tiết" backgroundColor="success" click={handleClickDetailService}/>
+          {service &&
+            service.map((item) => (
+              <div className="col-12 col-md-6 col-lg-4" key={item._id}>
+                <div className="service">
+                  <div className="image">
+                    <img src={avatar1 || item.image} alt="" />
+                  </div>
+                  <div className="description">
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                    <ButtonMain
+                      title="Chi tiết"
+                      backgroundColor="success"
+                      click={handleClickDetailService}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
 

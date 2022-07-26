@@ -11,17 +11,17 @@ export default function NavbarMobile() {
     setShowMenu(!showMenu);
   }
 
-  const HandleNavigateHome = () => {
+  const handleNavigateHome = () => {
     navigateHome(`${url}/home`);
   }
   return (
     <>
       <div className={`navbar-mobile ${showMenu && "navbar-mobile-active"}`}>
-        <div className="logo" onClick={HandleNavigateHome}>
+        <div className="logo" onClick={handleNavigateHome}>
           <img src={logo} alt="logo" />
         </div>
         <div className="trademark">
-          <h5 onClick={HandleNavigateHome}>Huyen Trang Beauty Center</h5>
+          <h5 onClick={handleNavigateHome}>Huyen Trang Beauty Center</h5>
         </div>
         <div className="menu" onClick={handleShowMenu}>
           {!showMenu ? (

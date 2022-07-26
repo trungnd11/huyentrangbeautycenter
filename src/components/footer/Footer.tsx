@@ -42,7 +42,7 @@ export default function Footer() {
               <div className="phone">
                 {!phoneNumberStore.loading &&
                   phoneNumberStore.phoneNumber.map((item) => (
-                    <a href="">
+                    <a href={`tel:${item.phoneNumber}`} key={item._id} title={item.nameUser}>
                       <p>
                         <i className="fa-solid fa-phone-flip phone"></i>0
                         {`${item.phoneNumber}`}

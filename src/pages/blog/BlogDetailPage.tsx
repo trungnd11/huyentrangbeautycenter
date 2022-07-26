@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import RecentBlogItem from "./RecentBlogItem";
 

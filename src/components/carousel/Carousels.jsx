@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Carousel } from "3d-react-carousal";
 import { NavLink } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
@@ -7,6 +8,7 @@ import banner2 from "../../static/imgs/banner/banner-2.jpg";
 import banner4 from "../../static/imgs/banner/banner-4.jpg";
 import banner5 from "../../static/imgs/banner/banner-5.jpg";
 import banner6 from "../../static/imgs/banner/banner-6.jpg";
+import { getMesengerHeader } from ".././../api/mesengerHeader";
 
 let slides = [
   <img src={banner1} alt="banner-1" />,
@@ -17,19 +19,35 @@ let slides = [
 ];
 
 export default function Carousels() {
-  
+  const [mesenger, setMesenger] = useState({
+    title: String,
+    content: String
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetMesenger = async () => {
+    try {
+      const response = await getMesengerHeader();
+      setMesenger(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  useEffect(() => {
+    fetMesenger();
+  }, [])
   return (
     <div className="carousel">
       <Carousel slides={slides} autoplay={true} interval={5000} />
-      <div className="content">
-        {/* <div className="logo">
-          <img src="" alt="" />
-        </div> */}
+      {!isLoading && (
+        <div className="content">
         <div className="title text-center">
-          <h2>Huyen Trang Spa &amp; beauty center</h2>
+          <h2>{ mesenger.title }</h2>
         </div>
         <div className="description">
-          <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam in, quibusdam est eius perferendis ipsum, similique exercitationem fuga error nostrum beatae deleniti consequatur recusandae impedit quas, illo autem. Esse, eaque?</p>
+          <p className="text-center">{ mesenger.content }</p>
         </div>
         <div className="button text-center">
           <NavLink to={`${url}/services`}>
@@ -40,6 +58,7 @@ export default function Carousels() {
           </NavLink>
         </div>
       </div>
+      ) }
     </div>
   );
 }

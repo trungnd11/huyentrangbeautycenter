@@ -1,7 +1,30 @@
+import { useEffect, useState } from "react";
+import { getAbout } from "../../api/about";
 import ItemAbout from "./ItemAbout";
 
-export default function About() {
+interface AboutType {
+  title: string;
+  avatar?: string;
+  description1: string;
+  description2: string;
+  description3: string;
+  description4: string;
+}
 
+export default function About() {
+  const [about, setAbout] = useState<AboutType>();
+  const getAboutData = async () => {
+    try {
+      const about = await getAbout();
+      setAbout(about.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  useEffect(() => {
+    getAboutData();
+  }, []);
   return (
     <div className="about">
       <div className="container">
@@ -9,13 +32,10 @@ export default function About() {
           <div className="col-md-8 col-lg-6">
             <div className="content-about">
               <div className="heading-section ">
-                <h2 className="mb-4">Benefits of Doing Spa &amp; Massage</h2>
+                <h2 className="mb-4">{ about?.title }</h2>
               </div>
               <p className="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic
-                ipsa amet quidem. Ab quos officia beatae dignissimos fugiat
-                blanditiis omnis ratione! Sed voluptates officiis sapiente odit
-                quo temporibus nemo exercitationem?
+                { about?.description1 }
               </p>
               <ul className="mt-5 lists-item">
                 <ItemAbout linkTo="#">

@@ -1,26 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getAddress } from "../../api/address";
 import { ButtonMain } from "../../components/button/Button";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import spa from "../../static/imgs/spa/spa.jpg";
 import { getAddressStore } from "../../store/address/addressSelector";
+import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
 
-interface Address {
-  _id: string,
-  apartmentNumber: string,
-  commune: string,
-  district: string,
-  conscious: string,
-  createdAt: string,
-  updatedAt: string,
-}
 
 export default function ContactPage() {
   const addressStore = useSelector(getAddressStore);
-   const { address, loading } = addressStore;
+  const phoneNumberStore = useSelector(getPhoneStore);
+  const { address, loading } = addressStore;
   
   useEffect(() => {
     document.title = "Huyen Trang - Liên hệ";
@@ -55,11 +47,21 @@ export default function ContactPage() {
                         </React.Fragment>
                       ))}
                   </p>
-                  <p className="phone-number">
+                  <p className="phone-number mb-0">
                     <b>Số điện thoại:</b>
-                    <a href="#" className="ms-2">
-                      + 1235 2355 98
-                    </a>
+                    {!phoneNumberStore.loading &&
+                      phoneNumberStore.phoneNumber.map((item, index) => (
+                        <a
+                          href={`tel:${item.phoneNumber}`}
+                          key={item._id}
+                          title={item.nameUser}
+                        >
+                          <p className={`${index === 0 && "mb-0 mt-2"}`}>
+                            <i className="fa-solid fa-phone-flip phone"></i>0
+                            {`${item.phoneNumber}`}
+                          </p>
+                        </a>
+                      ))}
                   </p>
                   <p className="email">
                     <b>Email:</b>
@@ -85,7 +87,7 @@ export default function ContactPage() {
                         placeholder="Tên bạn..."
                       />
                     </div>
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-6 input-phone">
                       <input
                         className="form-control"
                         type="text"

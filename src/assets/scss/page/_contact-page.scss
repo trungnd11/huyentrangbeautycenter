@@ -32,6 +32,12 @@
       .phone-number a, .email a, .website a {
         color: $main-color;
       }
+
+      .phone-number {
+        i {
+          padding-right: .6rem;
+        }
+      }
     }
     .form-control {
       border: none !important;
@@ -43,6 +49,12 @@
         outline: none !important;
         border-color: $main-color !important;
         box-shadow: none;
+      }
+    }
+
+    .input-phone {
+      @include Responsive(XS) {
+        margin-top: 1rem;
       }
     }
 

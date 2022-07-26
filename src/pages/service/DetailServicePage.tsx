@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import AliceCarousel from "react-alice-carousel";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import { ItemServiceSLide } from "./ItemService";

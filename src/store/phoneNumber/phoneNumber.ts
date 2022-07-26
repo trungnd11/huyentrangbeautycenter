@@ -23,6 +23,6 @@ const PhoneNumber = createSlice({
   },
 });
 
-export const {} = PhoneNumber.actions;
+// export const {} = PhoneNumber.actions;
 
 export default PhoneNumber.reducer;

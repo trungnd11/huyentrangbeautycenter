@@ -33,6 +33,9 @@
     }
   
     .address, .phone {
+      a {
+        color: $main-color;
+      }
       p {
         margin-bottom: 0;
       }

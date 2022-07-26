@@ -8,7 +8,7 @@ const zoomZalo = keyframes`
   }
 `;
 
-const DivZaloIcon = styled.div`
+const DivZaloIcon = styled.a`
   position: fixed;
   left: 1rem;
   bottom: 2.5rem;
@@ -41,8 +41,10 @@ const DivZaloIcon = styled.div`
 
 
 export default function ZaloIcon() {
+
+
   return (
-    <DivZaloIcon>
+    <DivZaloIcon href="https://chat.zalo.me/?phone=0971670178">
       <svg
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"

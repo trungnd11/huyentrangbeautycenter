@@ -1,10 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getAbout } from "../../api/about";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import avatar from "../../static/imgs/avatar/avatar-1.jpg";
 
+interface AboutType {
+  title: string;
+  avatar?: string;
+  description1: string,
+  description2: string,
+  description3: string,
+  description4: string,
+}
+
 export default function AboutPage() {
+  const [about, setAbout] = useState<AboutType>();
+  const getAboutData = async () => {
+    try {
+      const about = await getAbout();
+      setAbout(about.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   useEffect(() => {
     document.title = "Huyen Trang - Giới thiệu";
+    getAboutData();
   }, []);
 
   return (
@@ -21,38 +42,25 @@ export default function AboutPage() {
         <div className="row">
           <div className="col-12 col-lg-6">
             <div className="avatar">
-              <img src={avatar} alt="avatar" />
+              <img src={about?.avatar || avatar} alt="avatar" />
             </div>
           </div>
           <div className="col-12 col-lg-6">
             <div className="title">
-              <h3>Benefits of Doing Spa &amp; Massage</h3>
+              <h3>{ about?.title }</h3>
             </div>
             <div className="description">
               <p>
-                The Big Oxmox advised her not to do so, because there were
-                thousands of bad Commas, wild Question Marks and devious
-                Semikoli, but the Little Blind Text didn’t listen. She packed
-                her seven versalia, put her initial into the belt and made
-                herself on the way.
+                { about?.description1 }
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-                eligendi veritatis quam modi tempora quasi quas tenetur, harum,
-                alias eos asperiores quae ab architecto vero ipsam magni.
-                Possimus, illum excepturi.
+                { about?.description2 }
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-                eligendi veritatis quam modi tempora quasi quas tenetur, harum,
-                alias eos asperiores quae ab architecto vero ipsam magni.
-                Possimus, illum excepturi.
+                { about?.description3 }
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-                eligendi veritatis quam modi tempora quasi quas tenetur, harum,
-                alias eos asperiores quae ab architecto vero ipsam magni.
-                Possimus, illum excepturi.
+                { about?.description4 }
               </p>
             </div>
           </div>
