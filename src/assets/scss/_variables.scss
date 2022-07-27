@@ -5,6 +5,7 @@ $gray: #cccccc2d;
 $transparentWhite: #fff3;
 $transparentGray: rgba(0, 0, 0, 0.4);
 $red: #cc0000;
+$blue: rgb(3, 20, 255);
 
 @mixin Transitions($x...) {
   -webkit-transition: $x;
