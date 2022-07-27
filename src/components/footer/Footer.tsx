@@ -9,11 +9,13 @@ import { fetAddress } from "../../store/address/address";
 import { getAddressStore } from "../../store/address/addressSelector";
 import { fetPhone } from "../../store/phoneNumber/phoneNumber";
 import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
+import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 
 export default function Footer() {
   const dispatch = useDispatch<any>();
   const addressStore = useSelector(getAddressStore);
   const phoneNumberStore = useSelector(getPhoneStore);
+  const serviceTypeStore = useSelector(getServiceTypeStore);
   const { address, loading } = addressStore;
 
   useEffect(() => {
@@ -67,18 +69,11 @@ export default function Footer() {
             <div className="sevices">
               <h3>Dịch vụ</h3>
               <ul>
-                <a href="#">
-                  <li>Aromatheraphy</li>
-                </a>
-                <a href="#">
-                  <li>Skin Care</li>
-                </a>
-                <a href="#">
-                  <li>Herbal Spa</li>
-                </a>
-                <a href="#">
-                  <li>Body Massage</li>
-                </a>
+                {!serviceTypeStore.loading && serviceTypeStore.serviceType.map(item => (
+                  <a href="#" key={item._id} title={item.description}>
+                    <li>{ item.serviceType }</li>
+                  </a>
+                )) }
               </ul>
             </div>
           </div>

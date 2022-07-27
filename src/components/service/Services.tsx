@@ -3,45 +3,23 @@ import { ButtonMain } from "../button/Button";
 import { url } from "../../routers/allRouter";
 import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getServiceLimit } from "../../api/services";
+import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
+import { fetServiceType } from "../../store/services/serviceType";
 
-interface ServiceType {
+interface Service {
   _id: string
   name: string;
   image: string;
   description: string;
 }
 
-const listServices = [
-  {
-    id: 1,
-    title: "Aromatheraphy",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.",
-  },
-  {
-    id: 2,
-    title: "Skin Care",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.",
-  },
-  {
-    id: 3,
-    title: "Herbal Spa",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.",
-  },
-  {
-    id: 4,
-    title: "Body Massage",
-    description:
-      "A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.",
-  },
-];
-
 export default function Services() {
   const detailPage = useNavigate();
-  const [service, setService] = useState<ServiceType[]>();
+  const [service, setService] = useState<Service[]>();
+  const dispatch = useDispatch<any>();
+  const servicesTypeStore = useSelector(getServiceTypeStore);
 
   const handleClickDetailService = (): void => {
     detailPage(`${url}/service-details`);
@@ -52,13 +30,15 @@ export default function Services() {
       const services = await getServiceLimit(3);
       setService(services.data);
     } catch (error) {
-      
+      console.log({ error });
     }
   }
 
+
   useEffect(() => {
     fetServiceLimit();
-  }, [])
+    dispatch(fetServiceType());
+  }, [dispatch])
 
   return (
     <div className="services">
@@ -89,19 +69,25 @@ export default function Services() {
       <div className="list-services">
         <div className="container-fluid">
           <div className="row">
-            {listServices.map((item) => (
-              <div className="col-12 col-md-6 col-lg-3" key={item.id}>
-                <div className="item-service">
-                  <div className="icon d-flex justify-content-center align-items-center">
-                    <i className="fa-solid fa-face-grin-hearts" />
-                  </div>
-                  <div className="description">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+            {!servicesTypeStore.loading && servicesTypeStore.serviceType.map(
+              (item) => (
+                <div className="col-12 col-md-6 col-lg-2" key={item._id}>
+                  <div className="item-service">
+                    <div className="icon d-flex justify-content-center align-items-center">
+                      {item.image ? (
+                        <img src={item.image} alt={item.serviceType} />
+                      ) : (
+                        <i className="fa-solid fa-face-grin-hearts" />
+                      )}
+                    </div>
+                    <div className="description">
+                      <h3>{item.serviceType}</h3>
+                      <p>{item.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       </div>

@@ -63,6 +63,11 @@
 
       a {
         color: $black;
+        @include Transitions(.6s);
+
+        &:hover {
+          color: $main-color;
+        }
       }
     }
   }
