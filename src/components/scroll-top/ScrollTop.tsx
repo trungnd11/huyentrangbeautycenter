@@ -29,7 +29,7 @@ const DivScroll = styled.div<any>`
   cursor: pointer;
   i {
     font-size: 1.1rem;
-    animation: ${translate} 0.8s infinite alternate;
+    animation: ${translate} 0.8s infinite linear alternate-reverse;
   }
 `;
 export default function ScrollTop() {

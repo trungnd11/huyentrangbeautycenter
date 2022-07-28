@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ItemService from "./ItemService";
 import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
-import { useEffect } from "react";
 import ServiceType from "./ServiceType";
 import { getServicesStore } from "../../store/services/servicesSelector";
 import { fetServices } from "../../store/services/service";
@@ -10,11 +11,12 @@ import { fetServices } from "../../store/services/service";
 export default function ServicePage() {
   const dispatch = useDispatch<any>();
   const serviceStore = useSelector(getServicesStore);
+  const { type } = useParams();
 
   useEffect(() => {
     document.title = "Huyen Trang - Dịch vụ";
-    dispatch(fetServices());
-  }, [dispatch]);
+    !type && dispatch(fetServices());
+  }, [dispatch, type]);
 
   return (
     <div className="services-page">
@@ -33,15 +35,8 @@ export default function ServicePage() {
         </div>
         <ServiceType />
         <div className="row">
-          {!serviceStore.loading && serviceStore.filter.length === 0 ?
+          {!serviceStore.loading && 
             serviceStore.services.map((item) => (
-              <ItemService
-                key={item._id}
-                img={item.image || avatar1}
-                title={item.name}
-                content={item.description}
-              />
-          )) : serviceStore.filter.map((item) => (
               <ItemService
                 key={item._id}
                 img={item.image || avatar1}

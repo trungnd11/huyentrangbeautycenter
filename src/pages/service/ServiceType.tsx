@@ -1,38 +1,54 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { filterService } from "../../store/services/service";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetServices, findServicesByServiceType } from "../../store/services/service";
 import { fetServiceType } from "../../store/services/serviceType";
 import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 
 export default function ServiceType() {
   const dispatch = useDispatch<any>();
   const serviceTypeStore = useSelector(getServiceTypeStore);
-  
+  const [activeType, setActiveType] = useState<string>("all");
+  const { type } = useParams();
 
   const handleFilterServiceType = (typeService: string) => {
-    dispatch(filterService(typeService));
-  } 
+    dispatch(findServicesByServiceType(typeService));
+    setActiveType(typeService);
+  }
+
+  const handleAllServices = () => {
+    dispatch(fetServices());
+    setActiveType("all");
+  };
 
   useEffect(() => {
     dispatch(fetServiceType());
-  }, [dispatch])
+    if (type) {
+      dispatch(findServicesByServiceType(type));
+      setActiveType(type);
+    }
+  }, [dispatch, type]);
 
   return (
     <div className="row d-flex justify-content-center">
       <div className="col-12 col-lg-8">
         <div className="service-type">
           <ul className="type-item">
-            <a onClick={() => dispatch(filterService(""))}>
-              <li className="">Tất cả</li>
+            <a onClick={() => handleAllServices()}>
+              <li className={activeType === "all" ? "activeType" : ""}>
+                Tất cả
+              </li>
             </a>
             {!serviceTypeStore.loading &&
               serviceTypeStore.serviceType.map((item) => (
                 <a
                   key={item._id}
-                  onClick={() => handleFilterServiceType(item.serviceType)}
+                  onClick={() => handleFilterServiceType(item._id)}
                 >
-                  <li>{item.serviceType}</li>
+                  <li className={activeType === item._id ? "activeType" : ""}>
+                    {item.serviceType}
+                  </li>
                 </a>
               ))}
           </ul>

@@ -69,6 +69,10 @@
         background-color: $main-color;
       }
     }
+
+    .activeType {
+      background-color: $main-color !important;
+    }
   }
 }
 

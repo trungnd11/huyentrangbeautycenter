@@ -34,6 +34,10 @@ export const authRouter: TypeRouter[] = [
     component: ServicePage,
   },
   {
+    path: `${url}/services/type-:type`,
+    component: ServicePage,
+  },
+  {
     path: `${url}/expert`,
     component: ExpertPage,
   },

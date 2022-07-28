@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAbout } from "../../api/about";
+import { getExperience } from "../../api/experience";
 import ItemAbout from "./ItemAbout";
 
 interface AboutType {
@@ -11,8 +12,16 @@ interface AboutType {
   description4: string;
 }
 
+interface ExperienceType {
+  _id: string,
+  name: string,
+  description?: string
+}
+
 export default function About() {
   const [about, setAbout] = useState<AboutType>();
+  const [experience, setExperience] = useState<ExperienceType[]>();
+
   const getAboutData = async () => {
     try {
       const about = await getAbout();
@@ -22,8 +31,18 @@ export default function About() {
     }
   };
 
+  const fetExperience = async () => {
+    try {
+      const experience = await getExperience();
+      setExperience(experience.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getAboutData();
+    fetExperience();
   }, []);
   return (
     <div className="about">
@@ -38,21 +57,13 @@ export default function About() {
                 { about?.description1 }
               </p>
               <ul className="mt-5 lists-item">
-                <ItemAbout linkTo="#">
-                  Spa &amp; Massage boosts brain power
-                </ItemAbout>
-                <ItemAbout linkTo="#">
-                  Spa &amp; Massage helps you to breathe better
-                </ItemAbout>
-                <ItemAbout linkTo="#">
-                  Spa &amp; Massage improves your strength
-                </ItemAbout>
-                <ItemAbout linkTo="#">
-                  Spa &amp; Massage helps you to focus
-                </ItemAbout>
-                <ItemAbout linkTo="#">
-                  Spa &amp; Massage helps give meaning to your day
-                </ItemAbout>
+                {
+                  experience?.map(item => (
+                    <ItemAbout linkTo="#" key={item._id}>
+                      { item.name }
+                    </ItemAbout>
+                  ))
+                }
               </ul>
             </div>
           </div>

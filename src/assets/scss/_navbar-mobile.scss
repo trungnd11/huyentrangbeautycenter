@@ -16,7 +16,7 @@
   }
 
   .logo {
-    flex-basis: 10%;
+    flex-basis: 12%;
 
     @include Responsive(SM) {
       flex-basis: 7%;
@@ -28,6 +28,8 @@
 
     img {
       width: 100%;
+      object-fit: cover;
+      animation: logoRotate 6s infinite linear;
     }
   }
 
@@ -48,7 +50,7 @@
   .menu {
     cursor: pointer;
     flex-basis: 10%;
-    text-align: end;
+    text-align: center;
 
     i {
       font-size: 1.5rem;
@@ -119,4 +121,13 @@
 
 .overlay-navbar-active {
   display: block;
+}
+
+@keyframes logoRotate {
+  to {
+    transform: rotate(0);
+  }
+  from {
+    transform: rotate(359deg);
+  }
 }

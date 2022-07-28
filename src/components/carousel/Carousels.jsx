@@ -1,28 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Carousel } from "3d-react-carousal";
 import { NavLink } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
 import { url } from ".././../routers/allRouter";
-import banner1 from "../../static/imgs/banner/banner-1.jpg";
-import banner2 from "../../static/imgs/banner/banner-2.jpg";
-import banner4 from "../../static/imgs/banner/banner-4.jpg";
-import banner5 from "../../static/imgs/banner/banner-5.jpg";
-import banner6 from "../../static/imgs/banner/banner-6.jpg";
 import { getMesengerHeader } from ".././../api/mesengerHeader";
+import { getBanners } from "../../api/banner";
+import banner1 from "../../static/imgs/banner/banner-1.jpg";
 
-let slides = [
-  <img src={banner1} alt="banner-1" />,
-  <img src={banner2} alt="banner-2" />,
-  <img src={banner4} alt="banner-4" />,
-  <img src={banner5} alt="banner-5" />,
-  <img src={banner6} alt="banner-6" />,
-];
 
 export default function Carousels() {
   const [mesenger, setMesenger] = useState({
     title: String,
     content: String
   });
+  const [slideBanners, setSlideBanners] = useState([
+    <img src={banner1} alt="1" />
+  ]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetMesenger = async () => {
@@ -35,12 +29,27 @@ export default function Carousels() {
     }
   }
 
+  const handleBannensImg = (res) => {
+    const slides = res.map(item => <img src={item.img} alt="1" />);
+    setSlideBanners(slides);
+  }
+
+  const fetBanners = async () => {
+    try {
+      const response = await getBanners();
+      handleBannensImg(response.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   useEffect(() => {
     fetMesenger();
+    fetBanners();
   }, [])
   return (
     <div className="carousel">
-      <Carousel slides={slides} autoplay={true} interval={5000} />
+      <Carousel slides={slideBanners} autoplay={true} interval={5000} />
       {!isLoading && (
         <div className="content">
         <div className="title text-center">

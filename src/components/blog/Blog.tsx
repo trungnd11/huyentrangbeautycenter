@@ -1,4 +1,7 @@
-import BlogItem from "./BlogItem"
+import BlogItem from "./BlogItem";
+import img1 from "../../static/imgs/banner/banner-1.jpg";
+import img2 from "../../static/imgs/banner/banner-2.jpg";
+import img3 from "../../static/imgs/banner/banner-3.jpg";
 
 export default function Blog() {
   return (
@@ -10,7 +13,7 @@ export default function Blog() {
       <div className="container">
         <div className="row">
           <BlogItem
-            img="https://technext.github.io/energen/images/image_1.jpg"
+            img={img1}
             date="25"
             month="Tháng 1"
             year="2022"
@@ -18,7 +21,7 @@ export default function Blog() {
             content=" A small river named Duden flows by their place and supplies it with the necessary regelialia."
           />
           <BlogItem
-            img="https://technext.github.io/energen/images/image_2.jpg"
+            img={img2}
             date="25"
             month="Tháng 1"
             year="2022"
@@ -26,7 +29,7 @@ export default function Blog() {
             content=" A small river named Duden flows by their place and supplies it with the necessary regelialia."
           />
           <BlogItem
-            img="https://technext.github.io/energen/images/image_3.jpg"
+            img={img3}
             date="25"
             month="Tháng 1"
             year="2022"

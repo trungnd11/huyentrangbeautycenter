@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../static/imgs/logos/logo.png";
+import logo from "../../static/imgs/logos/logo-m.png";
 import MenuItem from "../navbar/MenuItem";
 import { url } from "../../routers/allRouter";
 

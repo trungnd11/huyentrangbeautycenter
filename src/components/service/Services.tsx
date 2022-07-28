@@ -25,6 +25,10 @@ export default function Services() {
     detailPage(`${url}/service-details`);
   }
 
+  const handleNavigateServiceType = (typeId: string): void => {
+    detailPage(`${url}/services/type-${typeId}`);
+  }
+
   const fetServiceLimit = async () => {
     try {
       const services = await getServiceLimit(3);
@@ -72,7 +76,7 @@ export default function Services() {
             <div className="list-services-layout">
               {!servicesTypeStore.loading &&
                 servicesTypeStore.serviceType.map((item) => (
-                  <div className="item-service" key={item._id}>
+                  <div className="item-service" key={item._id} onClick={() => handleNavigateServiceType(item._id)}>
                     <div className="icon d-flex justify-content-center align-items-center">
                       {item.image ? (
                         <img src={item.image} alt={item.serviceType} />

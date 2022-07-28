@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getServices } from "../../api/services";
+import { findServicesByType, getServices } from "../../api/services";
 
 export const initialState = {
   loading: true,
@@ -10,7 +10,15 @@ export const initialState = {
 export const fetServices = createAsyncThunk("services/fetServices", async () => {
   const res = await getServices();
   return res.data;
-})
+});
+
+export const findServicesByServiceType = createAsyncThunk(
+  "services/findType",
+  async (type: string) => {
+    const res = await findServicesByType({ serviceType: type });
+    return res.data;
+  }
+);
 
 const services = createSlice({
   name: "services",
@@ -26,7 +34,12 @@ const services = createSlice({
     builder.addCase(fetServices.fulfilled, (state, action) => {
       state.loading = false;
       state.services = action.payload;
-    })
+    });
+
+    builder.addCase(findServicesByServiceType.fulfilled, (state, action) => {
+      state.loading = false;
+      state.services = action.payload;
+    });
   }
 });
 
