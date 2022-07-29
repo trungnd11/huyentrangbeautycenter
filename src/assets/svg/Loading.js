@@ -6,7 +6,7 @@ const DivLoading = styled.div`
   width: 100vw;
   height: 100vh;
   top: 0;
-  background-color: rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0, .8);
   display: flex;
   justify-content: center;
   align-items: center;
