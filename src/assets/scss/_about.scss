@@ -6,6 +6,7 @@
   margin-top: 4rem;
   padding: 10rem 0;
   position: relative;
+  cursor: pointer;
 
   @include Responsive(XS) {
     background-position: 85%;

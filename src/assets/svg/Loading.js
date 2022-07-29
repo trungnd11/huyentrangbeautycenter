@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const DivLoading = styled.div`
   position: fixed;
-  z-index: 6;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;

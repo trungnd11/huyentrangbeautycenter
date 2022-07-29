@@ -67,6 +67,11 @@
     .description {
       text-align: justify;
       line-height: 2;
+
+      i {
+        font-size: .6rem;
+        color: $main-color;
+      }
     }
   }
 }

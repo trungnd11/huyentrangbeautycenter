@@ -1,11 +1,30 @@
+import { useEffect, useState } from "react";
+import { getExperts } from "../../api/expert";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ItemExpert from "./ItemExpert";
 import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
-import { useEffect } from "react";
+
+interface ExpertType {
+  avatar: string,
+  name: string;
+  positon: string;
+  description: string;
+  linkFb: string;
+  linkZalo: string;
+  linkInsta: string;
+}
 
 export default function ExpertPage() {
+  const [experts, setExperts] = useState<ExpertType[]>();
+
+  const fetExperts = async () => {
+    const expertsRes = await getExperts();
+    setExperts(expertsRes.data);
+  }
+
   useEffect(() => {
     document.title = "Huyen Trang - Chuyên gia";
+    fetExperts();
   }, []);
 
   return (
@@ -25,42 +44,17 @@ export default function ExpertPage() {
           </div>
         </div>
         <div className="row">
-          <ItemExpert
-            avatar={avatar1}
-            name="Elizabeth Nelson"
-            position="OWNER / HEAD COACH"
-            description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
-          />
-          <ItemExpert
-            avatar={avatar1}
-            name="Scarlett Torres"
-            position="OWNER / HEAD COACH"
-            description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
-          />
-          <ItemExpert
-            avatar={avatar1}
-            name="Victoria Wright"
-            position="OWNER / HEAD COACH"
-            description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
-          />
-          <ItemExpert
-            avatar={avatar1}
-            name="Elizabeth Nelson"
-            position="OWNER / HEAD COACH"
-            description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
-          />
-          <ItemExpert
-            avatar={avatar1}
-            name="Scarlett Torres"
-            position="OWNER / HEAD COACH"
-            description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
-          />
-          <ItemExpert
-            avatar={avatar1}
-            name="Victoria Wright"
-            position="OWNER / HEAD COACH"
-            description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts"
-          />
+          {experts &&
+            experts.map((item) => (
+              <ItemExpert
+                avatar={item.avatar}
+                name={item.name}
+                position={item.positon}
+                description={item.description}
+                fbLink={item.linkFb}
+                instaLink={item.linkInsta}
+              />
+            ))}
         </div>
       </div>
     </div>

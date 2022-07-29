@@ -3,7 +3,7 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { url } from "../../routers/allRouter";
 import { fetAddress } from "../../store/address/address";
 import { getAddressStore } from "../../store/address/addressSelector";
@@ -17,6 +17,11 @@ export default function Footer() {
   const phoneNumberStore = useSelector(getPhoneStore);
   const serviceTypeStore = useSelector(getServiceTypeStore);
   const { address, loading } = addressStore;
+  const detailPage = useNavigate();
+
+  const handleNavigateServiceType = (typeId: string): void => {
+    detailPage(`${url}/services/type-${typeId}`);
+  };
 
   useEffect(() => {
     dispatch(fetAddress());
@@ -44,7 +49,11 @@ export default function Footer() {
               <div className="phone">
                 {!phoneNumberStore.loading &&
                   phoneNumberStore.phoneNumber.map((item) => (
-                    <a href={`tel:${item.phoneNumber}`} key={item._id} title={item.nameUser}>
+                    <a
+                      href={`tel:${item.phoneNumber}`}
+                      key={item._id}
+                      title={item.nameUser}
+                    >
                       <p>
                         <i className="fa-solid fa-phone-flip phone"></i>0
                         {`${item.phoneNumber}`}
@@ -69,11 +78,17 @@ export default function Footer() {
             <div className="sevices">
               <h3>Dịch vụ</h3>
               <ul>
-                {!serviceTypeStore.loading && serviceTypeStore.serviceType.map(item => (
-                  <a href="#" key={item._id} title={item.description}>
-                    <li>{ item.serviceType }</li>
-                  </a>
-                )) }
+                {!serviceTypeStore.loading &&
+                  serviceTypeStore.serviceType.map((item) => (
+                    <a
+                      href="#"
+                      key={item._id}
+                      title={item.description}
+                      onClick={() => handleNavigateServiceType(item._id)}
+                    >
+                      <li>{item.serviceType}</li>
+                    </a>
+                  ))}
               </ul>
             </div>
           </div>

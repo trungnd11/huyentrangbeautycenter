@@ -6,8 +6,6 @@ import { ButtonMain } from "../button/Button";
 import { url } from ".././../routers/allRouter";
 import { getMesengerHeader } from ".././../api/mesengerHeader";
 import { getBanners } from "../../api/banner";
-import banner1 from "../../static/imgs/banner/banner-1.jpg";
-
 
 export default function Carousels() {
   const [mesenger, setMesenger] = useState({
@@ -15,7 +13,7 @@ export default function Carousels() {
     content: String
   });
   const [slideBanners, setSlideBanners] = useState([
-    <img src={banner1} alt="1" />
+    <div className="loading-carousel" />
   ]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -50,7 +48,7 @@ export default function Carousels() {
   return (
     <div className="carousel">
       <Carousel slides={slideBanners} autoplay={true} interval={5000} />
-      {!isLoading && (
+      {!isLoading ? (
         <div className="content">
         <div className="title text-center">
           <h2>{ mesenger.title }</h2>
@@ -67,7 +65,8 @@ export default function Carousels() {
           </NavLink>
         </div>
       </div>
-      ) }
+      ) : <div className="content" style={{ height: '10rem' }}>
+        </div> }
     </div>
   );
 }

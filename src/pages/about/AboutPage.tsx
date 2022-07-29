@@ -51,16 +51,28 @@ export default function AboutPage() {
             </div>
             <div className="description">
               <p>
-                { about?.description1 }
+                <i className="fa-solid fa-circle mx-2" />
+                <span>
+                  { about?.description1 }
+                </span>
               </p>
               <p>
-                { about?.description2 }
+                <i className="fa-solid fa-circle mx-2" />
+                <span>
+                  { about?.description2 }
+                </span>
               </p>
               <p>
-                { about?.description3 }
+                <i className="fa-solid fa-circle mx-2" />
+                <span>
+                  { about?.description3 }
+                </span>
               </p>
               <p>
-                { about?.description4 }
+                <i className="fa-solid fa-circle mx-2" />
+                <span>
+                  { about?.description4 }
+                </span>
               </p>
             </div>
           </div>

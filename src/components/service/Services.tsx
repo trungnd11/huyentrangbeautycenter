@@ -53,7 +53,7 @@ export default function Services() {
               <div className="col-12 col-md-6 col-lg-4" key={item._id}>
                 <div className="service">
                   <div className="image">
-                    <img src={avatar1 || item.image} alt="" />
+                    <img src={item.image || avatar1} alt="" />
                   </div>
                   <div className="description">
                     <h3>{item.name}</h3>

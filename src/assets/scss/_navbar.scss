@@ -21,7 +21,6 @@
 
     h3 {
       font-family: "Great Vibes", cursive;
-      font-weight: 700;
       margin-bottom: 0;
       color: $main-color;
     }
@@ -68,9 +67,9 @@
       .sub-serviceType {
         position: absolute;
         left: 40%;
-        top: 2rem;
+        top: 1.5rem;
         width: 4rem;
-        height: 1rem;
+        height: 2rem;
         .list-serviceType {
           position: absolute;
           left: -50%;
