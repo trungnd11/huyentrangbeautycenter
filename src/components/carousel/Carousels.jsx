@@ -5,10 +5,11 @@ import { NavLink } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
 import { url } from ".././../routers/allRouter";
 import { getBanners } from "../../api/banner";
+import LoadingComponent from "../../assets/svg/LoadingComponent";
 
 export default function Carousels() {
   const [slideBanners, setSlideBanners] = useState([
-    <div className="loading-carousel" />
+    <LoadingComponent width="60px" height="60px" />
   ]);
   const handleBannensImg = (res) => {
     const slides = res.map(item => (

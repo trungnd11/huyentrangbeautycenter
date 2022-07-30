@@ -58,23 +58,6 @@
               height: 100%;
               object-fit: cover;
             }
-
-            .loading-carousel {
-              width: 100%;
-              height: 100%;
-              animation: placeHolderShimmer 6s infinite linear;
-              animation-fill-mode: forwards;
-              background: #fafafa;
-              background: linear-gradient(
-                to right,
-                #fafafa 15%,
-                #cdcdcd 30%,
-                #fafafa 45%,
-                #fafafa 60%
-              );
-              background-size: 1000px 640px;
-              position: relative;
-            }
           }
         }
       }
@@ -125,14 +108,5 @@
       background: $white;
       color: $black;
     }
-  }
-}
-
-@keyframes placeHolderShimmer {
-  0% {
-    background-position: -2000px 0;
-  }
-  100% {
-    background-position: 2000px 0;
   }
 }

@@ -7,6 +7,7 @@ import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
 import ServiceType from "./ServiceType";
 import { getServicesStore } from "../../store/services/servicesSelector";
 import { fetServices } from "../../store/services/service";
+import LoadingComponent from "../../assets/svg/LoadingComponent";
 
 export default function ServicePage() {
   const dispatch = useDispatch<any>();
@@ -35,7 +36,7 @@ export default function ServicePage() {
         </div>
         <ServiceType />
         <div className="row">
-          {!serviceStore.loading && 
+          {!serviceStore.loading ? (
             serviceStore.services.map((item) => (
               <ItemService
                 key={item._id}
@@ -43,7 +44,12 @@ export default function ServicePage() {
                 title={item.name}
                 content={item.description}
               />
-          ))}
+            ))
+          ) : (
+            <div className="loading-services">
+              <LoadingComponent width="60px" height="60px" />
+            </div>
+          )}
         </div>
       </div>
     </div>

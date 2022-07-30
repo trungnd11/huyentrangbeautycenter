@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getExperts } from "../../api/expert";
 import HeaderPage from "../../components/header-page/HeaderPage";
 import ItemExpert from "./ItemExpert";
-import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
+import LoadingComponent from "../../assets/svg/LoadingComponent";
 
 interface ExpertType {
   avatar: string,
@@ -44,7 +44,7 @@ export default function ExpertPage() {
           </div>
         </div>
         <div className="row">
-          {experts &&
+          {experts ? (
             experts.map((item) => (
               <ItemExpert
                 avatar={item.avatar}
@@ -54,7 +54,12 @@ export default function ExpertPage() {
                 fbLink={item.linkFb}
                 instaLink={item.linkInsta}
               />
-            ))}
+            ))
+          ) : (
+            <div className="loading-expert">
+              <LoadingComponent width="60px" height="60px" />
+            </div>
+          )}
         </div>
       </div>
     </div>

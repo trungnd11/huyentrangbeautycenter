@@ -36,7 +36,7 @@ const slides = [
 ];
 
 export default function DetailServicePage() {
-
+  
   return (
     <div className="service-detail-page">
       <HeaderPage
