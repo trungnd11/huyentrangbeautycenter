@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
-import { url } from "../../routers/allRouter";
 import avatar1 from "../../static/imgs/avatar/avatar-1.jpg";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,11 +21,11 @@ export default function Services() {
   const servicesTypeStore = useSelector(getServiceTypeStore);
 
   const handleClickDetailService = (): void => {
-    detailPage(`${url}/service-details`);
+    detailPage(`/service-details`);
   }
 
   const handleNavigateServiceType = (typeId: string): void => {
-    detailPage(`${url}/services/type-${typeId}`);
+    detailPage(`/services/type-${typeId}`);
   }
 
   const fetServiceLimit = async () => {

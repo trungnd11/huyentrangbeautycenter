@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../static/imgs/logos/logo-m.png";
 import MenuItem from "../navbar/MenuItem";
-import { url } from "../../routers/allRouter";
 
 export default function NavbarMobile() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -12,7 +11,7 @@ export default function NavbarMobile() {
   }
 
   const handleNavigateHome = () => {
-    navigateHome(`${url}/home`);
+    navigateHome(`/home`);
   }
   return (
     <>

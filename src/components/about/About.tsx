@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { getAbout } from "../../api/about";
 import { getExperience } from "../../api/experience";
 import ItemAbout from "./ItemAbout";
-import { url } from "../../routers/allRouter";
 interface AboutType {
   title: string;
   avatar?: string;
@@ -25,7 +24,7 @@ export default function About() {
   const aboutPageNavigate = useNavigate();
 
   const handleClickNaviateAboutPage = () => {
-    aboutPageNavigate(`${url}/about`)
+    aboutPageNavigate(`/about`)
   }
 
   const getAboutData = async () => {

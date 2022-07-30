@@ -4,7 +4,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { url } from "../../routers/allRouter";
 import { fetAddress } from "../../store/address/address";
 import { getAddressStore } from "../../store/address/addressSelector";
 import { fetPhone } from "../../store/phoneNumber/phoneNumber";
@@ -20,7 +19,7 @@ export default function Footer() {
   const detailPage = useNavigate();
 
   const handleNavigateServiceType = (typeId: string): void => {
-    detailPage(`${url}/services/type-${typeId}`);
+    detailPage(`/services/type-${typeId}`);
   };
 
   useEffect(() => {
@@ -112,7 +111,7 @@ export default function Footer() {
               Copyright ©
               <script>document.write(new Date().getFullYear());</script>2022 All
               rights by{" "}
-              <Link to={`${url}`} className="title">
+              <Link to={`/`} className="title">
                 Huyen Trang Beauty Center
               </Link>
             </p>

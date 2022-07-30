@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { url } from "../../routers/allRouter";
 
 export default function HeaderPage(prop: { backgroud: string, title: string, link: string, prePage: string, currentPage: string, currentPageLink?: string, thirdPage?: string }) {
   const { backgroud, title, link, prePage, currentPage, currentPageLink, thirdPage } = prop;
@@ -25,7 +24,7 @@ export default function HeaderPage(prop: { backgroud: string, title: string, lin
             <div className="header-text">
               <h1 className="title">{title}</h1>
               <p className="breadcrumbs">
-                <NavLink title="Trang chủ" to={`${url}${link}`}>
+                <NavLink title="Trang chủ" to={`${link}`}>
                   {prePage}
                 </NavLink>
                 {!thirdPage ? (
@@ -36,7 +35,7 @@ export default function HeaderPage(prop: { backgroud: string, title: string, lin
                 ) : (
                   <>
                     <span className="mx-2">/</span>
-                    <NavLink to={`${url}${currentPageLink}`}>
+                    <NavLink to={`${currentPageLink}`}>
                       {currentPage}
                     </NavLink>
                   </>
