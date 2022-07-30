@@ -13,6 +13,7 @@ import banner3 from "../../static/imgs/banner/banner-3.jpg";
 import banner4 from "../../static/imgs/banner/banner-4.jpg";
 import banner5 from "../../static/imgs/banner/banner-5.jpg";
 import banner6 from "../../static/imgs/banner/banner-6.jpg";
+import { getGalleryCustomerLimit } from '../../api/galleryCustomer';
 
 const responsive = {
   0: { items: 1 },
@@ -40,8 +41,8 @@ export default function Gallery() {
     show: false,
     src: ""
   });
-
   const [imgShow, setImgShow] = useState();
+  const [slidesImg, setslidesImg] = useState();
   let slides = [
     <img src={banner1} alt="1"  onClick={() => handleClick(banner1)} />,
     <img src={banner2} alt="2" onClick={() => handleClick(banner2)} />,
@@ -108,10 +109,28 @@ export default function Gallery() {
     );
   }
 
+  const fetGalleryCustomer = async (limit) => {
+    try {
+      const gallery = await getGalleryCustomerLimit(limit);
+      const galleryImg = gallery.data.map(item => (
+        <>
+          <img src={item.img} alt={item.customer} onClick={() => handleClick(item.img)} />
+        </>
+      ));
+      setslidesImg(galleryImg);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   useEffect(() => {
     onBtnNextImg();
     onBtnPrevImg();
   }, [zoomImg, imgShow]);
+
+  useEffect(() => {
+    fetGalleryCustomer(6);
+  }, [])
 
   return (
     <div className="gallery">
@@ -130,7 +149,7 @@ export default function Gallery() {
             animationDuration={3000}
             mouseTracking
             responsive={responsive}
-            items={slides}
+            items={slidesImg ? slidesImg : []}
             autoPlayControls
           />
         </div>

@@ -1,4 +1,3 @@
-import { AutoPlayStrategy } from "react-alice-carousel";
 import styled from "styled-components";
 
 const DivLoading = styled.div`

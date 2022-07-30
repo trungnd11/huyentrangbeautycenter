@@ -14,7 +14,7 @@
   .alice-carousel {
     img {
       width: 100%;
-      height: 15rem;
+      aspect-ratio: 1 / .8;
       object-fit: cover;
       cursor: zoom-in;
     }
@@ -27,6 +27,11 @@
     .alice-carousel__play-btn-wrapper {
       background: transparent;
     } 
+  }
+
+  .loading-gallery {
+    position: relative;
+    height: 50vh;
   }
 
   .zoomImg {

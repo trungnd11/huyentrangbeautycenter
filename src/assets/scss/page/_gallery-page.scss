@@ -2,6 +2,15 @@
   .gallery-photos {
     margin-top: 4rem;
 
+    .loading-gallery {
+      position: relative;
+      height: 50vh;
+    }
+
+    .react-photo-album--photo {
+      object-fit: cover;
+    }
+
     h3 {
       font-size: 3rem;
       color: #d9bf77;
