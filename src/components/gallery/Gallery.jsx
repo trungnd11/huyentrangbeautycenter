@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { zoomIn } from 'react-animations';
 import { ButtonAnimate } from '../button/Button';
-import { url } from "../../routers/allRouter";
 import banner1 from "../../static/imgs/banner/banner-1.jpg";
 import banner2 from "../../static/imgs/banner/banner-2.jpg";
 import banner3 from "../../static/imgs/banner/banner-3.jpg";
@@ -153,7 +152,7 @@ export default function Gallery() {
             autoPlayControls
           />
         </div>
-        <Link to={`${url}/photos`} className="btn-next text-center mt-3 d-block">
+        <Link to={`/photos`} className="btn-next text-center mt-3 d-block">
           <ButtonAnimate title="Xem thêm..." />
         </Link>
       </div>

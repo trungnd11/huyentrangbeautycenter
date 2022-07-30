@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { url } from "../../routers/allRouter";
 
 export default function BlogItem(props: { img: string, date: string, month: string, year: string | number, title: string, content: string }) {
   const { img, date, month, year, title, content
@@ -7,7 +6,7 @@ export default function BlogItem(props: { img: string, date: string, month: stri
   const blogDetail = useNavigate();
   
   const handleClickDetailBlog = () => {
-    blogDetail(`${url}/blog-details`);
+    blogDetail(`/blog-details`);
   }
 
   return (

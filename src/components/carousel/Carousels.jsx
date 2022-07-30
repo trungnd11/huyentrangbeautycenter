@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Carousel } from "3d-react-carousal";
 import { NavLink } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
-import { url } from ".././../routers/allRouter";
 import { getBanners } from "../../api/banner";
 import LoadingComponent from "../../assets/svg/LoadingComponent";
 
@@ -23,10 +22,10 @@ export default function Carousels() {
           <p className="text-center">{ item.content }</p>
         </div>
         <div className="button text-center">
-          <NavLink to={`${url}/services`}>
+          <NavLink to={`/services`}>
             <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
           </NavLink>
-          <NavLink to={`${url}/contact`}>
+          <NavLink to={`/contact`}>
             <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
           </NavLink>
         </div>
