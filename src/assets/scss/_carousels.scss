@@ -90,21 +90,35 @@
     color: $white;
     padding: 1.5rem;
     border-radius: 0.8rem;
-    width: 50%;
+    width: 70%;
     @include Transitions(0.6s);
 
     @include Responsive(XS) {
-      display: none;
-    }
+      width: 90%;
+      padding: .8rem;
 
-    @include Responsive(MD) {
-      width: 70%;
+      p {
+        @include Responsive(XS) {
+          margin-bottom: 0;
+        }
+      }
     }
 
     .title {
       font-family: "Great Vibes", cursive;
       color: $main-color;
       text-transform: capitalize;
+      h2 {
+        @include Responsive(XS) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .button {
+      @include Responsive(XS) {
+        display: none;
+      }
     }
 
     &:hover {

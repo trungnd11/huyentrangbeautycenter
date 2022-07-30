@@ -4,31 +4,34 @@ import { Carousel } from "3d-react-carousal";
 import { NavLink } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
 import { url } from ".././../routers/allRouter";
-import { getMesengerHeader } from ".././../api/mesengerHeader";
 import { getBanners } from "../../api/banner";
 
 export default function Carousels() {
-  const [mesenger, setMesenger] = useState({
-    title: String,
-    content: String
-  });
   const [slideBanners, setSlideBanners] = useState([
     <div className="loading-carousel" />
   ]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetMesenger = async () => {
-    try {
-      const response = await getMesengerHeader();
-      setMesenger(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log({ error });
-    }
-  }
-
   const handleBannensImg = (res) => {
-    const slides = res.map(item => <img src={item.img} alt="1" />);
+    const slides = res.map(item => (
+      <>
+        <img src={item.img} alt="1" />
+        { item.title && item.content && <div className="content">
+        <div className="title text-center">
+          <h2>{ item.title }</h2>
+        </div>
+        <div className="description">
+          <p className="text-center">{ item.content }</p>
+        </div>
+        <div className="button text-center">
+          <NavLink to={`${url}/services`}>
+            <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
+          </NavLink>
+          <NavLink to={`${url}/contact`}>
+            <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
+          </NavLink>
+        </div>
+      </div> }
+      </>
+    ));
     setSlideBanners(slides);
   }
 
@@ -42,31 +45,11 @@ export default function Carousels() {
   }
 
   useEffect(() => {
-    fetMesenger();
     fetBanners();
   }, [])
   return (
     <div className="carousel">
       <Carousel slides={slideBanners} autoplay={true} interval={5000} />
-      {!isLoading ? (
-        <div className="content">
-        <div className="title text-center">
-          <h2>{ mesenger.title }</h2>
-        </div>
-        <div className="description">
-          <p className="text-center">{ mesenger.content }</p>
-        </div>
-        <div className="button text-center">
-          <NavLink to={`${url}/services`}>
-            <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
-          </NavLink>
-          <NavLink to={`${url}/contact`}>
-            <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
-          </NavLink>
-        </div>
-      </div>
-      ) : <div className="content" style={{ height: '10rem' }}>
-        </div> }
     </div>
   );
 }
