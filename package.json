@@ -2,7 +2,6 @@
   "name": "huyentrangtranbeautycenter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://trungnd11.github.io/huyentrangbeautycenter/",
   "dependencies": {
     "3d-react-carousal": "^5.0.0",
     "@reduxjs/toolkit": "^1.8.3",
