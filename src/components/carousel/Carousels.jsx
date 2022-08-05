@@ -14,7 +14,7 @@ export default function Carousels() {
     const slides = res.map(item => (
       <>
         <img src={item.img} alt="1" />
-        { item.title && item.content && <div className="content">
+        { item.title && item.content && <p className="content mb-0">
         <div className="title text-center">
           <h2>{ item.title }</h2>
         </div>
@@ -29,7 +29,7 @@ export default function Carousels() {
             <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
           </NavLink>
         </div>
-      </div> }
+      </p> }
       </>
     ));
     setSlideBanners(slides);
@@ -49,7 +49,7 @@ export default function Carousels() {
   }, [])
   return (
     <div className="carousel">
-      <Carousel slides={slideBanners} autoplay={true} interval={5000} />
+      <Carousel slides={slideBanners} autoplay={true} interval={10000} />
     </div>
   );
 }
