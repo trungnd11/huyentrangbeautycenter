@@ -10,6 +10,7 @@
   align-items: center;
   border-bottom: 1px solid transparent;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  background-image: radial-gradient(circle 610px at 5.2% 51.6%, #050872 0%, #070335 97.5%);
 
   @include Responsive(LG) {
     display: none;
@@ -39,7 +40,7 @@
       font-family: "Great Vibes", cursive;
       margin-bottom: 0;
       font-size: 1.5rem;
-      font-weight: 700;
+      color: $main-color;
 
       @include Responsive(MD) {
         font-size: 2rem;
@@ -54,6 +55,7 @@
 
     i {
       font-size: 1.5rem;
+      color: $main-color;
     }
 
     .icon-close {
@@ -64,7 +66,7 @@
 
 .list-menu-mobile {
   position: fixed;
-  background-color: $main-color;
+  background-image: radial-gradient(circle 610px at 5.2% 51.6%, #050872 0%, #070335 97.5%);
   width: 100vw;
   height: fit-content;
   top: 4rem;
@@ -86,12 +88,11 @@
     padding-left: 0;
     margin-bottom: 0;
     .item {
-      color: $black;
+      color: $main-color;
       font-size: 1.2rem;
-      font-weight: 600;
       border-bottom: 1px solid $black;
       li {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+        border-bottom: 1px solid rgba(246, 223, 52, 0.26);
         margin: 0 .75rem;
       }
     }
