@@ -49,7 +49,7 @@ export default function Carousels() {
   }, [])
   return (
     <div className="carousel">
-      <Carousel slides={slideBanners} autoplay={true} interval={1000} />
+      <Carousel slides={slideBanners} autoplay={true} />
     </div>
   );
 }

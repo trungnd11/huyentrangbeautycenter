@@ -7,11 +7,13 @@ import HeaderPage from "../../components/header-page/HeaderPage";
 import spa from "../../static/imgs/spa/spa.jpg";
 import { getAddressStore } from "../../store/address/addressSelector";
 import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
+import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 
 
 export default function ContactPage() {
   const addressStore = useSelector(getAddressStore);
   const phoneNumberStore = useSelector(getPhoneStore);
+  const serviceTypeStore = useSelector(getServiceTypeStore);
   const { address, loading } = addressStore;
   
   useEffect(() => {
@@ -21,7 +23,7 @@ export default function ContactPage() {
   return (
     <div className="contact-page">
       <HeaderPage
-        backgroud="https://technext.github.io/energen/images/bg_2.jpg"
+        backgroud="https://firebasestorage.googleapis.com/v0/b/image-spa.appspot.com/o/banner%2Fbanner-5.jpg?alt=media&token=5ef21d11-2341-4379-b99a-1a17a14bf557"
         title="Liên hệ"
         link="/home"
         prePage="Trang chủ"
@@ -105,8 +107,10 @@ export default function ContactPage() {
                         <option value="" disabled selected>
                           Chọn dịch vụ
                         </option>
-                        <option value="1">Skin care</option>
-                        <option value="2">Brows</option>
+                        {!serviceTypeStore.loading &&
+                          serviceTypeStore.serviceType.map((item) => (
+                            <option key={item._id} value={item._id}>{item.serviceType}</option>
+                          ))}
                       </select>
                     </div>
                   </div>

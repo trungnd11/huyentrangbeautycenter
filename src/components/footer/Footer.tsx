@@ -31,9 +31,9 @@ export default function Footer() {
     <div className="footer">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-4 footer-layout">
+          <div className="col-12 col-md-6 col-lg-4 pe-0 pe-lg-3 footer-layout">
             <div className="company">
-              <h3>Huyen Trang Center</h3>
+              <h3>Huyen Trang Tran Beauty Center</h3>
               <div className="address">
                 {!loading &&
                   address.map((item, index) => (
@@ -107,7 +107,7 @@ export default function Footer() {
         </div>
         <div className="row">
           <div className="col-12">
-            <p className="mb-0 mt-2 text-center copy-right">
+            <p className="mb-0 mt-2 text-center text-white copy-right">
               Copyright ©
               <script>document.write(new Date().getFullYear());</script>2022 All
               rights by{" "}

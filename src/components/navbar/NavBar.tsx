@@ -1,33 +1,84 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import "bootstrap/dist/css/bootstrap.css";
-import logo from "../../static/imgs/logos/logo.png";
-import { NavLink, useNavigate } from "react-router-dom";
-import MenuItem from "./MenuItem";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import "bootstrap/dist/css/bootstrap.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import { rotateInDownLeft } from "react-animations";
+import logo from "../../static/imgs/logos/logo.png";
+import MenuItem from "./MenuItem";
 import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
+import { ButtonMain } from "../button/Button";
+import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
+
+const zoomInAnimation = keyframes`${rotateInDownLeft}`;
+
+const NavBarShow = styled.div`
+  animation: 0.6s ${zoomInAnimation};
+`;
 
 export default function NavBar() {  
   const serviceTypeStore = useSelector(getServiceTypeStore);
+  const phoneNumberStore = useSelector(getPhoneStore);
+  const [showNav, setShowNav] = useState(false);
+  const [showNavHeader, setShowNavHeader] = useState(false);
   const detailPage = useNavigate();
 
   const handleNavigateServiceType = (typeId: string): void => {
     detailPage(`/services/type-${typeId}`);
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY > 250 ? setShowNav(true) : setShowNav(false);
+      window.scrollY < 240 && setShowNavHeader(true)
+    });
+  }, [])
+
   return (
     <div className="container-fluid p-0">
-      <div className="nav-bar d-none d-lg-block">
-        <div className="container h-100">
-          <div className="nav-bar-title d-flex justify-content-between align-items-center h-100">
-            <div className="logo d-flex align-items-center">
-              <div className="logo-wapper d-flex justify-content-center align-items-center">
-                <img src={logo} alt="" />
+      {showNavHeader && (
+        <div className="navHeader-container d-none d-lg-block shadow">
+          <div className="container">
+            <div className="nav-header">
+              <div className="contact">
+                <h5>Gọi ngay để được tư vấn !!</h5>
+                {!phoneNumberStore.loading &&
+                  phoneNumberStore.phoneNumber.map((item) => (
+                    <a
+                      href={`tel:${item.phoneNumber}`}
+                      key={item._id}
+                      title={item.nameUser}
+                    >
+                      <p>
+                        <i className="fa-solid fa-phone-flip phone pe-2"></i>0
+                        {`${item.phoneNumber}`}
+                      </p>
+                    </a>
+                  ))}
               </div>
-              <NavLink to={`/`}>
-                <h3>Huyen Trang Beauty Center</h3>
-              </NavLink>
+              <div className="logo text-center">
+                <img src={logo} alt="" />
+                <h2>Huyen Trang Tran Beauty Center</h2>
+                <p>Chất lượng tạo nên thịnh vượng</p>
+              </div>
+              <div className="services text-end">
+                <ButtonMain
+                  className="mx-1 w-75"
+                  title="Đăng nhập"
+                  backgroundColor="danger"
+                />
+                <ButtonMain
+                  className="mx-1 w-75 mt-3"
+                  title="Dịch vụ"
+                  backgroundColor="success"
+                  click={() => detailPage("services")}
+                />
+              </div>
             </div>
-            <div className="list-menu">
+          </div>
+          <div className="list-menu">
+            <div className="container">
               <ul className="position-relative d-flex justify-content-between align-items-center">
                 <MenuItem title="Trang chủ" path="/home" />
                 <MenuItem title="Giới thiệu" path="/about" />
@@ -53,7 +104,47 @@ export default function NavBar() {
             </div>
           </div>
         </div>
-      </div>
+      )}
+      {showNav && (
+        <NavBarShow className="nav-bar d-none d-lg-block">
+          <div className="container h-100">
+            <div className="nav-bar-title d-flex justify-content-between align-items-center h-100">
+              <div className="logo d-flex align-items-center">
+                <div className="logo-wapper d-flex justify-content-center align-items-center">
+                  <img src={logo} alt="" />
+                </div>
+                <NavLink to={`/`}>
+                  <h3>Huyen Trang Beauty Center</h3>
+                </NavLink>
+              </div>
+              <div className="list-menu">
+                <ul className="position-relative d-flex justify-content-between align-items-center">
+                  <MenuItem title="Trang chủ" path="/home" />
+                  <MenuItem title="Giới thiệu" path="/about" />
+                  <MenuItem title="Dịch vụ" path="/services" class="active" />
+                  <div className="sub-serviceType">
+                    <ul className="list-serviceType">
+                      {!serviceTypeStore.loading &&
+                        serviceTypeStore.serviceType.map((item) => (
+                          <li
+                            key={item._id}
+                            className="item-serviceType"
+                            onClick={() => handleNavigateServiceType(item._id)}
+                          >
+                            {item.serviceType}
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                  <MenuItem title="Chuyên gia" path="/expert" />
+                  <MenuItem title="Blog" path="/blog" />
+                  <MenuItem title="Liên hệ" path="/contact" />
+                </ul>
+              </div>
+            </div>
+          </div>
+        </NavBarShow>
+      )}
     </div>
   );
 }

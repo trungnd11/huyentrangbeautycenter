@@ -10,7 +10,7 @@ export default function BlogPage() {
   return (
     <div className="blog-page">
       <HeaderPage
-        backgroud="https://technext.github.io/energen/images/bg_2.jpg"
+        backgroud="https://firebasestorage.googleapis.com/v0/b/image-spa.appspot.com/o/banner%2Fbanner-5.jpg?alt=media&token=5ef21d11-2341-4379-b99a-1a17a14bf557"
         title="Blog"
         link="/home"
         prePage="Trang chủ"

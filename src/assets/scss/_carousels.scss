@@ -1,11 +1,13 @@
 .carousel {
-  margin-top: 5rem;
+  margin-top: 1rem;
 
   @include Responsive(XS) {
     overflow: hidden;
+    margin-top: 5rem;
   }
   @include Responsive(MD) {
     overflow: hidden;
+    margin-top: 5rem;
   }
   .react-3d-carousel {
     height: 70vh !important;

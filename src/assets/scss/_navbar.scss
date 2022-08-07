@@ -1,3 +1,165 @@
+.navHeader-container {
+  background-image: radial-gradient(
+    circle 610px at 5.2% 51.6%,
+    #050872 0%,
+    #070335 97.5%
+  );
+  .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+
+    .contact {
+      flex-basis: 25%;
+      h5 {
+        color: $white;
+        font-size: small;
+      }
+      a {
+        color: $main-color;
+
+        i {
+          animation: wiggle 4s 2s infinite;
+        }
+      }
+      
+    }
+
+    .logo {
+      flex-shrink: 1;
+      img {
+        width: 10%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        animation: logoRotate 10s infinite linear;
+      }
+
+      h2 {
+        text-transform: uppercase;
+        color: $main-color;
+      }
+
+      p {
+        margin-bottom: 0;
+        color: $white;
+      }
+    }
+
+    .services {
+      margin-top: 0;
+      flex-basis: 25%;
+    }
+  }
+
+  .list-menu {
+    border-top: .2px solid $main-color;
+    padding: 1.3rem 0;
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
+      .item {
+        cursor: pointer;
+        color: $white;
+        display: inline-block;
+        position: relative;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        @include Transitions(0.6s);
+
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: $main-color;
+          visibility: hidden;
+          transform: scaleX(0);
+          @include Transitions(0.6s);
+          height: 0.05rem;
+          bottom: -10px;
+          opacity: 1;
+          left: 0;
+          width: 100%;
+        }
+
+        &:hover {
+          color: $main-color;
+          &::before {
+            visibility: visible;
+            transform: scaleX(1);
+          }
+        }
+
+        li {
+          list-style-type: none;
+        }
+      }
+
+      .sub-serviceType {
+        position: absolute;
+        left: 40%;
+        top: 1.5rem;
+        width: 4rem;
+        height: 2rem;
+        .list-serviceType {
+          position: absolute;
+          left: -50%;
+          top: 0.5rem;
+          background-color: $white;
+          width: 20vw;
+          border-radius: 0.7rem;
+          visibility: hidden;
+          opacity: 0;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+            0 6px 6px rgba(0, 0, 0, 0.23);
+          @include Transitions(0.6s);
+          overflow: hidden;
+          list-style-type: none;
+          z-index: 6;
+
+          .item-serviceType {
+            margin: 1rem;
+            color: $black;
+            padding: 0.5rem ;
+            cursor: pointer;
+            @include Transitions(0.6s);
+            position: relative;
+
+            &::after {
+              content: "";
+              position: absolute;
+              width: 0;
+              height: 1px;
+              background-color: $blue;
+              left: 0;
+              bottom: 0;
+              @include Transitions(0.6s);
+            }
+
+            &:hover::after {
+              width: 95%;
+            }
+
+            &:hover {
+              color: $blue;
+              transform: translateX(1rem);
+            }
+          }
+        }
+
+        &:hover .list-serviceType {
+          opacity: 1;
+          visibility: visible;
+          left: 50%;
+        }
+      }
+
+      .active {
+        color: $main-color;
+      }
+    }
+  }
+}
+
 .nav-bar {
   height: 4rem;
   background: $white;
@@ -5,7 +167,11 @@
   width: 100%;
   position: fixed;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  background-image: radial-gradient(circle 610px at 5.2% 51.6%, #050872 0%, #070335 97.5%);
+  background-image: radial-gradient(
+    circle 610px at 5.2% 51.6%,
+    #050872 0%,
+    #070335 97.5%
+  );
   top: 0;
   .logo {
     flex-basis: 40%;
@@ -74,7 +240,7 @@
         .list-serviceType {
           position: absolute;
           left: -50%;
-          top: .5rem;
+          top: 0.5rem;
           background-color: $white;
           width: 20vw;
           border-radius: 0.7rem;
@@ -102,7 +268,7 @@
               background-color: $blue;
               left: 0;
               bottom: 0;
-              @include Transitions(.6s);
+              @include Transitions(0.6s);
             }
 
             &:hover::after {
@@ -136,5 +302,33 @@
   }
   from {
     transform: rotate(359deg);
+  }
+}
+
+@keyframes wiggle {
+  5%,
+  50% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.8);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  20% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  30% {
+    transform: scale(1.2) rotate(-3deg);
+  }
+  35% {
+    transform: scale(1.2) rotate(2deg);
+  }
+  40% {
+    transform: scale(1.2) rotate(0);
   }
 }

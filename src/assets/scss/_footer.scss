@@ -1,7 +1,11 @@
 
 .footer {
   margin-top: 4rem;
-  background-color: $gray;
+  background-image: radial-gradient(
+    circle 610px at 5.2% 51.6%,
+    #050872 0%,
+    #070335 97.5%
+  );
   padding: 2.5rem 1rem .5rem 1rem;
   line-height: 2;
 
@@ -38,6 +42,7 @@
       }
       p {
         margin-bottom: 0;
+        color: $white;
       }
 
       i {
@@ -62,7 +67,7 @@
       margin-bottom: 0;
 
       a {
-        color: $black;
+        color: $white;
         @include Transitions(.6s);
 
         &:hover {
@@ -82,6 +87,7 @@
   }
 
   .copy-right {
+    color: $white;
     .title {
       color: $main-color;
       font-size: 1.2rem;

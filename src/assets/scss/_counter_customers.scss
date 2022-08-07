@@ -1,5 +1,5 @@
 .counter-customers {
-  background-image: url(https://technext.github.io/energen/images/bg_3.jpg);
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/image-spa.appspot.com/o/banner%2Fbanner-5.jpg?alt=media&token=5ef21d11-2341-4379-b99a-1a17a14bf557);
   background-position: 50%;
   padding: 3rem 0;
   position: relative;
@@ -11,8 +11,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: $main-color;
-    opacity: 0;
+    background: $transparentGray;
+    opacity: 1;
   }
 
   .text {
@@ -20,13 +20,13 @@
     strong {
       font-weight: 500;
       font-size: 2.5rem;
-      color: $main-color;
+      color: $white;
     }
 
     span {
       font-weight: 600;
       font-size: 1rem;
-      color: $main-color;
+      color: $white;
       text-transform: uppercase;
       letter-spacing: 3px;
     }

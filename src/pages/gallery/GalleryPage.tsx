@@ -37,7 +37,7 @@ export default function GalleryPage() {
   return (
     <div className="photos-page">
       <HeaderPage
-        backgroud="https://technext.github.io/energen/images/bg_2.jpg"
+        backgroud="https://firebasestorage.googleapis.com/v0/b/image-spa.appspot.com/o/banner%2Fbanner-5.jpg?alt=media&token=5ef21d11-2341-4379-b99a-1a17a14bf557"
         title="Bộ sưu tập"
         link="/home"
         prePage="Trang chủ"
@@ -49,17 +49,17 @@ export default function GalleryPage() {
           <div className="header">
             <h3 className="text-center">Hình ảnh khách hàng sử dụng dịch vụ</h3>
           </div>
-          {
-            photo.length !== 0 ? (
-              <PhotoAlbum
-                photos={photo}
-                layout="columns"
-                onClick={(imgz, e: { src: string }) => handleZoomPhoto(e.src)}
-              />
-            ) : <div className="loading-gallery">
-                <LoadingComponent width="60px" height="60px" />
+          {photo.length !== 0 ? (
+            <PhotoAlbum
+              photos={photo}
+              layout="columns"
+              onClick={(imgz, e: { src: string }) => handleZoomPhoto(e.src)}
+            />
+          ) : (
+            <div className="loading-gallery">
+              <LoadingComponent width="60px" height="60px" />
             </div>
-          }
+          )}
         </div>
       </div>
     </div>
