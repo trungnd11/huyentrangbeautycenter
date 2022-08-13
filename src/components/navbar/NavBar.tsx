@@ -21,7 +21,7 @@ export default function NavBar() {
   const serviceTypeStore = useSelector(getServiceTypeStore);
   const phoneNumberStore = useSelector(getPhoneStore);
   const [showNav, setShowNav] = useState(false);
-  const [showNavHeader, setShowNavHeader] = useState(false);
+  const [showNavHeader, setShowNavHeader] = useState(true);
   const detailPage = useNavigate();
 
   const handleNavigateServiceType = (typeId: string): void => {
