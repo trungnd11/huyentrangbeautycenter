@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import "bootstrap/dist/css/bootstrap.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { rotateInDownLeft } from "react-animations";
@@ -22,10 +21,10 @@ export default function NavBar() {
   const phoneNumberStore = useSelector(getPhoneStore);
   const [showNav, setShowNav] = useState(false);
   const [showNavHeader, setShowNavHeader] = useState(true);
-  const detailPage = useNavigate();
+  const navigation = useNavigate();
 
   const handleNavigateServiceType = (typeId: string): void => {
-    detailPage(`/services/type-${typeId}`);
+    navigation(`/services/type-${typeId}`);
   };
 
   useEffect(() => {
@@ -67,12 +66,13 @@ export default function NavBar() {
                   className="mx-1 w-75"
                   title="Đăng nhập"
                   backgroundColor="danger"
+                  click={() => navigation("login")}
                 />
                 <ButtonMain
                   className="mx-1 w-75 mt-3"
                   title="Dịch vụ"
                   backgroundColor="success"
-                  click={() => detailPage("services")}
+                  click={() => navigation("services")}
                 />
               </div>
             </div>

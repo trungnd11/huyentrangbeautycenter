@@ -13,9 +13,11 @@ export const ButtonMain = (prop: {
   backgroundColor?: string;
   className?: string;
   click?: any;
+  style?: any
 }) => {
   return (
     <button
+      style={prop.style}
       type={prop.type}
       onClick={prop.click && prop.click}
       className={`btn-main ${prop.backgroundColor} ${prop.className}`}

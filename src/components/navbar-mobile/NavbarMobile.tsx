@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../static/imgs/logos/logo.png";
+import { ButtonMain } from "../button/Button";
 import MenuItem from "../navbar/MenuItem";
 
 export default function NavbarMobile() {
@@ -42,6 +43,21 @@ export default function NavbarMobile() {
           <MenuItem title="Blog" path="/blog" />
           <MenuItem title="Liên hệ" path="/contact" />
         </ul>
+        <div className="text-center mt-2 mb-5">
+          <ButtonMain
+            className="mx-1"
+            title="Đăng nhập"
+            backgroundColor="danger"
+            click={() => navigateHome("login")}
+          />
+          <ButtonMain
+            style={{ width: '9rem' }}
+            className="mx-1"
+            title="Dịch vụ"
+            backgroundColor="success"
+            click={() => navigateHome("services")}
+          />
+        </div>
       </div>
       <div
         className={`overlay-navbar ${showMenu && "overlay-navbar-active"}`}
