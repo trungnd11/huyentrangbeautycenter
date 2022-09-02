@@ -17,8 +17,7 @@ export const initialState = {
 
 export const loginFacebook = createAsyncThunk("register/loginFacebook", async () => {
   const result = await signInWithPopup(auth, authFacebook);
-  console.log(result);
-  return result;
+  return result.user;
 })
 
 export const loginGoogle = createAsyncThunk("register/loginGoogle", async () => {
@@ -63,8 +62,8 @@ const Register = createSlice({
       state.register = {
         ...state.register,
         email: action.payload.email,
-        username: action.payload.firstName,
-        avatar: action.payload.photoUrl,
+        username: action.payload.displayName,
+        avatar: action.payload.photoURL,
       };
     });
     builder.addCase(registerUser.fulfilled, (state, action) => {
