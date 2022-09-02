@@ -8,6 +8,7 @@ export const initialState = {
 
 export const fetSesstion = createAsyncThunk("user/session", async () => {
   const res = await getSession();
+  console.log(res)
   return res.data;
 })
 

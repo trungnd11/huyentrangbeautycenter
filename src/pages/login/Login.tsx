@@ -11,7 +11,6 @@ import {
 import logo from "../../static/imgs/logos/logo.png";
 import { useState } from "react";
 import { UserModel } from "../../model/UserModel";
-import { fetSesstion } from "../../store/user/session";
 import { loginUser } from "../../store/user/login";
 
 export default function Login() {

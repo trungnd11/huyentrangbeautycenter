@@ -3,25 +3,35 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import { rotateInDownLeft } from "react-animations";
+import { rotateInDownLeft, zoomInUp } from "react-animations";
 import logo from "../../static/imgs/logos/logo.png";
 import MenuItem from "./MenuItem";
 import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 import { ButtonMain } from "../button/Button";
 import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
+import { getLocalStorage } from "../commom/function";
 
 const zoomInAnimation = keyframes`${rotateInDownLeft}`;
+
+const showMenuUser = keyframes`${zoomInUp}`;
 
 const NavBarShow = styled.div`
   animation: 0.6s ${zoomInAnimation};
 `;
 
-export default function NavBar() {  
+const MenuUser = styled.div`
+  animation: 0.6s ${showMenuUser};
+`;
+
+export default function NavBar() {
   const serviceTypeStore = useSelector(getServiceTypeStore);
   const phoneNumberStore = useSelector(getPhoneStore);
   const [showNav, setShowNav] = useState(false);
   const [showNavHeader, setShowNavHeader] = useState(true);
+  const [showMenuUser, setShowMenuUser] = useState(false);
   const navigation = useNavigate();
+
+  const isUser:any = getLocalStorage("user");
 
   const handleNavigateServiceType = (typeId: string): void => {
     navigation(`/services/type-${typeId}`);
@@ -29,15 +39,23 @@ export default function NavBar() {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      window.scrollY > 250 ? setShowNav(true) : setShowNav(false);
-      window.scrollY < 240 && setShowNavHeader(true)
+      if (window.scrollY > 250) {
+        setShowNav(true);
+        setShowMenuUser(false);
+      }
+      else {
+        setShowNav(false);
+      }
+      window.scrollY < 240 && setShowNavHeader(true);
     });
-  }, [])
+  }, []);
 
   return (
     <div className="container-fluid p-0">
       {showNavHeader && (
-        <div className="navHeader-container d-none d-lg-block shadow">
+        <div
+          className="navHeader-container d-none d-lg-block shadow"
+        >
           <div className="container">
             <div className="nav-header">
               <div className="contact">
@@ -62,18 +80,63 @@ export default function NavBar() {
                 <p>Chất lượng tạo nên thịnh vượng</p>
               </div>
               <div className="services text-end">
-                <ButtonMain
-                  className="mx-1 w-75"
-                  title="Đăng nhập"
-                  backgroundColor="danger"
-                  click={() => navigation("login")}
-                />
-                <ButtonMain
-                  className="mx-1 w-75 mt-3"
-                  title="Dịch vụ"
-                  backgroundColor="success"
-                  click={() => navigation("services")}
-                />
+                {isUser ? (
+                  <div className="userLogin mx-1">
+                    <img
+                      src={JSON.parse(isUser).avatar}
+                      alt=""
+                      onClick={() => setShowMenuUser(!showMenuUser)}
+                    />
+                    <span
+                      className="text-white"
+                      onClick={() => setShowMenuUser(!showMenuUser)}
+                    >
+                      {JSON.parse(isUser).username}
+                    </span>
+                    {showMenuUser && (
+                      <MenuUser className="menu-user shadow">
+                        <div className="header-user text-center py-2">
+                          <p className="mb-0">{JSON.parse(isUser).username}</p>
+                          <img
+                            src={JSON.parse(isUser).avatar}
+                            alt=""
+                            className="avatar-circle"
+                          />
+                          <p className="mb-0">{JSON.parse(isUser).username}</p>
+                        </div>
+                        <ul className="list-group text-start mt-2">
+                          <li className="list-group-item">
+                            <i className="fa-solid fa-gear pe-2"></i>Cài đặt tài
+                            khoản
+                          </li>
+                          <li className="list-group-item">
+                            <i className="fa-solid fa-face-grin-hearts pe-2"></i>
+                            Dịch vụ của tôi
+                          </li>
+                          <li className="list-group-item text-danger">
+                            <i className="fa-solid fa-circle-arrow-right pe-2"></i>
+                            Đăng xuất
+                          </li>
+                        </ul>
+                      </MenuUser>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <ButtonMain
+                      className="mx-1 w-75"
+                      title="Đăng nhập"
+                      backgroundColor="danger"
+                      click={() => navigation("login")}
+                    />
+                    <ButtonMain
+                      className="mx-1 w-75 mt-3"
+                      title="Dịch vụ"
+                      backgroundColor="success"
+                      click={() => navigation("services")}
+                    />
+                  </>
+                )}
               </div>
             </div>
           </div>

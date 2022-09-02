@@ -49,6 +49,66 @@
     .services {
       margin-top: 0;
       flex-basis: 25%;
+
+      .userLogin {
+        cursor: pointer;
+        position: relative;
+        img {
+          width: 25%;
+          margin-right: 1rem;
+          border: .5px solid $main-color;
+        }
+
+        .menu-user {
+          position: absolute;
+          background: $white;
+          right: 0;
+          top: 4rem;
+          width: 15rem;
+          border-radius: .2rem;
+          z-index: 3;
+          overflow: hidden;
+
+          .header-user {
+            position: relative;
+            border-bottom: 1px solid $black;
+            &::after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 50%;
+              top: 0;
+              left: 0;
+              border-top-left-radius: .2rem;
+              border-top-right-radius: .2rem;
+              background: $main-color;
+            }
+
+            img {
+              border-radius: 50%;
+              margin-right: 0;
+              position: relative;
+              z-index: 1;
+              border: 1px solid $blue;
+            }
+  
+            p {
+              font-weight: 600;
+              position: relative;
+              z-index: 1;
+            }
+          }
+
+          .list-group-item {
+            border: 1px solid transparent;
+            @include Transitions(.6s);
+            &:hover {
+              transform: translateX(1rem);
+              color: $main-color;
+            }
+          }
+        }
+      }
     }
   }
 

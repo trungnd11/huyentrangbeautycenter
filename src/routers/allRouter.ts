@@ -8,7 +8,6 @@ import ContactPage from "../pages/contact/ContactPage";
 import GalleryPage from "../pages/gallery/GalleryPage";
 import BlogDetailPage from "../pages/blog/BlogDetailPage";
 import DetailServicePage from "../pages/service/DetailServicePage";
-import Login from "../pages/login/Login";
 
 interface TypeRouter {
   path: string,
