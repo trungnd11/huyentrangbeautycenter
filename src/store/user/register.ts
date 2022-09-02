@@ -17,7 +17,7 @@ export const initialState = {
 
 export const loginFacebook = createAsyncThunk("register/loginFacebook", async () => {
   const result = await signInWithPopup(auth, authFacebook);
-  return result.user;
+  return result;
 })
 
 export const loginGoogle = createAsyncThunk("register/loginGoogle", async () => {
