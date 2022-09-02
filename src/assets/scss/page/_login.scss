@@ -8,11 +8,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  overflow: hidden;
 
   .form-login {
     border: 1px solid $main-color;
     border-radius: 0.8rem;
-    padding: 4rem 2rem;
+    padding: 2rem 2rem;
     background: $white;
 
     @include Responsive(XS) {
@@ -21,7 +22,7 @@
 
     .logo {
       img {
-        width: 20%;
+        width: 15%;
         aspect-ratio: 1 / 1;
         object-fit: cover;
         animation: logoRotate 10s infinite linear;
@@ -30,6 +31,7 @@
       h2 {
         text-transform: uppercase;
         color: $main-color;
+        font-size: 1.8rem;
 
         @include Responsive(XS) {
           display: none;
@@ -48,9 +50,21 @@
     h3 {
       text-transform: uppercase;
         color: $main-color;
+        font-size: 1.3rem;
 
       @include Responsive(XS) {
         font-size: 2rem;
+      }
+    }
+
+    label {
+      position: relative;
+      &::after {
+        content: "*";
+        position: absolute;
+        color: $red;
+        font-size: 1.2rem;
+        right: -.7rem;
       }
     }
 
@@ -135,7 +149,7 @@
       text-align: center;
       .icon {
         i {
-          font-size: 3rem;
+          font-size: 2rem;
           cursor: pointer;
           margin: 0 0.5rem;
 
