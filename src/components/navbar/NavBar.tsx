@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { rotateInDownLeft, zoomInUp } from "react-animations";
@@ -9,7 +9,9 @@ import MenuItem from "./MenuItem";
 import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 import { ButtonMain } from "../button/Button";
 import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
-import { getLocalStorage } from "../commom/function";
+import { Author } from "../../enum/Enum";
+import { getLoginStore, logout } from "../../store/user/login";
+import { SweetAlertComfirm } from "../commom/alert/Alert";
 
 const zoomInAnimation = keyframes`${rotateInDownLeft}`;
 
@@ -26,15 +28,23 @@ const MenuUser = styled.div`
 export default function NavBar() {
   const serviceTypeStore = useSelector(getServiceTypeStore);
   const phoneNumberStore = useSelector(getPhoneStore);
+  const { login, loading } = useSelector(getLoginStore);
   const [showNav, setShowNav] = useState(false);
   const [showNavHeader, setShowNavHeader] = useState(true);
   const [showMenuUser, setShowMenuUser] = useState(false);
   const navigation = useNavigate();
-
-  const isUser:any = getLocalStorage("user");
+  const dispatch = useDispatch();
 
   const handleNavigateServiceType = (typeId: string): void => {
     navigation(`/services/type-${typeId}`);
+  };
+
+  const handleLogout = () => {
+    SweetAlertComfirm("Đăng xuất", "Bạn có chắc chắn thoát tài khoản", () => {
+      dispatch(logout(Author.USER));
+      setShowMenuUser(false);
+    }
+    );
   };
 
   useEffect(() => {
@@ -42,8 +52,7 @@ export default function NavBar() {
       if (window.scrollY > 250) {
         setShowNav(true);
         setShowMenuUser(false);
-      }
-      else {
+      } else {
         setShowNav(false);
       }
       window.scrollY < 240 && setShowNavHeader(true);
@@ -53,9 +62,7 @@ export default function NavBar() {
   return (
     <div className="container-fluid p-0">
       {showNavHeader && (
-        <div
-          className="navHeader-container d-none d-lg-block shadow"
-        >
+        <div className="navHeader-container d-none d-lg-block shadow">
           <div className="container">
             <div className="nav-header">
               <div className="contact">
@@ -80,10 +87,10 @@ export default function NavBar() {
                 <p>Chất lượng tạo nên thịnh vượng</p>
               </div>
               <div className="services text-end">
-                {isUser ? (
+                {!loading ? (
                   <div className="userLogin mx-1">
                     <img
-                      src={JSON.parse(isUser).avatar}
+                      src={login.avatar}
                       alt=""
                       onClick={() => setShowMenuUser(!showMenuUser)}
                     />
@@ -91,18 +98,18 @@ export default function NavBar() {
                       className="text-white"
                       onClick={() => setShowMenuUser(!showMenuUser)}
                     >
-                      {JSON.parse(isUser).username}
+                      {login.username}
                     </span>
                     {showMenuUser && (
                       <MenuUser className="menu-user shadow">
                         <div className="header-user text-center py-2">
-                          <p className="mb-0">{JSON.parse(isUser).username}</p>
+                          <p className="mb-0">{login.username}</p>
                           <img
-                            src={JSON.parse(isUser).avatar}
+                            src={login.avatar}
                             alt=""
                             className="avatar-circle"
                           />
-                          <p className="mb-0">{JSON.parse(isUser).username}</p>
+                          <p className="mb-0">{login.username}</p>
                         </div>
                         <ul className="list-group text-start mt-2">
                           <li className="list-group-item">
@@ -113,7 +120,10 @@ export default function NavBar() {
                             <i className="fa-solid fa-face-grin-hearts pe-2"></i>
                             Dịch vụ của tôi
                           </li>
-                          <li className="list-group-item text-danger">
+                          <li
+                            className="list-group-item text-danger"
+                            onClick={handleLogout}
+                          >
                             <i className="fa-solid fa-circle-arrow-right pe-2"></i>
                             Đăng xuất
                           </li>

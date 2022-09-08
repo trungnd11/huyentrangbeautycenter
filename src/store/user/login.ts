@@ -1,6 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import { loginApi } from "../../api/users";
-import { setLocalStorage } from "../../components/commom/function";
+import Alert from "../../components/commom/alert/Alert";
+import { deleteCookie, setCookie } from "../../components/commom/function/function";
+import { Author } from "../../enum/Enum";
 import { UserModel } from "../../model/UserModel";
 
 export const initialState = {
@@ -22,20 +24,34 @@ const Login = createSlice({
   name: "login",
   initialState,
   reducers: {
-    
+    logout: (state, action) => {
+      deleteCookie(action.payload);
+      state.login.username = "";
+      state.login.avatar = "";
+      state.login.role = "";
+      state.loading = true;
+    },
+    login: (state, action) => {
+      state.loading = false;
+      state.login = action.payload;
+    }
   },
   extraReducers: (builder) => {
-    builder.addCase(loginUser.fulfilled, (state, action) => {
+    builder.addCase(loginUser.pending, (state, action) => {
+      
+    })
+      .addCase(loginUser.fulfilled, (state, action) => {
       state.loading = false;
       state.login = action.payload.user;
-      setLocalStorage({
-        key: "user",
-        data: action.payload.user
-      });
-      window.location.reload();
-    });
+      setCookie(Author.USER, JSON.stringify(action.payload.user), 1);
+    })
+      .addCase(loginUser.rejected, (state, action) => {
+      state.loading = false;
+      Alert("error", "Sai tên đăng nhập hoặc mật khẩu");
+    })
   }
 });
 
 export const getLoginStore = (state: any) => state.login;
+export const { logout, login } = Login.actions;
 export default Login.reducer;

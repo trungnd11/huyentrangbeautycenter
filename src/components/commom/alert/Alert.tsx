@@ -2,7 +2,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 
-export default function Alert(status: string, title: string) {
+export default function Alert(
+  status: "error" | "success" | "info",
+  title: string | any
+) {
   return (
     <div>
       {!status
@@ -20,7 +23,9 @@ export const SweetAlertComfirm = (
   alertMessage?: string,
   message?: string,
   callback?: Function,
-  callbackCancel?: Function
+  callbackCancel?: Function,
+  labelConfirm?: string,
+  labelCancel?: string
 ) => {
   Swal.fire({
     title: alertMessage,
@@ -29,8 +34,8 @@ export const SweetAlertComfirm = (
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Xoá ngay",
-    cancelButtonText: "Không xoá",
+    confirmButtonText: labelConfirm || "Đồng ý",
+    cancelButtonText: labelCancel || "Quay lại",
   }).then((result) => {
     if (result.isConfirmed) {
       callback && callback();
