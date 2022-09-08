@@ -46,7 +46,7 @@ const Login = createSlice({
       setCookie(Author.USER, JSON.stringify(action.payload.user), 1);
     })
       .addCase(loginUser.rejected, (state, action) => {
-      state.loading = false;
+      state.loading = true;
       Alert("error", "Sai tên đăng nhập hoặc mật khẩu");
     })
   }
