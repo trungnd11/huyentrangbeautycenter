@@ -17,11 +17,11 @@ const zoomInAnimation = keyframes`${rotateInDownLeft}`;
 
 const showMenuUser = keyframes`${zoomInUp}`;
 
-const NavBarShow = styled.div`
+export const NavBarShow = styled.div`
   animation: 0.6s ${zoomInAnimation};
 `;
 
-const MenuUser = styled.div`
+export const MenuUser = styled.div`
   animation: 0.6s ${showMenuUser};
 `;
 
