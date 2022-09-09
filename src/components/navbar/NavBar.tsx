@@ -32,6 +32,7 @@ export default function NavBar() {
   const [showNav, setShowNav] = useState(false);
   const [showNavHeader, setShowNavHeader] = useState(true);
   const [showMenuUser, setShowMenuUser] = useState(false);
+  const [showSubMenuUser, setShowSubMenuUser] = useState(false);
   const navigation = useNavigate();
   const dispatch = useDispatch();
 
@@ -52,6 +53,7 @@ export default function NavBar() {
       if (window.scrollY > 250) {
         setShowNav(true);
         setShowMenuUser(false);
+        setShowSubMenuUser(false);
       } else {
         setShowNav(false);
       }
@@ -214,6 +216,45 @@ export default function NavBar() {
                   <MenuItem title="Liên hệ" path="/contact" />
                 </ul>
               </div>
+              {!loading && (
+                <div className="author-user">
+                  <img
+                    src={login.avatar}
+                    alt=""
+                    onClick={() => setShowSubMenuUser(!showSubMenuUser)}
+                  />
+                  {showSubMenuUser && (
+                    <MenuUser className="sub-menu-user shadow">
+                      <div className="header-user text-center py-2">
+                        <p className="mb-0">{login.username}</p>
+                        <img
+                          src={login.avatar}
+                          alt=""
+                          className="avatar-circle"
+                        />
+                        <p className="mb-0">{login.username}</p>
+                      </div>
+                      <ul className="list-group text-start mt-2">
+                        <li className="list-group-item">
+                          <i className="fa-solid fa-gear pe-2"></i>Cài đặt tài
+                          khoản
+                        </li>
+                        <li className="list-group-item">
+                          <i className="fa-solid fa-face-grin-hearts pe-2"></i>
+                          Dịch vụ của tôi
+                        </li>
+                        <li
+                          className="list-group-item text-danger"
+                          onClick={handleLogout}
+                        >
+                          <i className="fa-solid fa-circle-arrow-right pe-2"></i>
+                          Đăng xuất
+                        </li>
+                      </ul>
+                    </MenuUser>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </NavBarShow>
