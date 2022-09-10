@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { loginApi } from "../../api/users";
-import Alert, { RemoveAlert } from "../../components/commom/alert/Alert";
+import Alert, {
+  RemoveAlert,
+  SweetAlertComfirm,
+} from "../../components/commom/alert/Alert";
 import {
   deleteCookie,
   setCookie,
@@ -53,10 +56,14 @@ const Login = createSlice({
           setCookie(Author.USER, JSON.stringify(action.payload.user), 1);
           RemoveAlert();
           Alert("success", `Chào mừng ${action.payload.user.username}`);
-        }
-        else if (action.payload.user.role === "admin") {
-          window.location.href =
-            "https://huyentrangbeautycenteradmin.herokuapp.com/";
+        } else if (action.payload.user.role === "admin") {
+          SweetAlertComfirm(
+            "Chuyển hướng",
+            "Bạn đã đăng nhập tài khoản Admin chuyển đến trang dành cho admin",
+            () =>
+              (window.location.href =
+                "https://huyentrangbeautycenteradmin.herokuapp.com/")
+          );
         }
       })
       .addCase(loginUser.rejected, (state, action) => {
