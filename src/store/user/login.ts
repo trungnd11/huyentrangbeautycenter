@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { loginApi } from "../../api/users";
-import Alert from "../../components/commom/alert/Alert";
+import Alert, { RemoveAlert } from "../../components/commom/alert/Alert";
 import {
   deleteCookie,
   setCookie,
@@ -43,15 +43,25 @@ const Login = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state, action) => {})
+      .addCase(loginUser.pending, (state, action) => {
+        Alert("loading", "Vui lòng chờ...");
+      })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.loading = false;
-        state.login = action.payload.user;
-        setCookie(Author.USER, JSON.stringify(action.payload.user), 1);
-        Alert("success", "Đăng nhập thành công");
+        if (action.payload.user.role === "customer") {
+          state.loading = false;
+          state.login = action.payload.user;
+          setCookie(Author.USER, JSON.stringify(action.payload.user), 1);
+          RemoveAlert();
+          Alert("success", `Chào mừng ${action.payload.user.username}`);
+        }
+        else if (action.payload.user.role === "admin") {
+          window.location.href =
+            "https://huyentrangbeautycenteradmin.herokuapp.com/";
+        }
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = true;
+        RemoveAlert();
         Alert("error", "Sai tên đăng nhập hoặc mật khẩu");
       });
   },

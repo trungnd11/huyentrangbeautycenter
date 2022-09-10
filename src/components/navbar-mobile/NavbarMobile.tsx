@@ -50,7 +50,10 @@ export default function NavbarMobile() {
         </div>
         {login?.username ? (
           <div className="author-user">
-            <h5 onClick={handleShowMenuUser}>Chào mừng {login?.username}</h5>
+            <h5 onClick={handleShowMenuUser}>
+              Chào mừng {login?.username}
+              <i className="fa-solid fa-chevron-down ms-2" style={{ fontSize: ".8rem", cursor: "pointer" }} />
+            </h5>
             {showMenuUser && (
               <MenuUser className="menu-user shadow">
                 <div className="header-user text-center py-2">
@@ -120,7 +123,11 @@ export default function NavbarMobile() {
           </div>
         ) : (
           <div className="trademark">
-            <h5 className="text-center" onClick={handleNavigateHome}>Huyen Trang Beauty Center</h5>
+            <h5 className="text-center" onClick={handleNavigateHome}>
+              <i className="fa-regular fa-heart me-2" />
+              Huyen Trang Beauty Center
+              <i className="fa-regular fa-heart ms-2" />
+            </h5>
           </div>
         )}
       </div>

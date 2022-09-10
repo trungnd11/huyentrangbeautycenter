@@ -3,8 +3,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 
 export default function Alert(
-  status: "error" | "success" | "info",
-  title: string | any
+  status: "error" | "success" | "info" | "loading",
+  title?: string | any
 ) {
   return (
     <div>
@@ -14,10 +14,15 @@ export default function Alert(
         ? toast.success(title)
         : status === "error"
         ? toast.error(title)
-        : status === "info" && toast.info(title)}
+        : status === "info"
+        ? toast.info(title)
+        : status === "loading"
+        && toast.loading(title)}
     </div>
   );
 }
+
+export const RemoveAlert = () => toast.dismiss();
 
 export const SweetAlertComfirm = (
   alertMessage?: string,
