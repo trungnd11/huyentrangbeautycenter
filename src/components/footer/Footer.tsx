@@ -75,8 +75,8 @@ export default function Footer() {
           </div>
           <div className="col-12 col-md-6 col-lg-4 footer-layout">
             <div className="sevices">
-              <h3 className="text-center">Dịch vụ</h3>
-              <ul className="text-center">
+              <h3 className="text-start text-md-end text-lg-center">Dịch vụ</h3>
+              <ul className="text-start text-md-end text-lg-center">
                 {!serviceTypeStore.loading &&
                   serviceTypeStore.serviceType.map((item) => (
                     <a
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
           <div className="col-12 col-md-12 col-lg-4 footer-layout">
             <div className="location">
-              <h3 className="text-center">Vị trí</h3>
+              <h3 className="text-start text-lg-center">Vị trí</h3>
               <div className="map">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.2722761759937!2d105.8680948153891!3d21.418540379732168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31351f8792c838f1%3A0x9a18999d400b1b0d!2sHuy%E1%BB%81n%20Trang%20brows!5e0!3m2!1svi!2s!4v1657861317521!5m2!1svi!2s"
