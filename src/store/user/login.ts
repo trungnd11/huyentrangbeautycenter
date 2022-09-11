@@ -1,23 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginApi } from "../../api/users";
+import { loginApi, logoutApi } from "../../api/users";
 import Alert, {
   RemoveAlert,
   SweetAlertComfirm,
 } from "../../components/commom/alert/Alert";
 import {
   deleteCookie,
+  getCookie,
   setCookie,
 } from "../../components/commom/function/function";
 import { Author } from "../../enum/Enum";
 import { UserModel } from "../../model/UserModel";
 
 export const initialState = {
-  loading: true,
-  login: {
-    username: "",
-    role: "",
-    avatar: "",
-  },
+  isAuthorization: false,
+  username: "",
+  avatar: "",
+  roles: [],
 };
 
 export const loginUser = createAsyncThunk(
@@ -33,15 +32,25 @@ const Login = createSlice({
   initialState,
   reducers: {
     logout: (state, action) => {
-      deleteCookie(action.payload);
-      state.login.username = "";
-      state.login.avatar = "";
-      state.login.role = "";
-      state.loading = true;
+      const token = getCookie(Author.REFRESH_TOKEN);
+      if (token) {
+        logoutApi({ refreshToken: token }).then(() => {
+          console.log("Deleted");
+        });
+      }
+      state.isAuthorization = false;
+      state.username = "";
+      state.avatar = "";
+      state.roles = [];
+      deleteCookie(action.payload.user);
+      deleteCookie(action.payload.token);
+      deleteCookie(action.payload.refreshToken);
     },
     login: (state, action) => {
-      state.loading = false;
-      state.login = action.payload;
+      state.isAuthorization = true;
+      state.username = action.payload.username;
+      state.avatar = action.payload.avatar;
+      state.roles = action.payload.roles;
     },
   },
   extraReducers: (builder) => {
@@ -50,24 +59,39 @@ const Login = createSlice({
         Alert("loading", "Vui lòng chờ...");
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        if (action.payload.user.role === "customer") {
-          state.loading = false;
-          state.login = action.payload.user;
-          setCookie(Author.USER, JSON.stringify(action.payload.user), 1);
-          RemoveAlert();
-          Alert("success", `Chào mừng ${action.payload.user.username}`);
-        } else if (action.payload.user.role === "admin") {
-          SweetAlertComfirm(
-            "Chuyển hướng",
-            "Bạn đã đăng nhập tài khoản Admin chuyển đến trang dành cho admin",
-            () =>
-              (window.location.href =
-                "https://huyentrangbeautycenteradmin.herokuapp.com/")
-          );
-        }
+        RemoveAlert();
+        action.payload.roles.forEach((role: string) => {
+          if (role === "ROLE_ADMIN") {
+            SweetAlertComfirm(
+              "Chuyển hướng",
+              "Vui lòng đăng nhập trang quản trị, chuyển đến ngay..",
+              () =>
+                (window.location.href =
+                  "https://huyentrangbeautycenteradmin.herokuapp.com/home")
+            );
+          }
+          else {
+            state.isAuthorization = true;
+            state.username = action.payload.username;
+            state.avatar = action.payload.avatar;
+            state.roles = action.payload.roles;
+            setCookie(
+              Author.USER,
+              JSON.stringify({
+                username: action.payload.username,
+                avatar: action.payload.avatar,
+                roles: action.payload.roles,
+              }),
+              1
+            );
+            setCookie(Author.TOKEN, action.payload.accessToken, 1);
+            setCookie(Author.REFRESH_TOKEN, action.payload.refreshToken, 1);
+            Alert("success", `Chào mừng ${action.payload.username}`);
+          }
+        });
       })
       .addCase(loginUser.rejected, (state, action) => {
-        state.loading = true;
+        state.isAuthorization = false;
         RemoveAlert();
         Alert("error", "Sai tên đăng nhập hoặc mật khẩu");
       });

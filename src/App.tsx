@@ -13,7 +13,7 @@ function App() {
   const { key } = location;
   const isAuthor = getCookie(Author.USER);
   const dispatch = useDispatch();
-  const { loading } = useSelector(getLoginStore);
+  const { isAuthorization } = useSelector(getLoginStore);
 
   useEffect(() => {
     window.scrollTo({
@@ -26,7 +26,7 @@ function App() {
   }, [key, dispatch, isAuthor]);
   return (
     <div className="App">
-      {!loading ? (
+      {isAuthorization ? (
         <Routes>
           <Route path="/login" element={<Navigate to="/" replace />} />
           <Route path="*" element={<Customer />} />

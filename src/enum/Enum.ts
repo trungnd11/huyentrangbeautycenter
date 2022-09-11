@@ -1,3 +1,5 @@
 export enum Author {
-  USER = "user"
+  USER = "user",
+  TOKEN = "token",
+  REFRESH_TOKEN = "refreshToken",
 }

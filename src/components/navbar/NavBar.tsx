@@ -12,6 +12,7 @@ import { getPhoneStore } from "../../store/phoneNumber/phoneNumberSelector";
 import { Author } from "../../enum/Enum";
 import { getLoginStore, logout } from "../../store/user/login";
 import { SweetAlertComfirm } from "../commom/alert/Alert";
+import user from "../../static/imgs/avatar/user1.png";
 
 const zoomInAnimation = keyframes`${rotateInDownLeft}`;
 
@@ -28,7 +29,7 @@ export const MenuUser = styled.div`
 export default function NavBar() {
   const serviceTypeStore = useSelector(getServiceTypeStore);
   const phoneNumberStore = useSelector(getPhoneStore);
-  const { login, loading } = useSelector(getLoginStore);
+  const { isAuthorization, username, avatar } = useSelector(getLoginStore);
   const [showNav, setShowNav] = useState(false);
   const [showNavHeader, setShowNavHeader] = useState(true);
   const [showMenuUser, setShowMenuUser] = useState(false);
@@ -42,7 +43,11 @@ export default function NavBar() {
 
   const handleLogout = () => {
     SweetAlertComfirm("Đăng xuất", "Bạn có chắc chắn thoát tài khoản", () => {
-      dispatch(logout(Author.USER));
+      dispatch(logout({
+        user: Author.USER,
+        token: Author.TOKEN,
+        refreshToken: Author.REFRESH_TOKEN
+      }));
       setShowMenuUser(false);
     }
     );
@@ -89,10 +94,11 @@ export default function NavBar() {
                 <p>Chất lượng tạo nên thịnh vượng</p>
               </div>
               <div className="services text-end">
-                {!loading ? (
+                {isAuthorization ? (
                   <div className="userLogin mx-1">
                     <img
-                      src={login.avatar}
+                      src={
+                        avatar || user}
                       alt=""
                       onClick={() => setShowMenuUser(!showMenuUser)}
                     />
@@ -100,18 +106,14 @@ export default function NavBar() {
                       className="text-white"
                       onClick={() => setShowMenuUser(!showMenuUser)}
                     >
-                      {login.username}
+                      {username}
                     </span>
                     {showMenuUser && (
                       <MenuUser className="menu-user shadow">
                         <div className="header-user text-center py-2">
-                          <p className="mb-0">{login.username}</p>
-                          <img
-                            src={login.avatar}
-                            alt=""
-                            className="avatar-circle"
-                          />
-                          <p className="mb-0">{login.username}</p>
+                          <p className="mb-0">{username}</p>
+                          <img src={avatar || user} alt="" className="avatar-circle" />
+                          <p className="mb-0">{username}</p>
                         </div>
                         <ul className="list-group text-start mt-2">
                           <li className="list-group-item">
@@ -216,23 +218,19 @@ export default function NavBar() {
                   <MenuItem title="Liên hệ" path="/contact" />
                 </ul>
               </div>
-              {!loading && (
+              {isAuthorization && (
                 <div className="author-user">
                   <img
-                    src={login.avatar}
+                    src={avatar || user}
                     alt=""
                     onClick={() => setShowSubMenuUser(!showSubMenuUser)}
                   />
                   {showSubMenuUser && (
                     <MenuUser className="sub-menu-user shadow">
                       <div className="header-user text-center py-2">
-                        <p className="mb-0">{login.username}</p>
-                        <img
-                          src={login.avatar}
-                          alt=""
-                          className="avatar-circle"
-                        />
-                        <p className="mb-0">{login.username}</p>
+                        <p className="mb-0">{username}</p>
+                        <img src={avatar} alt="" className="avatar-circle" />
+                        <p className="mb-0">{username}</p>
                       </div>
                       <ul className="list-group text-start mt-2">
                         <li className="list-group-item">
