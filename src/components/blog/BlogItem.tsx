@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function BlogItem(props: { img: string, date: string, month: string, year: string | number, title: string, content: string }) {
+export default function BlogItem(props: { img?: string, date: any, month: any, year: string | number, title?: string, content?: string }) {
   const { img, date, month, year, title, content
   } = props;
   const blogDetail = useNavigate();
