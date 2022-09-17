@@ -1,18 +1,12 @@
+import { useEffect, useState } from "react";
 import BlogItem from "./BlogItem";
 import img1 from "../../static/imgs/banner/banner-1.jpg";
-import { useEffect, useState } from "react";
 import { BlogModel } from "../../model/BlogModel";
 import { getBlogs } from "../../api/blog";
+import { FormatDate } from "../../helpper/functionCommon";
 
 export default function Blog() {
-  const [blogs, setBlogs] = useState<BlogModel[]>([
-    {
-      title: "",
-      content: "",
-      createdAt: "",
-      category: ""
-    }
-  ]);
+  const [blogs, setBlogs] = useState<BlogModel[]>([]);
 
   const fetBlogNew = async () => {
     try {
@@ -37,11 +31,11 @@ export default function Blog() {
             blogs.map((item) => (
               <BlogItem
                 img={img1}
-                date={new Date("2022-09-14T16:36:18.459Z").getDate()}
-                month={new Date("2022-09-14T16:36:18.459Z").getMonth()}
-                year={new Date("2022-09-14T16:36:18.459Z").getFullYear()}
+                date={FormatDate(item?.createdAt).getDate()}
+                month={FormatDate(item?.createdAt).getMonth()}
+                year={FormatDate(item?.createdAt).getFullYear()}
                 title={item.title}
-                // content={item.content}
+                content={item.content}
               />
             ))
           ) : (
