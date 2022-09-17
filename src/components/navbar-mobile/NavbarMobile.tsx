@@ -1,6 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import { flip } from "react-animations";
 import { Author } from "../../enum/Enum";
 import logo from "../../static/imgs/logos/logo.png";
 import { getLoginStore, logout } from "../../store/user/login";
@@ -9,7 +11,11 @@ import { SweetAlertComfirm } from "../commom/alert/Alert";
 import MenuItem from "../navbar/MenuItem";
 import { MenuUser } from "../navbar/NavBar";
 
+const showBrandName = keyframes`${flip}`;
 
+const BrandName = styled.h5`
+  animation: 4s 1s ${showBrandName};
+`;
 
 export default function NavbarMobile() {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -17,6 +23,7 @@ export default function NavbarMobile() {
   const navigateHome = useNavigate();
   const dispatch = useDispatch();
   const { login } = useSelector(getLoginStore);
+  const [animateBrandName, setAnimateBrandName] = useState<boolean>(false);
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -42,6 +49,13 @@ export default function NavbarMobile() {
     navigateHome(`/home`);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimateBrandName(pre => !pre);
+    }, 5000)
+    return () => clearTimeout(timer);
+  }, [animateBrandName]);
+
   return (
     <>
       <div className={`navbar-mobile ${showMenu && "navbar-mobile-active"}`}>
@@ -50,10 +64,15 @@ export default function NavbarMobile() {
         </div>
         {login?.username ? (
           <div className="author-user">
-            <h5 onClick={handleShowMenuUser}>
-              Chào mừng {login?.username}
-              <i className="fa-solid fa-chevron-down ms-2" style={{ fontSize: ".8rem", cursor: "pointer" }} />
-            </h5>
+            {animateBrandName && (
+              <BrandName onClick={handleShowMenuUser}>
+                Chào mừng {login?.username}
+                <i
+                  className="fa-solid fa-chevron-down ms-2"
+                  style={{ fontSize: ".8rem", cursor: "pointer" }}
+                />
+              </BrandName>
+            )}
             {showMenuUser && (
               <MenuUser className="menu-user shadow">
                 <div className="header-user text-center py-2">
@@ -82,7 +101,11 @@ export default function NavbarMobile() {
           </div>
         ) : (
           <div className="trademark">
-            <h5 onClick={handleNavigateHome}>Huyen Trang Beauty Center</h5>
+            {animateBrandName && (
+              <BrandName onClick={handleNavigateHome}>
+                Huyen Trang Beauty Center
+              </BrandName>
+            )}
           </div>
         )}
         <div className="menu" onClick={handleShowMenu}>

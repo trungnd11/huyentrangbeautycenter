@@ -1,7 +1,5 @@
 import BlogItem from "./BlogItem";
 import img1 from "../../static/imgs/banner/banner-1.jpg";
-import img2 from "../../static/imgs/banner/banner-2.jpg";
-import img3 from "../../static/imgs/banner/banner-3.jpg";
 import { useEffect, useState } from "react";
 import { BlogModel } from "../../model/BlogModel";
 import { getBlogs } from "../../api/blog";
