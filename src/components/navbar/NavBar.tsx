@@ -229,7 +229,7 @@ export default function NavBar() {
                     <MenuUser className="sub-menu-user shadow">
                       <div className="header-user text-center py-2">
                         <p className="mb-0">{username}</p>
-                        <img src={avatar} alt="" className="avatar-circle" />
+                        <img src={avatar || user} alt="" className="avatar-circle" />
                         <p className="mb-0">{username}</p>
                       </div>
                       <ul className="list-group text-start mt-2">

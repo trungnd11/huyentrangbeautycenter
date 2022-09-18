@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { signInWithPopup } from "firebase/auth";
 import { registerApi } from "../../api/users";
-import Alert from "../../components/commom/alert/Alert";
+import Alert, { RemoveAlert } from "../../components/commom/alert/Alert";
 import { auth, authFacebook, authGoogle } from "../../firebase/firebase";
 import { UserModel } from "../../model/UserModel";
 
@@ -28,6 +28,7 @@ export const loginGoogle = createAsyncThunk("register/loginGoogle", async () => 
 });
 
 export const registerUser = createAsyncThunk("register/register", async (user: UserModel) => {
+  Alert("loading", "Vui lòng chờ");
   const res = await registerApi(user);
   return res.data;
 })
@@ -73,8 +74,10 @@ const Register = createSlice({
         ...state.register,
         email: ""
       }
+      RemoveAlert();
       Alert("success", "Đăng ký thành công");
     }).addCase(registerUser.rejected, (state, action) => {
+      RemoveAlert();
       Alert("error", "Tên đăng nhập hoặc email bị trùng");
     });
   }

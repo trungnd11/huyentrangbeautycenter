@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginApi, logoutApi } from "../../api/users";
+import { loginApi } from "../../api/users";
 import Alert, {
   RemoveAlert,
   SweetAlertComfirm,
@@ -32,19 +32,19 @@ const Login = createSlice({
   initialState,
   reducers: {
     logout: (state, action) => {
-      const token = getCookie(Author.REFRESH_TOKEN);
-      if (token) {
-        logoutApi({ refreshToken: token }).then(() => {
-          console.log("Deleted");
-        });
-      }
+      // const token = getCookie(Author.REFRESH_TOKEN);
+      // if (token) {
+      //   logoutApi({ refreshToken: token }).then(() => {
+      //     console.log("Deleted");
+      //   });
+      // }
       state.isAuthorization = false;
       state.username = "";
       state.avatar = "";
       state.roles = [];
-      deleteCookie(action.payload.user);
-      deleteCookie(action.payload.token);
-      deleteCookie(action.payload.refreshToken);
+      deleteCookie(Author.USER);
+      deleteCookie(Author.TOKEN);
+      deleteCookie(Author.REFRESH_TOKEN);
     },
     login: (state, action) => {
       state.isAuthorization = true;
