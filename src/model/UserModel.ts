@@ -4,4 +4,5 @@ export interface UserModel {
   password?: string;
   passwordConfirm?: string;
   avatar?: string;
+  roles?: string[];
 }

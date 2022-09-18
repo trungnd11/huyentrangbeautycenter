@@ -13,6 +13,7 @@ export const initialState = {
     password: "",
     passwordConfirm: "",
     avatar: "",
+    roles: ["customer"]
   },
 };
 
