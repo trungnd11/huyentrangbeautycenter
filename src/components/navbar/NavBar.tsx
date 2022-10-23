@@ -34,27 +34,31 @@ export default function NavBar() {
   const [showNavHeader, setShowNavHeader] = useState(true);
   const [showMenuUser, setShowMenuUser] = useState(false);
   const [showSubMenuUser, setShowSubMenuUser] = useState(false);
+  const [showSubMenuService, setShowSubMenuService] = useState(false);
   const navigation = useNavigate();
   const dispatch = useDispatch();
 
   const handleNavigateServiceType = (typeId: string): void => {
     navigation(`/services/type-${typeId}`);
+    setShowSubMenuService((pre) => !pre);
   };
 
   const handleLogout = () => {
     SweetAlertComfirm("Đăng xuất", "Bạn có chắc chắn thoát tài khoản", () => {
-      dispatch(logout({
-        user: Author.USER,
-        token: Author.TOKEN,
-        refreshToken: Author.REFRESH_TOKEN
-      }));
+      dispatch(
+        logout({
+          user: Author.USER,
+          token: Author.TOKEN,
+          refreshToken: Author.REFRESH_TOKEN,
+        })
+      );
       setShowMenuUser(false);
-    }
-    );
+    });
   };
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
+      setShowSubMenuService(() => false);
       if (window.scrollY > 250) {
         setShowNav(true);
         setShowMenuUser(false);
@@ -97,8 +101,7 @@ export default function NavBar() {
                 {isAuthorization ? (
                   <div className="userLogin mx-1">
                     <img
-                      src={
-                        avatar || user}
+                      src={avatar || user}
                       alt=""
                       onClick={() => setShowMenuUser(!showMenuUser)}
                     />
@@ -112,7 +115,11 @@ export default function NavBar() {
                       <MenuUser className="menu-user shadow">
                         <div className="header-user text-center py-2">
                           <p className="mb-0">{username}</p>
-                          <img src={avatar || user} alt="" className="avatar-circle" />
+                          <img
+                            src={avatar || user}
+                            alt=""
+                            className="avatar-circle"
+                          />
                           <p className="mb-0">{username}</p>
                         </div>
                         <ul className="list-group text-start mt-2">
@@ -157,26 +164,57 @@ export default function NavBar() {
           <div className="list-menu">
             <div className="container">
               <ul className="position-relative d-flex justify-content-between align-items-center">
-                <MenuItem title="Trang chủ" path="/home" />
-                <MenuItem title="Giới thiệu" path="/about" />
-                <MenuItem title="Dịch vụ" path="/services" class="active" />
-                <div className="sub-serviceType">
-                  <ul className="list-serviceType">
-                    {!serviceTypeStore.loading &&
-                      serviceTypeStore.serviceType.map((item) => (
-                        <li
-                          key={item._id}
-                          className="item-serviceType"
-                          onClick={() => handleNavigateServiceType(item._id)}
-                        >
-                          {item.serviceType}
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-                <MenuItem title="Chuyên gia" path="/expert" />
-                <MenuItem title="Blog" path="/blog" />
-                <MenuItem title="Liên hệ" path="/contact" />
+                <MenuItem
+                  title="Trang chủ"
+                  path="/home"
+                  onClick={() => setShowSubMenuService(() => false)}
+                />
+                <MenuItem
+                  title="Giới thiệu"
+                  path="/about"
+                  onClick={() => setShowSubMenuService(() => false)}
+                />
+                <MenuItem
+                  title="Dịch vụ"
+                  path="/services"
+                  class="active"
+                  type="dropdown"
+                  onClickDropDown={() => setShowSubMenuService((pre) => !pre)}
+                >
+                  {showSubMenuService && (
+                    <ul className="list-serviceType">
+                      {!serviceTypeStore.loading &&
+                        serviceTypeStore.serviceType.map((item) => (
+                          <li
+                            key={item._id}
+                            className="item-serviceType"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleNavigateServiceType(item._id);
+                            }}
+                          >
+                            <span>{item.serviceType}</span>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </MenuItem>
+                <MenuItem
+                  title="Chuyên gia"
+                  path="/expert"
+                  onClick={() => setShowSubMenuService(() => false)}
+                />
+                <MenuItem
+                  title="Blog"
+                  path="/blog"
+                  onClick={() => setShowSubMenuService(() => false)}
+                />
+                <MenuItem
+                  title="Liên hệ"
+                  path="/contact"
+                  onClick={() => setShowSubMenuService(() => false)}
+                />
               </ul>
             </div>
           </div>
@@ -196,26 +234,57 @@ export default function NavBar() {
               </div>
               <div className="list-menu">
                 <ul className="position-relative d-flex justify-content-between align-items-center">
-                  <MenuItem title="Trang chủ" path="/home" />
-                  <MenuItem title="Giới thiệu" path="/about" />
-                  <MenuItem title="Dịch vụ" path="/services" class="active" />
-                  <div className="sub-serviceType">
-                    <ul className="list-serviceType">
-                      {!serviceTypeStore.loading &&
-                        serviceTypeStore.serviceType.map((item) => (
-                          <li
-                            key={item._id}
-                            className="item-serviceType"
-                            onClick={() => handleNavigateServiceType(item._id)}
-                          >
-                            {item.serviceType}
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                  <MenuItem title="Chuyên gia" path="/expert" />
-                  <MenuItem title="Blog" path="/blog" />
-                  <MenuItem title="Liên hệ" path="/contact" />
+                  <MenuItem
+                    title="Trang chủ"
+                    path="/home"
+                    onClick={() => setShowSubMenuService(() => false)}
+                  />
+                  <MenuItem
+                    title="Giới thiệu"
+                    path="/about"
+                    onClick={() => setShowSubMenuService(() => false)}
+                  />
+                  <MenuItem
+                    title="Dịch vụ"
+                    path="/services"
+                    class="active"
+                    type="dropdown"
+                    onClickDropDown={() => setShowSubMenuService((pre) => !pre)}
+                  >
+                    {showSubMenuService && (
+                      <ul className="list-serviceType">
+                        {!serviceTypeStore.loading &&
+                          serviceTypeStore.serviceType.map((item) => (
+                            <li
+                              key={item._id}
+                              className="item-serviceType"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleNavigateServiceType(item._id);
+                              }}
+                            >
+                              <span>{item.serviceType}</span>
+                            </li>
+                          ))}
+                      </ul>
+                    )}
+                  </MenuItem>
+                  <MenuItem
+                    title="Chuyên gia"
+                    path="/expert"
+                    onClick={() => setShowSubMenuService(() => false)}
+                  />
+                  <MenuItem
+                    title="Blog"
+                    path="/blog"
+                    onClick={() => setShowSubMenuService(() => false)}
+                  />
+                  <MenuItem
+                    title="Liên hệ"
+                    path="/contact"
+                    onClick={() => setShowSubMenuService(() => false)}
+                  />
                 </ul>
               </div>
               {isAuthorization && (
@@ -229,7 +298,11 @@ export default function NavBar() {
                     <MenuUser className="sub-menu-user shadow">
                       <div className="header-user text-center py-2">
                         <p className="mb-0">{username}</p>
-                        <img src={avatar || user} alt="" className="avatar-circle" />
+                        <img
+                          src={avatar || user}
+                          alt=""
+                          className="avatar-circle"
+                        />
                         <p className="mb-0">{username}</p>
                       </div>
                       <ul className="list-group text-start mt-2">
