@@ -1,5 +1,6 @@
 import axios from "axios";
+import { baseUrl } from "./baseUrl";
 
-const url = "https://huyentrangbeautycenter.herokuapp.com/service-type";
+const url = `${baseUrl}/service-type`;
 
 export const getServiceType = () => axios.get(url);

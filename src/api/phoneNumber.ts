@@ -1,5 +1,6 @@
 import axios from "axios";
+import { baseUrl } from "./baseUrl";
 
-const url = "https://huyentrangbeautycenter.herokuapp.com/phone";
+const url = `${baseUrl}/phone`;
 
 export const getPhone = () => axios.get(url);

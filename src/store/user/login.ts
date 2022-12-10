@@ -6,7 +6,6 @@ import Alert, {
 } from "../../components/commom/alert/Alert";
 import {
   deleteCookie,
-  getCookie,
   setCookie,
 } from "../../components/commom/function/function";
 import { Author } from "../../enum/Enum";
@@ -67,7 +66,7 @@ const Login = createSlice({
               "Vui lòng đăng nhập trang quản trị, chuyển đến ngay..",
               () =>
                 (window.location.href =
-                  "https://huyentrangbeautycenteradmin.herokuapp.com/home")
+                  "https://huyentrangdashboard.vercel.app/home")
             );
           }
           else {
