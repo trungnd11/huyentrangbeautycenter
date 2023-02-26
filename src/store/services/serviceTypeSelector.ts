@@ -1,5 +1,5 @@
 export interface ServiceTypes {
-  _id: string;
+  id: string;
   serviceType: string;
   image: string;
   description: string;

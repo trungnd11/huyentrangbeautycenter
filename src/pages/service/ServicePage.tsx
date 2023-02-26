@@ -22,7 +22,7 @@ export default function ServicePage() {
   return (
     <div className="services-page">
       <HeaderPage
-        backgroud="https://technext.github.io/energen/images/bg_2.jpg"
+        backgroud="https://firebasestorage.googleapis.com/v0/b/image-spa.appspot.com/o/banner%2Fbanner-5.jpg?alt=media&token=5ef21d11-2341-4379-b99a-1a17a14bf557"
         title="Dịch vụ"
         link="/home"
         prePage="Trang chủ"
@@ -37,9 +37,9 @@ export default function ServicePage() {
         <ServiceType />
         <div className="row">
           {!serviceStore.loading ? (
-            serviceStore.services.map((item) => (
+            serviceStore.services.docs.map((item) => (
               <ItemService
-                key={item._id}
+                key={item.id}
                 img={item.image || avatar1}
                 title={item.name}
                 content={item.description}

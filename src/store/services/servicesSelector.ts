@@ -1,7 +1,7 @@
 import { ServiceTypes } from "./serviceTypeSelector";
 
 interface Services {
-  _id: string;
+  id: string;
   name: string;
   image: string;
   description: string;
@@ -12,8 +12,12 @@ interface Services {
 
 interface ServicesInit {
   loading: boolean,
-  filter: Services[],
-  services: Services[]
+  filter: {
+    docs: Services[]
+  },
+  services: {
+    docs: Services[]
+  }
 }
 
 export const getServicesStore = (state: { services: ServicesInit }) => state.services;

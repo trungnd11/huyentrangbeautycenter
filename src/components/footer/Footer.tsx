@@ -4,7 +4,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { url } from "../../routers/allRouter";
 import { fetAddress } from "../../store/address/address";
 import { getAddressStore } from "../../store/address/addressSelector";
 import { fetPhone } from "../../store/phoneNumber/phoneNumber";
@@ -20,7 +19,7 @@ export default function Footer() {
   const detailPage = useNavigate();
 
   const handleNavigateServiceType = (typeId: string): void => {
-    detailPage(`${url}/services/type-${typeId}`);
+    detailPage(`/services/type-${typeId}`);
   };
 
   useEffect(() => {
@@ -32,13 +31,13 @@ export default function Footer() {
     <div className="footer">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-4 footer-layout">
+          <div className="col-12 col-md-6 col-lg-4 pe-0 pe-lg-3 footer-layout">
             <div className="company">
-              <h3>Huyen Trang Center</h3>
+              <h3>Huyen Trang Tran Beauty Center</h3>
               <div className="address">
                 {!loading &&
                   address.map((item, index) => (
-                    <React.Fragment key={item._id}>
+                    <React.Fragment key={item.id}>
                       <p className={`${index === 0 && "mb-0 mt-2"}`}>
                         <i className="fa-solid fa-circle-dot"></i>
                         {` ${item?.apartmentNumber}, ${item?.commune}, ${item?.district}, ${item?.conscious} `}
@@ -51,7 +50,7 @@ export default function Footer() {
                   phoneNumberStore.phoneNumber.map((item) => (
                     <a
                       href={`tel:${item.phoneNumber}`}
-                      key={item._id}
+                      key={item.id}
                       title={item.nameUser}
                     >
                       <p>
@@ -76,15 +75,15 @@ export default function Footer() {
           </div>
           <div className="col-12 col-md-6 col-lg-4 footer-layout">
             <div className="sevices">
-              <h3>Dịch vụ</h3>
-              <ul>
+              <h3 className="text-start text-md-end text-lg-center">Dịch vụ</h3>
+              <ul className="text-start text-md-end text-lg-center">
                 {!serviceTypeStore.loading &&
                   serviceTypeStore.serviceType.map((item) => (
                     <a
                       href="#"
-                      key={item._id}
+                      key={item.id}
                       title={item.description}
-                      onClick={() => handleNavigateServiceType(item._id)}
+                      onClick={() => handleNavigateServiceType(item.id)}
                     >
                       <li>{item.serviceType}</li>
                     </a>
@@ -94,7 +93,7 @@ export default function Footer() {
           </div>
           <div className="col-12 col-md-12 col-lg-4 footer-layout">
             <div className="location">
-              <h3>Vị trí</h3>
+              <h3 className="text-start text-lg-center">Vị trí</h3>
               <div className="map">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3714.2722761759937!2d105.8680948153891!3d21.418540379732168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31351f8792c838f1%3A0x9a18999d400b1b0d!2sHuy%E1%BB%81n%20Trang%20brows!5e0!3m2!1svi!2s!4v1657861317521!5m2!1svi!2s"
@@ -108,11 +107,11 @@ export default function Footer() {
         </div>
         <div className="row">
           <div className="col-12">
-            <p className="mb-0 mt-2 text-center copy-right">
+            <p className="mb-0 mt-2 text-center text-white copy-right">
               Copyright ©
               <script>document.write(new Date().getFullYear());</script>2022 All
               rights by{" "}
-              <Link to={`${url}`} className="title">
+              <Link to={`/`} className="title">
                 Huyen Trang Beauty Center
               </Link>
             </p>

@@ -1,15 +1,16 @@
 .header-page {
   background-size: cover;
-  margin-top: 4rem;
   height: 60vh;
   position: relative;
 
   @include Responsive(XS) {
     height: 30vh;
+    margin-top: 4rem;
   }
 
   @include Responsive(MD) {
     height: 35vh;
+    margin-top: 4rem;
   }
 
   &::after {

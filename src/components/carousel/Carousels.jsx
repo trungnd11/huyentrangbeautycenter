@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Carousel } from "3d-react-carousal";
 import { NavLink } from "react-router-dom";
 import { ButtonMain } from "../button/Button";
-import { url } from ".././../routers/allRouter";
 import { getBanners } from "../../api/banner";
 import LoadingComponent from "../../assets/svg/LoadingComponent";
 
@@ -15,7 +14,7 @@ export default function Carousels() {
     const slides = res.map(item => (
       <>
         <img src={item.img} alt="1" />
-        { item.title && item.content && <div className="content">
+        { item.title && item.content && <p className="content mb-0">
         <div className="title text-center">
           <h2>{ item.title }</h2>
         </div>
@@ -23,14 +22,14 @@ export default function Carousels() {
           <p className="text-center">{ item.content }</p>
         </div>
         <div className="button text-center">
-          <NavLink to={`${url}/services`}>
+          <NavLink to={`/services`}>
             <ButtonMain className="mx-1" title="Dịch vụ" backgroundColor="success"/>
           </NavLink>
-          <NavLink to={`${url}/contact`}>
+          <NavLink to={`/contact`}>
             <ButtonMain className="mx-1" title="Liên hệ" backgroundColor="danger"/>
           </NavLink>
         </div>
-      </div> }
+      </p> }
       </>
     ));
     setSlideBanners(slides);
@@ -50,7 +49,7 @@ export default function Carousels() {
   }, [])
   return (
     <div className="carousel">
-      <Carousel slides={slideBanners} autoplay={true} interval={5000} />
+      <Carousel slides={slideBanners} autoplay={true} />
     </div>
   );
 }

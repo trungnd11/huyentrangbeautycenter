@@ -1,11 +1,13 @@
 .carousel {
-  margin-top: 5rem;
+  margin-top: 1rem;
 
   @include Responsive(XS) {
     overflow: hidden;
+    margin-top: 5rem;
   }
   @include Responsive(MD) {
     overflow: hidden;
+    margin-top: 5rem;
   }
   .react-3d-carousel {
     height: 70vh !important;
@@ -45,7 +47,7 @@
 
           .slider-left,
           .slider-right {
-            display: none;
+            display: none !important;
           }
 
           .slider-single-content {
@@ -73,6 +75,7 @@
     color: $white;
     padding: 1.5rem;
     border-radius: 0.8rem;
+    border: 1px solid $main-color !important;
     width: 70%;
     @include Transitions(0.6s);
 

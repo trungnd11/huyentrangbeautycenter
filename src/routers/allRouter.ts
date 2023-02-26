@@ -14,51 +14,51 @@ interface TypeRouter {
   component: FC,
 }
 
-export const url = "/huyentrangbeautycenter";
+// export const url = "/huyentrangbeautycenter";
 
 export const authRouter: TypeRouter[] = [
   {
-    path: `${url}/`,
+    path: `/`,
     component: Home,
   },
   {
-    path: `${url}/home`,
+    path: `/home`,
     component: Home,
   },
   {
-    path: `${url}/about`,
+    path: `/about`,
     component: AboutPage,
   },
   {
-    path: `${url}/services`,
+    path: `/services`,
     component: ServicePage,
   },
   {
-    path: `${url}/services/type-:type`,
+    path: `/services/type-:type`,
     component: ServicePage,
   },
   {
-    path: `${url}/expert`,
+    path: `/expert`,
     component: ExpertPage,
   },
   {
-    path: `${url}/blog`,
+    path: `/blog`,
     component: BlogPage,
   },
   {
-    path: `${url}/contact`,
+    path: `/contact`,
     component: ContactPage,
   },
   {
-    path: `${url}/photos`,
+    path: `/photos`,
     component: GalleryPage,
   },
   {
-    path: `${url}/blog-details`,
+    path: `/blog-details`,
     component: BlogDetailPage,
   },
   {
-    path: `${url}/service-details`,
+    path: `/service-details`,
     component: DetailServicePage,
   },
 ];

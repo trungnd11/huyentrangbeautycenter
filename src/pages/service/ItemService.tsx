@@ -1,13 +1,12 @@
 import { ButtonMain } from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
-import { url } from "../../routers/allRouter";
 
 export default function ItemService(prop: {img: string, title: string, content?: string}) {
   const { img, title, content } = prop;
   const detailService = useNavigate();
 
   const handleClickDetailService = (): void => {
-    detailService(`${url}/service-details`);
+    detailService(`/service-details`);
   }
 
   return (
@@ -41,7 +40,7 @@ export function ItemServiceSLide(prop: {
   const detailService = useNavigate();
 
   const handleClickDetailService = (): void => {
-    detailService(`${url}/service-details`);
+    detailService(`/service-details`);
   };
 
   return (

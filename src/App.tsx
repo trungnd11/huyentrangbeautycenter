@@ -1,44 +1,43 @@
-
-import NavBar from "./components/navbar/NavBar";
-import Router from "./routers/Router";
-import Footer from "./components/footer/Footer";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import NavbarMobile from "./components/navbar-mobile/NavbarMobile";
-import ZaloIcon from "./assets/svg/ZaloIcon";
-import Messenger from "./assets/svg/Messenger";
-import ScrollTop from "./components/scroll-top/ScrollTop";
-import Loading from "./assets/svg/Loading";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { getCookie } from "./components/commom/function/function";
+import { Author } from "./enum/Enum";
+import Customer from "./layout/Customer";
+import Login from "./pages/login/Login";
+import { getLoginStore, login } from "./store/user/login";
 
 function App() {
   const location = useLocation();
   const { key } = location;
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const isAuthor = getCookie(Author.USER);
+  const dispatch = useDispatch();
+  const { isAuthorization } = useSelector(getLoginStore);
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
     });
-
-    const timeLoading = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-
-    return () => {
-      clearTimeout(timeLoading);
+    if (isAuthor) {
+      dispatch(login(JSON.parse(isAuthor)));
+      <Navigate to="/" />
     }
-  }, [key]);
-
+  }, [key, dispatch, isAuthor]);
   return (
     <div className="App">
-      {isLoading && <Loading width={50} height={50} />}
-      <NavBar />
-      <NavbarMobile />
-      <Router />
-      <Footer />
-      <ZaloIcon />
-      <Messenger />
-      <ScrollTop />
+      {isAuthorization ? (
+        <Routes>
+          <Route path="/login" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Customer />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Customer />} />
+        </Routes>
+      )}
+      <ToastContainer />
     </div>
   );
 }

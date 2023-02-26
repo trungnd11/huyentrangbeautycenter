@@ -45,7 +45,7 @@ export default function ScrollTop() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 300 ? setShow(true) : setShow(false);
-    })
+    });
   }, [])
 
   return (

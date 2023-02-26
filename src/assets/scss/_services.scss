@@ -92,6 +92,14 @@
           color: $white;
           font-size: 2rem;
         }
+
+        img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 1px solid $main-color;
+        }
       }
 
       .description {

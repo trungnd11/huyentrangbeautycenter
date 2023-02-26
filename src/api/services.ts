@@ -1,6 +1,7 @@
 import axios from "axios";
+import { baseUrl } from "./baseUrl";
 
-const url = "https://huyentrangbeautycenter.herokuapp.com/service";
+const url = `${baseUrl}/service`;
 
 export const getServiceLimit = (limit: number) => axios.get(`${url}/limit-${limit}`);
 
