@@ -37,7 +37,7 @@ export default function Footer() {
               <div className="address">
                 {!loading &&
                   address.map((item, index) => (
-                    <React.Fragment key={item._id}>
+                    <React.Fragment key={item.id}>
                       <p className={`${index === 0 && "mb-0 mt-2"}`}>
                         <i className="fa-solid fa-circle-dot"></i>
                         {` ${item?.apartmentNumber}, ${item?.commune}, ${item?.district}, ${item?.conscious} `}
@@ -50,7 +50,7 @@ export default function Footer() {
                   phoneNumberStore.phoneNumber.map((item) => (
                     <a
                       href={`tel:${item.phoneNumber}`}
-                      key={item._id}
+                      key={item.id}
                       title={item.nameUser}
                     >
                       <p>
@@ -81,9 +81,9 @@ export default function Footer() {
                   serviceTypeStore.serviceType.map((item) => (
                     <a
                       href="#"
-                      key={item._id}
+                      key={item.id}
                       title={item.description}
-                      onClick={() => handleNavigateServiceType(item._id)}
+                      onClick={() => handleNavigateServiceType(item.id)}
                     >
                       <li>{item.serviceType}</li>
                     </a>

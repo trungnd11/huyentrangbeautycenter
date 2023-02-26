@@ -82,7 +82,7 @@ export default function NavBar() {
                   phoneNumberStore.phoneNumber.map((item) => (
                     <a
                       href={`tel:${item.phoneNumber}`}
-                      key={item._id}
+                      key={item.id}
                       title={item.nameUser}
                     >
                       <p>
@@ -186,12 +186,12 @@ export default function NavBar() {
                       {!serviceTypeStore.loading &&
                         serviceTypeStore.serviceType.map((item) => (
                           <li
-                            key={item._id}
+                            key={item.id}
                             className="item-serviceType"
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
-                              handleNavigateServiceType(item._id);
+                              handleNavigateServiceType(item.id);
                             }}
                           >
                             <span>{item.serviceType}</span>
@@ -256,12 +256,12 @@ export default function NavBar() {
                         {!serviceTypeStore.loading &&
                           serviceTypeStore.serviceType.map((item) => (
                             <li
-                              key={item._id}
+                              key={item.id}
                               className="item-serviceType"
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                handleNavigateServiceType(item._id);
+                                handleNavigateServiceType(item.id);
                               }}
                             >
                               <span>{item.serviceType}</span>

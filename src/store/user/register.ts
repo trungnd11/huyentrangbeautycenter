@@ -52,6 +52,7 @@ const Register = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loginGoogle.fulfilled, (state, action: any) => {
+      console.log(action.payload)
       state.loading = false;
       state.register = {
         ...state.register,

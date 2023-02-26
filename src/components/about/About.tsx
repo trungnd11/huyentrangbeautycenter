@@ -13,7 +13,7 @@ interface AboutType {
 }
 
 interface ExperienceType {
-  _id: string,
+  id: string,
   name: string,
   description?: string
 }
@@ -66,7 +66,7 @@ export default function About() {
               <p className="description">{about?.description1}</p>
               <ul className="mt-5 lists-item">
                 {experience?.map((item) => (
-                  <ItemAbout linkTo="#" key={item._id}>
+                  <ItemAbout linkTo="#" key={item.id}>
                     {item.name}
                   </ItemAbout>
                 ))}

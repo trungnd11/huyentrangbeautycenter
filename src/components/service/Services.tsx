@@ -8,7 +8,7 @@ import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 import { fetServiceType } from "../../store/services/serviceType";
 
 interface Service {
-  _id: string
+  id: string
   name: string;
   image: string;
   description: string;
@@ -49,7 +49,7 @@ export default function Services() {
         <div className="row">
           {service &&
             service.map((item) => (
-              <div className="col-12 col-md-6 col-lg-4" key={item._id}>
+              <div className="col-12 col-md-6 col-lg-4" key={item.id}>
                 <div className="service">
                   <div className="image">
                     <img src={item.image || avatar1} alt="" />
@@ -75,7 +75,7 @@ export default function Services() {
             <div className="list-services-layout">
               {!servicesTypeStore.loading &&
                 servicesTypeStore.serviceType.map((item) => (
-                  <div className="item-service" key={item._id} onClick={() => handleNavigateServiceType(item._id)}>
+                  <div className="item-service" key={item.id} onClick={() => handleNavigateServiceType(item.id)}>
                     <div className="icon d-flex justify-content-center align-items-center">
                       {item.image ? (
                         <img src={item.image} alt={item.serviceType} />

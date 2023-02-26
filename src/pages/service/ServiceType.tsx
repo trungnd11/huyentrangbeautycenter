@@ -43,10 +43,10 @@ export default function ServiceType() {
             {!serviceTypeStore.loading &&
               serviceTypeStore.serviceType.map((item) => (
                 <a
-                  key={item._id}
-                  onClick={() => handleFilterServiceType(item._id)}
+                  key={item.id}
+                  onClick={() => handleFilterServiceType(item.id)}
                 >
-                  <li className={activeType === item._id ? "activeType" : ""}>
+                  <li className={activeType === item.id ? "activeType" : ""}>
                     {item.serviceType}
                   </li>
                 </a>

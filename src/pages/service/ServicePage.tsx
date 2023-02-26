@@ -37,9 +37,9 @@ export default function ServicePage() {
         <ServiceType />
         <div className="row">
           {!serviceStore.loading ? (
-            serviceStore.services.map((item) => (
+            serviceStore.services.docs.map((item) => (
               <ItemService
-                key={item._id}
+                key={item.id}
                 img={item.image || avatar1}
                 title={item.name}
                 content={item.description}
