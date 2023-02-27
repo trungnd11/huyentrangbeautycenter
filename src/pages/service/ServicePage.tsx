@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import HeaderPage from "../../components/header-page/HeaderPage";
@@ -8,16 +8,23 @@ import ServiceType from "./ServiceType";
 import { getServicesStore } from "../../store/services/servicesSelector";
 import { fetServices } from "../../store/services/service";
 import LoadingComponent from "../../assets/svg/LoadingComponent";
+import ReactPaginate from "react-paginate";
+import { OptionPage } from "../../model/component/PageModel";
 
 export default function ServicePage() {
   const dispatch = useDispatch<any>();
   const serviceStore = useSelector(getServicesStore);
   const { type } = useParams();
+  const [optionPage, setOptionPage] = useState<OptionPage>({
+    page: 0,
+    limit: 5
+  });
+  const refType = useRef<{ activeType: string }>();
 
   useEffect(() => {
     document.title = "Huyen Trang - Dịch vụ";
-    !type && dispatch(fetServices());
-  }, [dispatch, type]);
+    !type && refType.current?.activeType === "all" && dispatch(fetServices(optionPage));
+  }, [dispatch, optionPage, type]);
 
   return (
     <div className="services-page">
@@ -34,7 +41,7 @@ export default function ServicePage() {
             <h3 className="text-center title">Dịch vụ của chúng tôi</h3>
           </div>
         </div>
-        <ServiceType />
+        <ServiceType optionPage={optionPage} ref={refType} setOptionPage={setOptionPage} />
         <div className="row">
           {!serviceStore.loading ? (
             serviceStore.services.docs.map((item) => (
@@ -50,6 +57,15 @@ export default function ServicePage() {
               <LoadingComponent width="60px" height="60px" />
             </div>
           )}
+        </div>
+        <div className="row mt-3 paginate-services">
+          <ReactPaginate
+            pageCount={serviceStore?.services?.totalPages}
+            onPageChange={(page) => setOptionPage((pre) => ({ ...pre, page: page.selected + 1 }))}
+            previousLabel="<"
+            nextLabel=">"
+            initialPage={0}
+          />
         </div>
       </div>
     </div>
