@@ -16,7 +16,10 @@ interface ServicesInit {
     docs: Services[]
   },
   services: {
-    docs: Services[]
+    docs: Services[],
+    totalPages: number,
+    totalDocs: number,
+    page: number
   }
 }
 

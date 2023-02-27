@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { findServicesByType, getServices } from "../../api/services";
+import { OptionPage } from "../../model/component/PageModel";
 
 export const initialState = {
   loading: true,
@@ -7,15 +8,16 @@ export const initialState = {
   services: [],
 };
 
-export const fetServices = createAsyncThunk("services/fetServices", async () => {
-  const res = await getServices();
+export const fetServices = createAsyncThunk("services/fetServices", async (optionPage: OptionPage) => {
+  const res = await getServices(optionPage);
   return res.data;
 });
 
 export const findServicesByServiceType = createAsyncThunk(
   "services/findType",
-  async (type: string) => {
-    const res = await findServicesByType({ serviceType: type });
+  async (props: { type: string, optionPage: OptionPage }) => {
+    const { type, optionPage } = props;
+    const res = await findServicesByType({ serviceType: type }, optionPage);
     return res.data;
   }
 );
@@ -34,11 +36,14 @@ const services = createSlice({
     builder.addCase(fetServices.fulfilled, (state, action) => {
       state.loading = false;
       state.services = action.payload;
+    }).addCase(fetServices.pending, (state, _action) => {
+      state.loading = true;
     });
-
     builder.addCase(findServicesByServiceType.fulfilled, (state, action) => {
       state.loading = false;
       state.services = action.payload;
+    }).addCase(findServicesByServiceType.pending, (state, _action) => {
+      state.loading = true;
     });
   }
 });

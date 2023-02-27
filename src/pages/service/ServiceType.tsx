@@ -1,34 +1,48 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { OptionPage } from "../../model/component/PageModel";
 import { fetServices, findServicesByServiceType } from "../../store/services/service";
 import { fetServiceType } from "../../store/services/serviceType";
 import { getServiceTypeStore } from "../../store/services/serviceTypeSelector";
 
-export default function ServiceType() {
+function ServiceType(props: { optionPage: OptionPage | any, setOptionPage: React.Dispatch<React.SetStateAction<OptionPage>> }, ref: any) {
+  const { optionPage, setOptionPage } = props;
   const dispatch = useDispatch<any>();
   const serviceTypeStore = useSelector(getServiceTypeStore);
-  const [activeType, setActiveType] = useState<string>("all");
   const { type } = useParams();
+  const [activeType, setActiveType] = useState<string>(type || "all");
 
   const handleFilterServiceType = (typeService: string) => {
-    dispatch(findServicesByServiceType(typeService));
+    setOptionPage((pre) => ({ ...pre, page: 0 }));
+    dispatch(findServicesByServiceType({ type: typeService, optionPage }));
     setActiveType(typeService);
   }
 
   const handleAllServices = () => {
-    dispatch(fetServices());
+    setOptionPage((pre) => ({ ...pre, page: 0 }));
     setActiveType("all");
   };
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      activeType
+    }),
+    [activeType]
+  )
+
   useEffect(() => {
     dispatch(fetServiceType());
-    if (type) {
-      dispatch(findServicesByServiceType(type));
-      setActiveType(type);
+    if (activeType === "all") {
+      dispatch(fetServices(optionPage));
+      return;
     }
-  }, [dispatch, type]);
+    if (type || activeType !== "all") {
+      activeType && dispatch(findServicesByServiceType({ type: activeType, optionPage }));
+    }
+  }, [activeType, dispatch, optionPage, type]);
 
   return (
     <div className="row d-flex justify-content-center">
@@ -57,3 +71,5 @@ export default function ServiceType() {
     </div>
   );
 }
+
+export default forwardRef(ServiceType)
