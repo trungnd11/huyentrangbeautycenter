@@ -13,6 +13,7 @@ import { Author } from "../../enum/Enum";
 import { getLoginStore, logout } from "../../store/user/login";
 import { SweetAlertComfirm } from "../commom/alert/Alert";
 import user from "../../static/imgs/avatar/user1.png";
+import { clearRegisterEmail } from "../../store/user/register";
 
 const zoomInAnimation = keyframes`${rotateInDownLeft}`;
 
@@ -52,6 +53,7 @@ export default function NavBar() {
           refreshToken: Author.REFRESH_TOKEN,
         })
       );
+      dispatch(clearRegisterEmail());
       setShowMenuUser(false);
     });
   };

@@ -9,16 +9,19 @@ import {
   updatePassword,
 } from "../../store/user/register";
 import logo from "../../static/imgs/logos/logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserModel } from "../../model/UserModel";
 import { loginUser } from "../../store/user/login";
+import { async } from "@firebase/util";
+import { getUsername } from "../../api/users";
 
 export default function Login() {
   const dispatch = useDispatch<any>();
-  const userStore = useSelector(getUserStore);
+  const { register } = useSelector(getUserStore);
   const [login, setLogin] = useState<UserModel>({
     username: "",
     password: "",
+    isNotPassword: false
   });
 
   const handleLoginFacebook = () => {
@@ -30,12 +33,23 @@ export default function Login() {
   };
 
   const handleRegisterUser = () => {
-    dispatch(registerUser(userStore.register));
+    dispatch(registerUser(register));
   };
 
   const handleLoginUser = () => {
     dispatch(loginUser(login));
   };
+
+  useEffect(() => {
+    register.email && (async () => {
+      try {
+        await getUsername({ email: register.email });
+        dispatch(loginUser({ username: register.email, isNotPassword: true }));
+      } catch (error) {
+
+      }
+    })();
+  }, [dispatch, register.email]);
 
   return (
     <div className="login-container">
@@ -50,7 +64,7 @@ export default function Login() {
               </div>
               <h3 className="text-center">Đăng nhập</h3>
               <form action="">
-                {userStore.register.email ? (
+                {register.email ? (
                   <>
                     <div className="row mt-3">
                       <div className="col-12">
@@ -88,7 +102,7 @@ export default function Login() {
                           id="username"
                           type="text"
                           className="form-control"
-                          value={userStore.register.username || login.username}
+                          value={register.username || login.username}
                           onChange={(e) =>
                             setLogin((pre) => ({
                               ...pre,
@@ -105,7 +119,7 @@ export default function Login() {
                           id="password"
                           type="password"
                           className="form-control"
-                          value={userStore.register.password || login.password}
+                          value={register.password || login.password}
                           onChange={(e) =>
                             setLogin((pre) => ({
                               ...pre,
@@ -122,7 +136,7 @@ export default function Login() {
                     <div className="container-button-login">
                       <div className="wap-login">
                         <div className="login-bg"></div>
-                        {userStore.register.email ? (
+                        {register.email ? (
                           <button
                             type="button"
                             className="btn-login"

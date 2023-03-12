@@ -48,11 +48,16 @@ const Register = createSlice({
         ...state.register,
         passwordConfirm: action.payload
       }
+    },
+    clearRegisterEmail: (state) => {
+      state.register = {
+        ...state.register,
+        email: ""
+      }
     }
   },
   extraReducers: (builder) => {
     builder.addCase(loginGoogle.fulfilled, (state, action: any) => {
-      console.log(action.payload)
       state.loading = false;
       state.register = {
         ...state.register,
@@ -85,5 +90,5 @@ const Register = createSlice({
 });
 
 export const getUserStore = (state: any) => state.register;
-export const { updatePassword, updateConfirmPass } = Register.actions;
+export const { updatePassword, updateConfirmPass, clearRegisterEmail } = Register.actions;
 export default Register.reducer;
