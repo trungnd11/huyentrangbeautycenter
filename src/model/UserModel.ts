@@ -5,4 +5,5 @@ export interface UserModel {
   passwordConfirm?: string;
   avatar?: string;
   roles?: string[];
+  isNotPassword?: boolean
 }

@@ -11,6 +11,7 @@ import { ButtonMain } from "../button/Button";
 import { SweetAlertComfirm } from "../commom/alert/Alert";
 import MenuItem from "../navbar/MenuItem";
 import { MenuUser } from "../navbar/NavBar";
+import { clearRegisterEmail } from "../../store/user/register";
 
 const showBrandName = keyframes`${flip}`;
 
@@ -39,6 +40,7 @@ export default function NavbarMobile() {
   const handleLogout = () => {
     SweetAlertComfirm("Đăng xuất", "Bạn có chắc chắn thoát tài khoản", () => {
       dispatch(logout(Author.USER));
+      dispatch(clearRegisterEmail());
       setShowMenuUser(false);
     });
   };
